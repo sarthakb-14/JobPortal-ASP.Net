@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="LandingPage.aspx.cs" Inherits="JobPortal.LandingPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="JobListings.aspx.cs" Inherits="JobPortal.JobListings" %>
 
 <!DOCTYPE html>
 
@@ -15,8 +15,8 @@
 </div>
 </div>
 <div class="site-mobile-menu-body"><ul class="site-nav-wrap">
-<li><a href="index.html" class="nav-link active">Home</a></li>
-<li><a href="job-listings.html">Job Listings</a></li>
+<li><a href="index.html" class="nav-link">Home</a></li>
+<li><a href="job-listings.html" class="active">Job Listings</a></li>
 <li><a href="about.html">About</a></li>
 <li><a href="services.html">Services</a></li>
 <li><a href="blog.html">Blog</a></li>
@@ -30,8 +30,8 @@
 <div class="site-logo col-6"><a href="index.html">Careers</a></div>
 <nav class="mx-auto site-navigation">
 <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
-<li><a href="index.html" class="nav-link active">Home</a></li>
-<li><a href="job-listings.html">Job Listings</a></li>
+<li><a href="index.html" class="nav-link">Home</a></li>
+<li><a href="job-listings.html" class="active">Job Listings</a></li>
 <li><a href="about.html">About</a></li>
 <li><a href="services.html">Services</a></li>
 <li><a href="blog.html">Blog</a></li>
@@ -48,80 +48,14 @@
 </div>
 </header>
 
-<section class="home-section section-hero overlay bg-image" style="background-image: url('images/hero_1.jpg');" id="home-section">
+<section class="home-section section-hero inner-page overlay bg-image" style="background-image: url('images/hero_1.jpg');" id="home-section">
 <div class="container">
 <div class="row align-items-center justify-content-center">
 <div class="col-md-12">
 <div class="mb-5 text-center">
-<h1 class="text-white font-weight-bold">A Powerful Career Website Template</h1>
+<h1 class="text-white font-weight-bold">Job Listings</h1>
 <p>Find your dream jobs in our powerful career website template.</p>
 </div>
-<form method="post" class="search-jobs-form">
-<div class="row mb-5">
-<div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-<input type="text" class="form-control form-control-lg" placeholder="Job title, keywords...">
-</div>
-<div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-<select class="form-control">
-<option>Anywhere</option>
-<option>San Francisco</option>
-<option>Palo Alto</option>
-<option>New York</option>
-<option>Manhattan</option>
-<option>Ontario</option>
-<option>Toronto</option>
-<option>Kansas</option>
-<option>Mountain View</option>
-</select>
-</div>
-<div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-<select class="form-control">
-<option>Part Time</option>
-<option>Full Time</option>
-<option>Freelancer</option>
-</select>
-</div>
-<div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-<button type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search"><span class="icon-search icon mr-2"></span>Search Job</button>
-</div>
-</div>
-</form>
-</div>
-</div>
-</div>
-</section>
-<section class="py-5 bg-image overlay-primary fixed overlay" style="background-image: url('images/hero_1.jpg');">
-<div class="container">
-<div class="row mb-5 justify-content-center">
-<div class="col-md-7 text-center">
-<h2 class="section-title mb-2 text-white">Careers Statistics</h2>
-<p class="lead text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita unde officiis recusandae sequi excepturi corrupti.</p>
-</div>
-</div>
-<div class="row pb-0 block__19738 section-counter">
-<div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
-<div class="d-flex align-items-center justify-content-center mb-2">
-<strong class="number" data-number="1930">0</strong>
-</div>
-<span class="caption">Candidates</span>
-</div>
-<div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
-<div class="d-flex align-items-center justify-content-center mb-2">
-<strong class="number" data-number="54">0</strong>
-</div>
-<span class="caption">Jobs Posted</span>
-</div>
-<div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
-<div class="d-flex align-items-center justify-content-center mb-2">
-<strong class="number" data-number="120">0</strong>
-</div>
-<span class="caption">Jobs Filled</span>
-</div>
-<div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
-<div class="d-flex align-items-center justify-content-center mb-2">
-<strong class="number" data-number="550">0</strong>
-</div>
-<span class="caption">Companies</span>
 </div>
 </div>
 </div>
@@ -277,7 +211,8 @@
 <div class="row justify-content-center">
 <div class="col-md-7">
 <h2 class="section-title mb-2">Our Candidates Work In Company</h2>
-<p class="lead">Porro error reiciendis commodi beatae omnis similique voluptate rerum ipsam fugit mollitia ipsum facilis expedita tempora suscipit iste</p>
+<p class="lead">Porro error reiciendis commodi beatae omnis similique voluptate rerum ipsam fugit
+mollitia ipsum facilis expedita tempora suscipit iste</p>
 </div>
 </div>
 </div>
@@ -295,72 +230,6 @@
 </div>
 </div>
 </div>
-</section>
-<section class="bg-light pt-5 testimony-full">
-<div class="owl-carousel single-carousel owl-loaded owl-drag">
-
-
-<div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-2433px, 0px, 0px); transition: 1s; width: 7301px;"><div class="owl-item cloned" style="width: 1216.67px;"><div class="container">
-<div class="row">
-<div class="col-lg-6 mx-auto">
-<img class="img-fluid mx-auto" src="images/person_1.jpg" alt="Image">
-<blockquote>
-<p>“Soluta quasi cum delectus eum facilis recusandae nesciunt molestias accusantium libero dolores repellat id in dolorem laborum ad modi qui at quas dolorum voluptatem voluptatum repudiandae.”</p>
-<p><cite> — Richard Anderson</cite></p>
-</blockquote>
-</div>
-</div>
-</div></div><div class="owl-item cloned" style="width: 1216.67px;"><div class="container">
-<div class="row">
-<div class="col-lg-6 mx-auto">
-<img class="img-fluid mx-auto" src="images/person_2.jpg" alt="Image">
-<blockquote>
-<p>“Soluta quasi cum delectus eum facilis recusandae nesciunt molestias accusantium libero dolores repellat id in dolorem laborum ad modi qui at quas dolorum voluptatem voluptatum repudiandae.”</p>
-<p><cite> — Chris Peters</cite></p>
-</blockquote>
-</div>
-</div>
-</div></div><div class="owl-item active" style="width: 1216.67px;"><div class="container">
-<div class="row">
-<div class="col-lg-6 mx-auto">
-<img class="img-fluid mx-auto" src="images/person_1.jpg" alt="Image">
-<blockquote>
-<p>“Soluta quasi cum delectus eum facilis recusandae nesciunt molestias accusantium libero dolores repellat id in dolorem laborum ad modi qui at quas dolorum voluptatem voluptatum repudiandae.”</p>
-<p><cite> — Richard Anderson</cite></p>
-</blockquote>
-</div>
-</div>
-</div></div><div class="owl-item" style="width: 1216.67px;"><div class="container">
-<div class="row">
-<div class="col-lg-6 mx-auto">
-<img class="img-fluid mx-auto" src="images/person_2.jpg" alt="Image">
-<blockquote>
-<p>“Soluta quasi cum delectus eum facilis recusandae nesciunt molestias accusantium libero dolores repellat id in dolorem laborum ad modi qui at quas dolorum voluptatem voluptatum repudiandae.”</p>
-<p><cite> — Chris Peters</cite></p>
-</blockquote>
-</div>
-</div>
-</div></div><div class="owl-item cloned" style="width: 1216.67px;"><div class="container">
-<div class="row">
-<div class="col-lg-6 mx-auto">
-<img class="img-fluid mx-auto" src="images/person_1.jpg" alt="Image">
-<blockquote>
-<p>“Soluta quasi cum delectus eum facilis recusandae nesciunt molestias accusantium libero dolores repellat id in dolorem laborum ad modi qui at quas dolorum voluptatem voluptatum repudiandae.”</p>
-<p><cite> — Richard Anderson</cite></p>
-</blockquote>
-</div>
-</div>
-</div></div><div class="owl-item cloned" style="width: 1216.67px;"><div class="container">
-<div class="row">
-<div class="col-lg-6 mx-auto">
-<img class="img-fluid mx-auto" src="images/person_2.jpg" alt="Image">
-<blockquote>
-<p>“Soluta quasi cum delectus eum facilis recusandae nesciunt molestias accusantium libero dolores repellat id in dolorem laborum ad modi qui at quas dolorum voluptatem voluptatum repudiandae.”</p>
-<p><cite> — Chris Peters</cite></p>
-</blockquote>
-</div>
-</div>
-</div></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
 </section>
 <section class="py-5 bg-image overlay-primary fixed overlay" style="background-image: url('images/hero_1.jpg');">
 <div class="container">
@@ -422,7 +291,8 @@ impedit.</p>
 <p>
 
 Copyright ©
-<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script>document.write(new Date().getFullYear());</script>2024 All rights reserved | This template is made with <i class="icon-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script>document.write(new Date().getFullYear());</script>2024 All rights reserved | This template is made
+with <i class="icon-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 
 </p>
 </div>
@@ -440,19 +310,18 @@ Copyright ©
 <script src="js/jquery.waypoints.min.js"></script>
 <script src="js/jquery.animateNumber.min.js"></script>
 <script src="js/owl.carousel.min.js"></script>
+
 <script src="js/custom.js"></script>
 
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'UA-23581568-13');
+    gtag('config', 'UA-23581568-13');
 </script>
-<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;8c1fa4592f6dbaa8&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true}},&quot;version&quot;:&quot;2024.8.0&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;}" crossorigin="anonymous"></script>
+<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;8c1f75ef0e2bb2d7&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true}},&quot;version&quot;:&quot;2024.8.0&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;}" crossorigin="anonymous"></script>
 
 </body>
-     
-
 </html>

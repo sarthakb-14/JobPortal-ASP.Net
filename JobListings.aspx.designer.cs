@@ -11,7 +11,7 @@ namespace JobPortal
 {
 
 
-    public partial class LandingPage
+    public partial class JobListings
     {
     }
 }
