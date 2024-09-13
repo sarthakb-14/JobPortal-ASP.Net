@@ -115,6 +115,9 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\featured-listing-1.jpg" />
+    <Content Include="images\hero1.jpg" />
+    <Content Include="StyleSheet\JobListing.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

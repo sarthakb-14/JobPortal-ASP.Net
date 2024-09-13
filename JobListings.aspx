@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link rel="stylesheet" href="./StyleSheet/JobListing.css" />
 </head>
 <body id="top">
 <div class="site-wrap">
@@ -14,16 +15,12 @@
 <span class="icon-close2 js-menu-toggle"></span>
 </div>
 </div>
-<div class="site-mobile-menu-body"><ul class="site-nav-wrap">
-<li><a href="index.html" class="nav-link">Home</a></li>
-<li><a href="job-listings.html" class="active">Job Listings</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="services.html">Services</a></li>
-<li><a href="blog.html">Blog</a></li>
-<li class="d-lg-none"><a href="contact.html">Contact Us</a></li>
-</ul></div>
+
 </div> 
 
+
+
+<section class="home-section section-hero inner-page overlay bg-image" style="background-image: url('./images/hero1.jpg');" id="home-section">
 <header class="site-navbar mt-3">
 <div class="container-fluid">
 <div class="row align-items-center">
@@ -47,13 +44,11 @@
 </div>
 </div>
 </header>
-
-<section class="home-section section-hero inner-page overlay bg-image" style="background-image: url('images/hero_1.jpg');" id="home-section">
 <div class="container">
 <div class="row align-items-center justify-content-center">
 <div class="col-md-12">
 <div class="mb-5 text-center">
-<h1 class="text-white font-weight-bold">Job Listings</h1>
+<h1 class="text-black font-weight-bold">Job Listings</h1>
 <p>Find your dream jobs in our powerful career website template.</p>
 </div>
 </div>
@@ -70,7 +65,7 @@
 <div class="mb-5">
 <div class="row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
 <div class="col-md-2">
-<a href="job-single.html"><img src="images/featured-listing-1.jpg" alt="Image" class="img-fluid"></a>
+<a href="job-single.html"><img src="./images/featured-listing-1.jpg" alt="Image" class="img-fluid"></a>
 </div>
 <div class="col-md-4">
 <span class="badge badge-primary px-2 py-1 mb-3">Freelancer</span>
@@ -87,7 +82,7 @@
 </div>
 <div class="row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
 <div class="col-md-2">
-<a href="job-single.html"><img src="images/featured-listing-2.jpg" alt="Image" class="img-fluid"></a>
+<a href="job-single.html"><img src="./images/featured-listing-1.jpg" alt="Image" class="img-fluid" /></a>
 </div>
 <div class="col-md-4">
 <span class="badge badge-warning px-2 py-1 mb-3">Full-time</span>
@@ -104,7 +99,7 @@
 </div>
 <div class="row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
 <div class="col-md-2">
-<a href="job-single.html"><img src="images/featured-listing-3.jpg" alt="Image" class="img-fluid"></a>
+<a href="job-single.html"><img src="./images/featured-listing-1.jpg" alt="Image" class="img-fluid"></a>
 </div>
 <div class="col-md-4">
 <span class="badge badge-success px-2 py-1 mb-3">Part-time</span>
@@ -121,7 +116,7 @@
 </div>
 <div class="row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
 <div class="col-md-2">
-<a href="job-single.html"><img src="images/featured-listing-4.jpg" alt="Image" class="img-fluid"></a>
+<a href="job-single.html"><img src="./images/featured-listing-1.jpg" alt="Image" class="img-fluid"></a>
 </div>
 <div class="col-md-4">
 <span class="badge badge-primary px-2 py-1 mb-3">Freelancer</span>
@@ -138,7 +133,7 @@
 </div>
 <div class="row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
 <div class="col-md-2">
-<a href="job-single.html"><img src="images/featured-listing-5.jpg" alt="Image" class="img-fluid"></a>
+<a href="job-single.html"><img src="./images/featured-listing-1.jpg" alt="Image" class="img-fluid"></a>
 </div>
 <div class="col-md-4">
 <span class="badge badge-warning px-2 py-1 mb-3">Full-time</span>
@@ -155,7 +150,7 @@
 </div>
 <div class="row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
 <div class="col-md-2">
-<a href="job-single.html"><img src="images/featured-listing-4.jpg" alt="Image" class="img-fluid"></a>
+<a href="job-single.html"><img src="./images/featured-listing-1.jpg" alt="Image" class="img-fluid"></a>
 </div>
 <div class="col-md-4">
 <span class="badge badge-success px-2 py-1 mb-3">Part-time</span>
@@ -172,7 +167,7 @@
 </div>
 <div class="row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
 <div class="col-md-2">
-<a href="job-single.html"><img src="images/featured-listing-3.jpg" alt="Image" class="img-fluid"></a>
+<a href="job-single.html"><img src="./images/featured-listing-1.jpg" alt="Image" class="img-fluid"></a>
 </div>
 <div class="col-md-4">
 <span class="badge badge-success px-2 py-1 mb-3">Part-time</span>
@@ -231,7 +226,7 @@ mollitia ipsum facilis expedita tempora suscipit iste</p>
 </div>
 </div>
 </section>
-<section class="py-5 bg-image overlay-primary fixed overlay" style="background-image: url('images/hero_1.jpg');">
+<section class="py-5 bg-image overlay-primary fixed overlay" style="background-image: url('./images/hero1.jpg');">
 <div class="container">
 <div class="row align-items-center">
 <div class="col-md-8">
@@ -292,7 +287,7 @@ impedit.</p>
 
 Copyright ©
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script>document.write(new Date().getFullYear());</script>2024 All rights reserved | This template is made
-with <i class="icon-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+with <i class="icon-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Gujjar Boys</a>
 
 </p>
 </div>
