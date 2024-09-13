@@ -13,5 +13,13 @@ namespace JobPortal
         {
             Label1.Text = "120";
         }
+        protected void btnHome_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("LandingPage.aspx");
+        }
+        protected void btnJobs_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

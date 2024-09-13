@@ -329,3 +329,7 @@ img.img-fluid.logo-1 {
     height: 100px;
     width: 100px;
 }
+
+.lead{
+    color : black;
+}

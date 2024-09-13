@@ -27,10 +27,10 @@
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="#">Jobs</a>
+                        <a class="nav-link" href="JobListings.aspx">Job Listings</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#">Contact Us</a>
                     </li>
                 </ul>
             </div>
