@@ -18,6 +18,9 @@
 
 </div> 
 
+
+
+<section class="home-section section-hero inner-page overlay bg-image" style="background-image: url('./images/hero1.jpg');" id="home-section">
 <header class="site-navbar mt-3">
 <div class="container-fluid">
 <div class="row align-items-center">
@@ -41,8 +44,6 @@
 </div>
 </div>
 </header>
-
-<section class="home-section section-hero inner-page overlay" id="home-section bgimg">
 <div class="container">
 <div class="row align-items-center justify-content-center">
 <div class="col-md-12">

@@ -142,12 +142,12 @@ body {
             color: #fff;
         }
 
-#bgimg {
-    background-image: url("../images/hero1.jpg");
+.bg-img {
+    position : relative;
     background-size: contain;
     background-position: center;
     height: 300px;
-    display: block;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -235,3 +235,4 @@ body {
 .col-md-8 {
     color: papayawhip;
 }
+
