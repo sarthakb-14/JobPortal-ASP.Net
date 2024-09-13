@@ -17,26 +17,25 @@
 <body>
     <form id="form1" runat="server">
         <!-- Navbar Section -->
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="#">Job Portal</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto justify-center">
-                    <li class="nav-item">
+        <nav class="navbar navbar-expand-lg">
+            <div>
+                <a class="navbar-brand" href="#">Job Portal</a>
+            </div>
+            <div class="navbar-collapse navlink justify-content-center" id="navbarNav">
+                <ul class="navbar-nav gap text-center w-100">
+                    <li>
                         <a class="nav-link" href="#">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li>
                         <a class="nav-link" href="#">Jobs</a>
                     </li>
-                    <li class="nav-item">
+                    <li>
                         <a class="nav-link" href="#">Contact</a>
                     </li>
                 </ul>
             </div>
             <div>
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav justify-content-end">
                     <li class="nav-item">
                         <asp:Button runat="server" CssClass="btn" Text="Register" />
                     </li>

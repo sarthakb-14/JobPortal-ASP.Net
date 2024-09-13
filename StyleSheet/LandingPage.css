@@ -5,22 +5,19 @@
 }
 /* Navbar Styling */
 .navbar {
-    background-color: #ffffff;
-    padding: 10px 30px;
-    position: fixed;
-    top: 0;
+    display: flex;
+    padding: 2% 5%;
+    position: absolute;
     width: 100%;
     z-index: 100;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    align-items: center;
 }
 
-.navbar .navbar-nav .nav-link {
-    color: #343a40;
-    font-weight: 500;
-    padding: 0 10px;
-    font-size: 14px;
-    align-items: center;
+.navbar > * {
+    flex: 1;
+}
+
+.nav-link,.navbar-brand {
+    color: white;
 }
 
 .navbar .navbar-nav .btn {
@@ -31,7 +28,6 @@
     padding: 10px 30px;
     text-transform: uppercase;
     cursor: pointer;
-    display: inline-block;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 1px;
@@ -45,10 +41,11 @@
     border-color: #ffffff;
     background-color: #007bff;
 }
-/* Adjust for sticky navbar */
-body {
-    padding-top: 60px;
+
+.gap > li{
+    width: 100%;
 }
+
 /* Banner Section */
 .banner {
     position: relative;
