@@ -32,6 +32,7 @@
             width: 100%;
             z-index: 100;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            align-items: center;
         }
 
         .navbar .navbar-nav .nav-link {
@@ -39,6 +40,7 @@
             font-weight: 500;
             padding: 0 10px;
             font-size: 14px;
+            align-items: center;
         }
 
         .navbar .navbar-nav .btn {
@@ -148,7 +150,7 @@
 
         .categories {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-evenly;
             margin-top: 20px;
             flex-wrap: wrap;
         }
@@ -278,7 +280,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto align-items-center">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Home</a>
                     </li>
