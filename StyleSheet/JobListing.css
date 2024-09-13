@@ -69,6 +69,7 @@ body {
     color: #333;
     text-align: center;
     margin-top: 70px;
+    width: 1553px;
 }
 
 .job-item {
@@ -195,6 +196,7 @@ body {
     gap: 20px; /* Optional: Add space between the items */
     margin-left: 7px;
     margin-right: 7px;
+    flex-wrap : wrap;
 }
 
 .pagination-wrap {
@@ -221,6 +223,7 @@ body {
 
 .mb-5.text-center {
     color: white;
+    font-size : x-large;
 }
 
 .custom-pagination.ml-auto {
@@ -265,7 +268,7 @@ li{
     min-height: 900px;
 }
 
-<style >
+<style>
 .bg-image {
     background-size: cover;
     background-repeat: no-repeat;
