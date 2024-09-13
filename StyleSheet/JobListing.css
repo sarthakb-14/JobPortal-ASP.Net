@@ -19,9 +19,8 @@ body {
 
 .site-wrap {
     width: 100%;
-    max-width: 1200px; /* Limits maximum width to 1200px */
     background: white;
-    padding: 20px;
+    
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
@@ -108,7 +107,7 @@ body {
 .site-footer {
     background-color: #333;
     color: #fff;
-    padding: 40px 0;
+    padding: 87px 19px;
     text-align: center;
 }
 
@@ -152,9 +151,10 @@ body {
     align-items: center;
 }
 
+
 .overlay-primary {
     background-color: rgba(0, 0, 0, 0.5);
-    padding: 60px 0;
+    padding: 219px 17px;
 }
 
 .btn {
@@ -236,3 +236,93 @@ body {
     color: papayawhip;
 }
 
+
+ul{
+    padding : 7px; 
+
+}
+
+
+li{
+    padding : 6px;
+}
+
+
+
+.section-hero.overlay {
+    position: relative;
+}
+
+.section-hero.inner-page, .section-hero.inner-page > .container > .row {
+    height: auto;
+    min-height: auto;
+    padding-top: 6em;
+    padding-bottom: 7em;
+}
+
+.section-hero, .section-hero > .container > .row {
+    height: 100vh;
+    min-height: 900px;
+}
+
+<style >
+.bg-image {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.home-section {
+    position: relative;
+}
+.section-hero.overlay:before {
+    z-index: 1;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+}
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row.align-items-center.justify-content-center {
+    display: flex;
+    justify-content: center;
+}
+.text-center {
+    text-align: center !important;
+}
+.row.align-items-center {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: -17px;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+img.img-fluid.logo-4 {
+    height: 100px;
+    width: 100px;
+}
+img.img-fluid.logo-3 {
+    height: 100px;
+    width: 100px;
+}
+img.img-fluid.logo-2 {
+    height: 100px;
+    width: 100px;
+
+}
+img.img-fluid.logo-1 {
+    height: 100px;
+    width: 100px;
+}
