@@ -117,6 +117,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\featured-listing-1.jpg" />
     <Content Include="images\hero1.jpg" />
+    <Content Include="images\logo_mailchimp.jpg" />
+    <Content Include="images\logo_paypal.jpg" />
+    <Content Include="images\logo_stripe.jpg" />
+    <Content Include="images\logo_visa.jpg" />
     <Content Include="StyleSheet\JobListing.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />

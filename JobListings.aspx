@@ -18,10 +18,7 @@
 
 </div> 
 
-
-
-<section class="home-section section-hero inner-page overlay bg-image" style="background-image: url('./images/hero1.jpg');" id="home-section">
-<header class="site-navbar mt-3">
+    <header class="site-navbar mt-3">
 <div class="container-fluid">
 <div class="row align-items-center">
 <div class="site-logo col-6"><a href="index.html">Careers</a></div>
@@ -44,6 +41,8 @@
 </div>
 </div>
 </header>
+
+<section class="home-section section-hero inner-page overlay bg-image" style="background-image: url('./images/hero1.jpg');" id="home-section">
 <div class="container">
 <div class="row align-items-center justify-content-center">
 <div class="col-md-12">
@@ -212,16 +211,16 @@ mollitia ipsum facilis expedita tempora suscipit iste</p>
 </div>
 </div>
 <div class="col-6 col-lg-3 col-md-6 text-center">
-<img src="images/logo_mailchimp.svg" alt="Image" class="img-fluid logo-1">
+<img src="/images/logo_mailchimp.jpg" alt="Image" class="img-fluid logo-1">
 </div>
 <div class="col-6 col-lg-3 col-md-6 text-center">
-<img src="images/logo_paypal.svg" alt="Image" class="img-fluid logo-2">
+<img src="/images/logo_paypal.jpg" alt="Image" class="img-fluid logo-2">
 </div>
 <div class="col-6 col-lg-3 col-md-6 text-center">
-<img src="images/logo_stripe.svg" alt="Image" class="img-fluid logo-3">
+<img src="/images/logo_stripe.jpg" alt="Image" class="img-fluid logo-3">
 </div>
 <div class="col-6 col-lg-3 col-md-6 text-center">
-<img src="images/logo_visa.svg" alt="Image" class="img-fluid logo-4">
+<img src="/images/logo_visa.jpg" alt="Image" class="img-fluid logo-4">
 </div>
 </div>
 </div>
