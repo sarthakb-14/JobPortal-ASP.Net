@@ -16,8 +16,20 @@
     flex: 1;
 }
 
-.nav-link,.navbar-brand {
-    color: white;
+.navbar-brand {
+    color: snow;
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.nav-link:hover, .navbar-brand:hover {
+    color: snow;
 }
 
 .navbar .navbar-nav .btn {
@@ -49,15 +61,15 @@
 /* Banner Section */
 .banner {
     position: relative;
-    height: 80vh;
-    background-image: url("https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-    background-size: cover;
-    background-position: center;
+    background-image: url("../images/hero1.jpg");
+    background-position: top;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     text-align: center;
+    height: 80vh;
+    min-height: 900px;
 }
 
 .banner::before {

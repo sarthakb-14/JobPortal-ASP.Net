@@ -21,7 +21,7 @@
             <div>
                 <a class="navbar-brand" href="#">Job Portal</a>
             </div>
-            <div class="navbar-collapse navlink justify-content-center" id="navbarNav">
+            <div class="navbar-collapse navlink" id="navbarNav">
                 <ul class="navbar-nav gap text-center w-100">
                     <li>
                         <a class="nav-link" href="#">Home</a>
