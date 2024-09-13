@@ -153,7 +153,7 @@
 </div>
 <div class="row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
 <div class="col-md-2">
-<a href="job-single.html"><img src="images/featured-listing-2.jpg" alt="Image" class="img-fluid"></a>
+<a href="job-single.html"><img src="images/featured-listing-2.jpg" alt="Image" class="img-fluid" ></a>
 </div>
 <div class="col-md-4">
 <span class="badge badge-warning px-2 py-1 mb-3">Full-time</span>

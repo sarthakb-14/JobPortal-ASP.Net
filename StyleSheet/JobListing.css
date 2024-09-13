@@ -1,0 +1,237 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensures full height of the page */
+    margin: 0;
+    padding: 0;
+}
+
+.site-wrap {
+    width: 100%;
+    max-width: 1200px; /* Limits maximum width to 1200px */
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.site-navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.site-logo a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.site-menu {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+    .site-menu li {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+        .site-menu li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+            .site-menu li a.active,
+            .site-menu li a:hover {
+                background-color: #0066cc;
+            }
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align: center;
+    margin-top: 70px;
+}
+
+.job-item {
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background-color: #fff;
+}
+
+    .job-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .job-item h2 a {
+        color: #333;
+        text-decoration: none;
+    }
+
+        .job-item h2 a:hover {
+            color: #0066cc;
+        }
+
+.footer-social a {
+    color: #333;
+    margin: 0 10px;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+    .footer-social a:hover {
+        color: #0066cc;
+    }
+
+.site-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+}
+
+    .site-footer a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+        .site-footer a:hover {
+            color: #0066cc;
+        }
+
+.pagination-wrap {
+    text-align: center;
+    margin: 30px 0;
+}
+
+    .pagination-wrap .custom-pagination a {
+        color: #333;
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        margin: 0 5px;
+        border-radius: 3px;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+        .pagination-wrap .custom-pagination a:hover {
+            background-color: #0066cc;
+            color: #fff;
+        }
+
+#bgimg {
+    background-image: url("../images/hero1.jpg");
+    background-size: contain;
+    background-position: center;
+    height: 300px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay-primary {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 60px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-primary {
+    background-color: #0066cc;
+    color: white;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.row.align-items-start {
+    display: flex; /* Make the container a flexbox */
+    align-items: flex-start; /* Align the items at the start along the cross axis (vertical alignment) */
+    justify-content: space-between; /* Align the items at the start along the main axis (horizontal alignment) */
+    gap: 20px; /* Optional: Add space between the items */
+}
+
+.row.align-items-center {
+    display: flex; /* Make the container a flexbox */
+    align-items: center; /* Center align the items along the cross axis (vertical alignment) */
+    justify-content: space-between; /* Align the items at the start along the main axis (horizontal alignment) */
+    gap: 20px; /* Optional: Add space between the items */
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+.pagination-wrap {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.row.mb-5 {
+    display: flex; /* Make the container a flexbox */
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.site-navbar {
+    margin-bottom: 0px;
+    z-index: 1999;
+    position: absolute;
+    width: 95%;
+    top: 2rem;
+    background-color: transparent;
+}
+
+.mb-5.text-center {
+    color: white;
+}
+
+.custom-pagination.ml-auto {
+    display: flex;
+    justify-content: center;
+}
+
+.d-inline-block {
+    margin-top: 12px;
+}
+
+.col-md-8 {
+    color: papayawhip;
+}
