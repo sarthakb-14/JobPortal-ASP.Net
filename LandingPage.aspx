@@ -269,6 +269,19 @@
         .footer a:hover {
             text-decoration: underline;
         }
+        .transparent-btn {
+            background-color: transparent; /* Makes the background transparent */
+            border: none; /* Removes any default border */
+            color: inherit; /* Inherits the text color from the parent, keeping the button text consistent */
+            cursor: pointer; /* Changes the cursor to a pointer on hover */
+            padding: 0; /* Removes any default padding to match a link appearance */
+            text-decoration: none; /* Removes underline if present */
+        }
+
+        .transparent-btn:hover {
+            color: #007bff; /* Adds a hover effect color (you can change it as needed) */
+        }
+
     </style>
 </head>
 <body>
@@ -285,7 +298,7 @@
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Jobs</a>
+                        <asp:Button ID="btnJobs" runat="server" CssClass="nav-link transparent-btn" Text="Jobs" OnClick="btnJobs_Click" />
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>

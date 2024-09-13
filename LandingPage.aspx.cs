@@ -13,5 +13,9 @@ namespace JobPortal
         {
 
         }
+        protected void btnJobs_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("JobListings.aspx");
+        }
     }
 }
