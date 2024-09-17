@@ -1,8 +1,11 @@
 ﻿body {
     font-family: "Poppins", sans-serif;
     background-color: #f8f9fa;
+    background-image: url('../images/hero1.jpg');
+    background-size: contain;
     color: #343a40;
 }
+
 /* Navbar Styling */
 .navbar {
     display: flex;
@@ -61,49 +64,59 @@
 /* Banner Section */
 .banner {
     position: relative;
-    background-image: url("../images/hero1.jpg");
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 100%), url('../images/hero1.jpg');
     background-position: top;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     text-align: center;
-    height: 80vh;
-    min-height: 900px;
-}
-
-.banner::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
+    min-height: 90vh;
+    max-height: 90vh;
     z-index: 1;
 }
 
 .banner h1 {
     position: relative;
-    font-size: 3rem;
-    z-index: 1;
+    font-size: 4rem;
 }
 
 .banner p {
     position: relative;
-    z-index: 1;
     font-size: 1.2rem;
     margin-bottom: 20px;
 }
+
+select.form-control.sizeing, .sizeing, .button.btn.btn-primary.btn-lg.btn-block.text-white.btn-search.sizeing {
+    height: calc(2em + 1rem + 2px);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    width: 100%;
+    z-index: 1;
+}
+
 /* Search Section */
-.search-section {
+/*.search-section {
     padding: 20px;
-    background-color: #ffffff;
+    background: rgba(22, 68, 186, 0.9);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: -50px;
-    z-index: 10;
-    position: relative;
+    position: relative; 
+}*/
+
+.jobsection {
+}
+
+.number {
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: #fff;
+}
+
+.caption {
+    font-size: 1rem;
+    display: block;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .search-section h3 {

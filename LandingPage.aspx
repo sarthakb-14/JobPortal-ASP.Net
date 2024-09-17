@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Muli:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link rel="stylesheet" href="StyleSheet/LandingPage.css"/>
 </head>
 <body>
@@ -48,20 +48,49 @@
 
         <!-- Banner Section -->
         <div class="banner">
-            <div>
+            <div class="w-75">
                 <h1>Your Dream Job Awaits</h1>
                 <p>Find jobs that fit your skills, preferences, and aspirations</p>
-                <asp:Button runat="server" CssClass="btn btn-primary" Text="Get Started" />
+                <div class="row mb-5">
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                        <input type="text" class="form-control form-control-lg sizeing" placeholder="Job title, keywords...">
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                        <select class="form-select sizeing">
+                            <option selected>Anywhere</option>
+                            <option>San Francisco</option>
+                            <option>Palo Alto</option>
+                            <option>New York</option>
+                            <option>Manhattan</option>
+                            <option>Ontario</option>
+                            <option>Toronto</option>
+                            <option>Kansas</option>
+                            <option>Mountain View</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                        <select class="form-select sizeing">
+                            <option selected>Any</option>
+                            <option>Full Time</option>
+                            <option>Part Time</option>
+                            <option>Internship</option>
+                            <option>Freelancer</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search sizeing">Search Job</button>
+                    </div>
+                </div> 
             </div>
         </div>
 
         <!-- Search Job Section -->
-        <section class="search-section container mt-5">
+       <%-- <section class="search-section">
             <h3>Find Your Perfect Job</h3>
             <div class="row">
                 <div class="col-md-6">
                     <asp:Label runat="server" Text="Job Type" />
-                    <asp:DropDownList runat="server" CssClass="form-control">
+                    <asp:DropDownList runat="server" CssClass="form-select">
                         <asp:ListItem Text="Full-time" />
                         <asp:ListItem Text="Part-time" />
                         <asp:ListItem Text="Internship" />
@@ -74,7 +103,47 @@
                 </div>
             </div>
             <asp:Button runat="server" CssClass="btn btn-primary mt-3" Text="Search Jobs" />
+        </section>--%>
+        <section class="py-5 jobsection">
+            <div class="container ">
+                <div class="row mb-5 justify-content-center">
+                    <div class="col-md-7 text-center">
+                        <h2 class="section-title mb-2 text-white">Careers Statistics</h2>
+                        <p class="lead text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita unde officiis recusandae sequi excepturi corrupti.</p>
+                    </div>
+                </div>
+                <div class="row section-counter">
+                    <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <div class="d-flex align-items-center justify-content-center mb-2">
+                            <strong class="number" data-number="1930">1,930</strong>
+                        </div>
+                        <span class="caption">Candidates</span>
+                    </div>
+                    <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <div class="d-flex align-items-center justify-content-center mb-2">
+                        <strong class="number" data-number="54">54</strong>
+                        </div>
+                        <span class="caption">Jobs Posted</span>
+                    </div>
+                    <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <div class="d-flex align-items-center justify-content-center mb-2">
+                            <strong class="number" data-number="120">120</strong>
+                        </div>
+                        <span class="caption">Jobs Filled</span>
+                    </div>
+                    <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                        <div class="d-flex align-items-center justify-content-center mb-2">
+                        <strong class="number" data-number="550">550</strong>
+                        </div>
+                        <span class="caption">Companies</span>
+                    </div>
+                </div>
+            </div>
         </section>
+
+
+
+
 
         <!-- Browse Categories Section -->
         <section class="browse-categories">
