@@ -211,12 +211,72 @@
 
     <!-- Manage Account Section -->
     <div id="manage-account-section" class="section">
-        <h2>Manage Account</h2>
-        <div class="dashboard-card">
-            <i class="fas fa-user-cog fa-3x"></i>
-            <h3>Manage Account</h3>
+    <h2>Manage Account</h2>
+    <div class="dashboard-card" id="manage-account-card" onclick="toggleManageAccount()">
+        <i class="fas fa-user-cog fa-3x"></i>
+        <h3>Manage Account</h3>
+    </div>
+
+    <!-- Manage Account Options (Initially Hidden) -->
+    <div id="manage-account-options" style="display: none; margin-top: 20px;">
+        <div class="row">
+            <!-- Update Profile Card -->
+            <div class="col-md-6">
+                <div class="dashboard-card" onclick="toggleForm('update-profile-form')">
+                    <i class="fas fa-user-edit fa-3x"></i>
+                    <h3>Update Profile</h3>
+                </div>
+
+                <!-- Update Profile Form (Hidden initially) -->
+                <div id="update-profile-form" class="form-section" style="display: none;">
+                    <label for="CompanyNameTextBox">Company Name</label>
+                    <asp:TextBox ID="CompanyNameTextBox" runat="server" CssClass="form-control" Placeholder="Company Name"></asp:TextBox>
+
+                    <label for="AddressTextBox">Address</label>
+                    <asp:TextBox ID="AddressTextBox" runat="server" CssClass="form-control" Placeholder="Address"></asp:TextBox>
+
+                    <label for="CityTextBox">City</label>
+                    <asp:TextBox ID="CityTextBox" runat="server" CssClass="form-control" Placeholder="City"></asp:TextBox>
+
+                    <label for="EmailTextBox">Email</label>
+                    <asp:TextBox ID="EmailTextBox" runat="server" CssClass="form-control" Placeholder="Email"></asp:TextBox>
+
+                    <label for="WebsiteTextBox">Website</label>
+                    <asp:TextBox ID="WebsiteTextBox" runat="server" CssClass="form-control" Placeholder="Website"></asp:TextBox>
+
+                    <label for="ContactNumberTextBox">Contact Number</label>
+                    <asp:TextBox ID="ContactNumberTextBox" runat="server" CssClass="form-control" Placeholder="Contact Number"></asp:TextBox>
+
+                    <!-- Update Button -->
+                    <asp:Button ID="UpdateProfileButton" runat="server" CssClass="btn btn-primary" Text="Update" />
+                </div>
+            </div>
+
+            <!-- Change Password Card -->
+            <div class="col-md-6">
+                <div class="dashboard-card" onclick="toggleForm('change-password-form')">
+                    <i class="fas fa-key fa-3x"></i>
+                    <h3>Change Password</h3>
+                </div>
+
+                <!-- Change Password Form (Hidden initially) -->
+                <div id="change-password-form" class="form-section" style="display: none;">
+                    <label for="OldPasswordTextBox">Old Password</label>
+                    <asp:TextBox ID="OldPasswordTextBox" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Old Password"></asp:TextBox>
+
+                    <label for="NewPasswordTextBox">New Password</label>
+                    <asp:TextBox ID="NewPasswordTextBox" runat="server" CssClass="form-control" TextMode="Password" Placeholder="New Password"></asp:TextBox>
+
+                    <label for="ConfirmPasswordTextBox">Confirm Password</label>
+                    <asp:TextBox ID="ConfirmPasswordTextBox" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Confirm Password"></asp:TextBox>
+
+                    <!-- Change Password Button -->
+                    <asp:Button ID="ChangePasswordButton" runat="server" CssClass="btn btn-primary" Text="Change Password" />
+                </div>
+            </div>
         </div>
     </div>
+</div>
     </form>
 
     <!-- Scripts -->
@@ -236,6 +296,14 @@
             manageJobOptions.style.display = manageJobOptions.style.display === 'block' ? 'none' : 'block';
         }
 
+        function toggleManageAccount() {
+            const manageAccountOptions = document.getElementById('manage-account-options');
+            manageAccountOptions.style.display = manageAccountOptions.style.display === 'block' ? 'none' : 'block';
+        }
+        function toggleForm(formId) {
+            const form = document.getElementById(formId);
+            form.style.display = form.style.display === 'block' ? 'none' : 'block';
+        }
        
     </script>
 </body>
