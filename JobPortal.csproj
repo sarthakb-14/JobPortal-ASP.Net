@@ -124,6 +124,8 @@
     <Content Include="images\logo_stripe.jpg" />
     <Content Include="images\logo_visa.jpg" />
     <Content Include="images\bg_dashboard.jpg" />
+    <Content Include="StudentDashboard.aspx" />
+    <Content Include="images\bg_dashboard.jpg" />
     <Content Include="StyleSheet\JobListing.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -263,6 +265,13 @@
     </Compile>
     <Compile Include="ViewJob.aspx.designer.cs">
       <DependentUpon>ViewJob.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StudentDashboard.aspx.cs">
+      <DependentUpon>StudentDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudentDashboard.aspx.designer.cs">
+      <DependentUpon>StudentDashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
