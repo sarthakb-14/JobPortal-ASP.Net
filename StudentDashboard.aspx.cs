@@ -16,7 +16,7 @@ namespace JobPortal
 
         protected void SearchButton_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("JobListings.aspx");
         }
 
         protected void JobRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
