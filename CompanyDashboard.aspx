@@ -147,6 +147,8 @@
             <asp:DropDownList ID="EmploymentStatusDropDown" runat="server" CssClass="form-control">
                 <asp:ListItem Text="Fulltime" Value="fulltime"></asp:ListItem>
                 <asp:ListItem Text="Part-time" Value="parttime"></asp:ListItem>
+                <asp:ListItem Text="Internship" Value="internship"></asp:ListItem>
+                <asp:ListItem Text="Freelancer" Value="freelancer"></asp:ListItem>
             </asp:DropDownList>
 
             <!-- Job Description -->
