@@ -23,5 +23,9 @@ namespace JobPortal
         {
 
         }
+        protected void ViewJobCard_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ViewJob.aspx");
+        }
     }
 }

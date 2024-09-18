@@ -171,30 +171,38 @@
     <div id="manage-job-options" style="display: none; margin-top: 20px;">
         <div class="row">
             <!-- View Job Card -->
-            <div class="col-md-4">
-                <div class="dashboard-card">
-                    <i class="fas fa-eye fa-3x"></i>
-                    <h3>View Job</h3>
-                    
-                </div>
+            <div class="col-md-4" >
+                <a href="ViewJob.aspx" style="text-decoration : none"><div class="dashboard-card" onserverclick="ViewJobCard_Click" runat="server">
+    <i class="fas fa-eye fa-3x"></i>
+    <h3>View Job</h3>
+    
+</div></a>
+                
             </div>
 
             <!-- Update Job Card -->
+            
             <div class="col-md-4">
-                <div class="dashboard-card">
+                <a style="text-decoration : none" href="UpdateJob.aspx">
+                    <div class="dashboard-card">
                     <i class="fas fa-edit fa-3x"></i>
                     <h3>Update Job</h3>
-                    
+    
                 </div>
+                </a>
+                
             </div>
 
             <!-- Delete Job Card -->
             <div class="col-md-4">
-                <div class="dashboard-card">
-                    <i class="fas fa-trash fa-3x"></i>
-                    <h3>Delete Job</h3>
-                    
-                </div>
+                <a style ="text-decoration : none" href="DeleteJob.aspx">
+                    <div class="dashboard-card">
+    <i class="fas fa-trash fa-3x"></i>
+    <h3>Delete Job</h3>
+    
+</div>
+                </a>
+                
             </div>
         </div>
     </div>
@@ -304,6 +312,7 @@
             const form = document.getElementById(formId);
             form.style.display = form.style.display === 'block' ? 'none' : 'block';
         }
+       
        
     </script>
 </body>

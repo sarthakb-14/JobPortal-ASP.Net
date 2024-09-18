@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,7 +12,13 @@ namespace JobPortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            /*string sarthak = "uid=sa, password=manager@123, database = JobPortal, server = DK27QV3\\SQLEXPRESS";
+            SqlConnection con = new SqlConnection(sarthak);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("", con);
+            con.Close();*/
         }
+
+        
     }
 }
