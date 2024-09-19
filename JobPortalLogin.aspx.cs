@@ -44,15 +44,15 @@ namespace JobPortal
                 // Redirect user to respective dashboard or homepage
                 if (userRole == "Student")
                 {
-                    Response.Redirect("LandingPage.aspx");
+                    Response.Redirect("StudentDashboard.aspx");
                 }
                 else if (userRole == "Company")
                 {
-                    Response.Redirect("LandingPage.aspx");
+                    Response.Redirect("CompanyDashboard.aspx");
                 }
                 else if (userRole == "Admin")
                 {
-                    Response.Redirect("LandingPage.aspx");
+                    Response.Redirect("AdminDashboard.aspx");
                 }
             }
             else
@@ -71,15 +71,15 @@ namespace JobPortal
             string query = "";
             if (role == "Student")
             {
-                query = $"SELECT COUNT(*) FROM student WHERE semail = '{username}' AND spassword = '{password}'";
+                query = $"SELECT COUNT(*) FROM student WHERE semail = '{username}' OR susername = '{username}' AND spassword = '{password}'";
             }
             else if (role == "Company")
             {
-                query = $"SELECT COUNT(*) FROM company WHERE cemail = '{username}' AND cpassword = '{password}'";
+                query = $"SELECT COUNT(*) FROM company WHERE cemail = '{username}' OR cusername = '{username}' AND cpassword = '{password}'";
             }
             else if (role == "Admin")
             {
-                query = $"SELECT COUNT(*) FROM admin WHERE aemail = '{username}' AND apassword = '{password}'";
+                query = $"SELECT COUNT(*) FROM admin WHERE aemail = '{username}' OR ausername = '{username}' AND apassword = '{password}'";
             }
 
             // Establish SQL connection
