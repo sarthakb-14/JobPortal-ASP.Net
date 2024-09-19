@@ -300,31 +300,33 @@
                 </div>
             </section>
 
-            <!-- Manage Profile Section -->
-            <section id="manage-profile">
-                <h2>Edit Your Profile</h2>
-                
-                <asp:TextBox ID="EnrollmentTextBox" runat="server" CssClass="form-control" Placeholder="Enrollment Number"></asp:TextBox>
-                <asp:TextBox ID="NameTextBox" runat="server" CssClass="form-control" Placeholder="Name"></asp:TextBox>
-                <asp:TextBox ID="EmailTextBox" runat="server" CssClass="form-control" Placeholder="Email" TextMode="Email"></asp:TextBox>
-                <asp:TextBox ID="PhoneTextBox" runat="server" CssClass="form-control" Placeholder="Phone"></asp:TextBox>
-                <asp:TextBox ID="AddressTextBox" runat="server" CssClass="form-control" Placeholder="Address" TextMode="MultiLine"></asp:TextBox>
-                <asp:TextBox ID="DOBTextBox" runat="server" CssClass="form-control" Placeholder="Date of Birth" TextMode="Date"></asp:TextBox>
-                <asp:DropDownList ID="GenderDropDown" runat="server" CssClass="form-control">
-                    <asp:ListItem Value="Male">Male</asp:ListItem>
-                    <asp:ListItem Value="Female">Female</asp:ListItem>
-                    <asp:ListItem Value="Other">Other</asp:ListItem>
-                </asp:DropDownList>
-                
-                <h3>Update Password</h3>
-                <asp:TextBox ID="CurrentPasswordTextBox" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Current Password"></asp:TextBox>
-                <asp:TextBox ID="NewPasswordTextBox" runat="server" CssClass="form-control" TextMode="Password" Placeholder="New Password"></asp:TextBox>
-                <asp:TextBox ID="ConfirmPasswordTextBox" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Confirm New Password"></asp:TextBox>
-                
-                <h3>Upload Resume</h3>
-                <asp:FileUpload ID="ResumeFileUpload" runat="server" CssClass="form-control" />
-                
-                <asp:Button ID="SaveButton" runat="server" CssClass="button" Text="Save Changes" OnClick="SaveButton_Click" />
+           <!-- Manage Profile Section -->
+<section id="manage-profile">
+    <h2>Edit Your Profile</h2>
+    <div class="profile-container w-50 mx-auto"> <!-- Added mx-auto for centering -->
+        <asp:TextBox ID="EnrollmentTextBox" runat="server" CssClass="form-control mb-3" Placeholder="Enrollment Number"></asp:TextBox>
+        <asp:TextBox ID="NameTextBox" runat="server" CssClass="form-control mb-3" Placeholder="Name"></asp:TextBox>
+        <asp:TextBox ID="EmailTextBox" runat="server" CssClass="form-control mb-3" Placeholder="Email" TextMode="Email"></asp:TextBox>
+        <asp:TextBox ID="PhoneTextBox" runat="server" CssClass="form-control mb-3" Placeholder="Phone"></asp:TextBox>
+        <asp:TextBox ID="AddressTextBox" runat="server" CssClass="form-control mb-3" Placeholder="Address" TextMode="MultiLine"></asp:TextBox>
+        <asp:TextBox ID="DOBTextBox" runat="server" CssClass="form-control mb-3" Placeholder="Date of Birth" TextMode="Date"></asp:TextBox>
+        <asp:DropDownList ID="GenderDropDown" runat="server" CssClass="form-control mb-3">
+            <asp:ListItem Value="Male">Male</asp:ListItem>
+            <asp:ListItem Value="Female">Female</asp:ListItem>
+            <asp:ListItem Value="Other">Other</asp:ListItem>
+        </asp:DropDownList>
+
+        <h3>Update Password</h3>
+        <asp:TextBox ID="CurrentPasswordTextBox" runat="server" CssClass="form-control mb-3" TextMode="Password" Placeholder="Current Password"></asp:TextBox>
+        <asp:TextBox ID="NewPasswordTextBox" runat="server" CssClass="form-control mb-3" TextMode="Password" Placeholder="New Password"></asp:TextBox>
+        <asp:TextBox ID="ConfirmPasswordTextBox" runat="server" CssClass="form-control mb-3" TextMode="Password" Placeholder="Confirm New Password"></asp:TextBox>
+
+        <h3>Upload Resume</h3>
+        <asp:FileUpload ID="ResumeFileUpload" runat="server" CssClass="form-control mb-3" />
+
+        <asp:Button ID="SaveButton" runat="server" CssClass="button" Text="Save Changes" OnClick="SaveButton_Click" />
+    </div>
+
             </section>
         </main>
 
