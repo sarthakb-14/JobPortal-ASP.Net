@@ -90,7 +90,7 @@
 
             <!-- Delete Button -->
             <div class="text-center">
-                <asp:Button ID="DeleteButton" runat="server" CssClass="btn btn-primary btn-lg" Text="Delete" />
+                <asp:Button ID="DeleteButton" runat="server" CssClass="btn btn-primary btn-lg" Text="Delete" OnClick="DeleteButton_Click" />
             </div>
         </div>
     </form>

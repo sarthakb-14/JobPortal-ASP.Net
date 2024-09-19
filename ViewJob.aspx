@@ -31,6 +31,7 @@
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             color: white;
+            display: none; /* Initially hidden */
         }
 
         h1 {
@@ -59,18 +60,33 @@
             background-color: #007bff;
             border: none;
         }
+
+        #job-id-div {
+            margin-top: 50px;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="container">
-            <h1>View Job</h1>
-
-            <!-- Job ID -->
+        <!-- Job ID Input Section -->
+        <div id="job-id-div" class="mx-auto">
             <div class="form-group">
-                <label for="JobIDTextBox">Job ID</label>
-                <asp:TextBox ID="JobIDTextBox" runat="server" CssClass="form-control" Placeholder="Enter Job ID"></asp:TextBox>
+                <label for="JobIDInput">Enter Job ID</label>
+                <asp:TextBox ID="JobIDInput" runat="server" CssClass="form-control" Placeholder="Enter Job ID"></asp:TextBox>
             </div>
+            <div class="text-center">
+                <asp:Button ID="ViewJobButton" runat="server" CssClass="btn btn-primary btn-lg" Text="View Job" OnClick="ViewJobButton_Click" />
+            </div>
+        </div>
+
+        <!-- Job Details Container (Initially hidden) -->
+        <div id="job-details-container" class="container">
+            <h1>View Job</h1>
 
             <!-- Job Title -->
             <div class="form-group">
@@ -83,7 +99,7 @@
                 <label for="CompanyIDTextBox">Company ID</label>
                 <asp:TextBox ID="CompanyIDTextBox" runat="server" CssClass="form-control" Placeholder="Enter Company ID"></asp:TextBox>
             </div>
-
+            
             <!-- Experience -->
             <div class="form-group">
                 <label for="ExperienceTextBox">Experience</label>
@@ -129,15 +145,13 @@
                 <asp:TextBox ID="JobDescriptionTextBox" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="5" Placeholder="Enter Job Description"></asp:TextBox>
             </div>
 
-            <!-- Submit Button -->
-            <div class="text-center">
-                <asp:Button ID="SubmitButton" runat="server" CssClass="btn btn-primary btn-lg" Text="Submit" />
-            </div>
+           
         </div>
     </form>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    
 </body>
 </html>

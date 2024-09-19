@@ -59,14 +59,36 @@
             background-color: #007bff;
             border: none;
         }
+
+        /* Hide the update form initially */
+        .update-form {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="container">
+            <h1>Enter Job ID</h1>
+
+            <!-- Job ID Input -->
+            <div class="form-group">
+                <label for="JobIDTextBox">Job ID</label>
+                <asp:TextBox ID="JobIDTextBox" runat="server" CssClass="form-control" Placeholder="Enter Job ID" />
+
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center">
+            <asp:Button ID="SubmitButton" runat="server" CssClass="btn btn-primary btn-lg" Text="Submit" OnClick="SubmitButton_Click" />
+
+            </div>
+        </div>
+
+        <!-- Update Job Form -->
+        <div class="container update-form" id="updateForm">
             <h1>Update Job</h1>
 
-            
             <!-- Job Title -->
             <div class="form-group">
                 <label for="JobTitleTextBox">Job Title</label>
@@ -91,8 +113,6 @@
                 <asp:TextBox ID="DeadlineTextBox" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
             </div>
 
-           
-
             <!-- Vacancy -->
             <div class="form-group">
                 <label for="VacancyTextBox">Vacancy</label>
@@ -105,6 +125,8 @@
                 <asp:DropDownList ID="EmploymentStatusDropDown" runat="server" CssClass="form-control">
                     <asp:ListItem Text="Fulltime" Value="Fulltime"></asp:ListItem>
                     <asp:ListItem Text="Part-time" Value="Part-time"></asp:ListItem>
+                    <asp:ListItem Text="Internship" Value="internship"></asp:ListItem>
+                    <asp:ListItem Text="Contract" Value="contract"></asp:ListItem>
                 </asp:DropDownList>
             </div>
 
@@ -114,9 +136,9 @@
                 <asp:TextBox ID="JobDescriptionTextBox" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="5" Placeholder="Enter Job Description"></asp:TextBox>
             </div>
 
-            <!-- Submit Button -->
+            <!-- Update Button -->
             <div class="text-center">
-                <asp:Button ID="UpdateButton" runat="server" CssClass="btn btn-primary btn-lg" Text="Update" />
+                <asp:Button ID="UpdateButton" runat="server" CssClass="btn btn-primary btn-lg" Text="Update" OnClick="UpdateButton_Click" />
             </div>
         </div>
     </form>
@@ -124,6 +146,21 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript">
+        // JavaScript function to show the update form
+        function showUpdateForm() {
+            var jobID = document.getElementById("JobIDTextBox").value;
+
+            if (jobID) {
+                // Show the update form if Job ID is provided
+                document.getElementById("updateForm").style.display = "block";
+            } else {
+                // Hide the update form if no Job ID is entered
+                document.getElementById("updateForm").style.display = "none";
+                alert("Please enter a Job ID");
+            }
+        }
+    </script>
 </body>
 </html>
-

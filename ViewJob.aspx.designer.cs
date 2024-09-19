@@ -24,13 +24,22 @@ namespace JobPortal
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// JobIDTextBox control.
+        /// JobIDInput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox JobIDTextBox;
+        protected global::System.Web.UI.WebControls.TextBox JobIDInput;
+
+        /// <summary>
+        /// ViewJobButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ViewJobButton;
 
         /// <summary>
         /// JobTitleTextBox control.
@@ -112,14 +121,5 @@ namespace JobPortal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox JobDescriptionTextBox;
-
-        /// <summary>
-        /// SubmitButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SubmitButton;
     }
 }

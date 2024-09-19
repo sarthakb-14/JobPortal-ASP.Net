@@ -145,10 +145,11 @@
             <!-- Employment Status -->
             <label for="EmploymentStatusDropDown">Employment Status</label>
             <asp:DropDownList ID="EmploymentStatusDropDown" runat="server" CssClass="form-control">
-                <asp:ListItem Text="Fulltime" Value="fulltime"></asp:ListItem>
-                <asp:ListItem Text="Part-time" Value="parttime"></asp:ListItem>
+                <asp:ListItem Text="Full-Time" Value="fulltime"></asp:ListItem>
+                <asp:ListItem Text="Part-Time" Value="parttime"></asp:ListItem>
+                <asp:ListItem Text="Contract" Value="freelancer"></asp:ListItem>
                 <asp:ListItem Text="Internship" Value="internship"></asp:ListItem>
-                <asp:ListItem Text="Freelancer" Value="freelancer"></asp:ListItem>
+                
             </asp:DropDownList>
 
             <!-- Job Description -->
@@ -156,7 +157,7 @@
             <asp:TextBox ID="JobDescriptionTextBox" runat="server" CssClass="form-control" TextMode="MultiLine" Placeholder="Job Description"></asp:TextBox>
 
             <!-- Post Job Button -->
-            <asp:Button ID="PostJobButton" runat="server" CssClass="btn btn-primary" Text="Post Job" />
+            <asp:Button ID="PostJobButton" runat="server" CssClass="btn btn-primary" Text="Post Job" OnClick="postJob_Click" />
 
         </div>
     </div>
@@ -174,7 +175,7 @@
         <div class="row">
             <!-- View Job Card -->
             <div class="col-md-4" >
-                <a href="ViewJob.aspx" style="text-decoration : none"><div class="dashboard-card" onserverclick="ViewJobCard_Click" runat="server">
+                <a href="ViewJob.aspx" style="text-decoration : none"><div class="dashboard-card" runat="server">
     <i class="fas fa-eye fa-3x"></i>
     <h3>View Job</h3>
     
