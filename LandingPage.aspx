@@ -9,6 +9,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Muli:wght@400;600&display=swap" rel="stylesheet">
+    <!-- BootStrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
@@ -37,10 +38,10 @@
             <div>
                 <ul class="navbar-nav justify-content-end">
                     <li class="nav-item">
-                        <asp:Button runat="server" CssClass="btn" Text="Register" />
+                        <asp:Button runat="server" CssClass="btn" Text="Register" OnClientClick="window.location.href='Registration.aspx'; return false;" />
                     </li>
                     <li class="nav-item">
-                        <asp:Button runat="server" CssClass="btn" Text="Login" />
+                        <asp:Button runat="server" CssClass="btn" Text="Login" OnClientClick="window.location.href='JobPortalLogin.aspx'; return false;" />
                     </li>
                 </ul>
             </div>
@@ -85,64 +86,40 @@
         </div>
 
         <!-- Search Job Section -->
-       <%-- <section class="search-section">
-            <h3>Find Your Perfect Job</h3>
-            <div class="row">
-                <div class="col-md-6">
-                    <asp:Label runat="server" Text="Job Type" />
-                    <asp:DropDownList runat="server" CssClass="form-select">
-                        <asp:ListItem Text="Full-time" />
-                        <asp:ListItem Text="Part-time" />
-                        <asp:ListItem Text="Internship" />
-                        <asp:ListItem Text="Freelance" />
-                    </asp:DropDownList>
-                </div>
-                <div class="col-md-6">
-                    <asp:Label runat="server" Text="Location" />
-                    <asp:TextBox runat="server" CssClass="form-control" placeholder="Enter Location" />
+        <section class="opacity-box">
+            <div class="row mb-5 justify-content-center">
+                <div class="col-md-7 text-center">
+                    <h2 class="section-title mb-2 text-white">Careers Statistics</h2>
+                    <p class="lead text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita unde officiis recusandae sequi excepturi corrupti.</p>
                 </div>
             </div>
-            <asp:Button runat="server" CssClass="btn btn-primary mt-3" Text="Search Jobs" />
-        </section>--%>
-        <section class="py-5 jobsection">
-            <div class="container ">
-                <div class="row mb-5 justify-content-center">
-                    <div class="col-md-7 text-center">
-                        <h2 class="section-title mb-2 text-white">Careers Statistics</h2>
-                        <p class="lead text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita unde officiis recusandae sequi excepturi corrupti.</p>
+            <div class="row section-counter justify-content-around">
+                <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <strong class="number" data-number="1930">1,930</strong>
                     </div>
+                    <span class="caption">Candidates</span>
                 </div>
-                <div class="row section-counter">
-                    <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
-                        <div class="d-flex align-items-center justify-content-center mb-2">
-                            <strong class="number" data-number="1930">1,930</strong>
-                        </div>
-                        <span class="caption">Candidates</span>
+                <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                    <div class="d-flex align-items-center justify-content-center">
+                    <strong class="number" data-number="54">54</strong>
                     </div>
-                    <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
-                        <div class="d-flex align-items-center justify-content-center mb-2">
-                        <strong class="number" data-number="54">54</strong>
-                        </div>
-                        <span class="caption">Jobs Posted</span>
+                    <span class="caption">Jobs Posted</span>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <strong class="number" data-number="120">120</strong>
                     </div>
-                    <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
-                        <div class="d-flex align-items-center justify-content-center mb-2">
-                            <strong class="number" data-number="120">120</strong>
-                        </div>
-                        <span class="caption">Jobs Filled</span>
-                    </div>
-                    <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
-                        <div class="d-flex align-items-center justify-content-center mb-2">
+                    <span class="caption">Jobs Filled</span>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
+                    <div class="d-flex align-items-center justify-content-center">
                         <strong class="number" data-number="550">550</strong>
-                        </div>
-                        <span class="caption">Companies</span>
                     </div>
+                    <span class="caption">Companies</span>
                 </div>
             </div>
         </section>
-
-
-
 
 
         <!-- Browse Categories Section -->
@@ -169,13 +146,7 @@
             <asp:Button runat="server" CssClass="show-all-btn" Text="Show All" />
         </section>
 
-        <!-- Resume Upload Section -->
-        <section class="resume-section container">
-            <h3>Upload Your Resume</h3>
-            <p>Upload your resume to be found by top companies.</p>
-            <asp:FileUpload runat="server" CssClass="form-control" />
-            <asp:Button runat="server" CssClass="btn btn-primary mt-3" Text="Upload Resume" />
-        </section>
+
 
         <!-- How It Works Section -->
         <section class="how-it-works-section container">
@@ -224,8 +195,6 @@
     </form>
 
     <!-- Including Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

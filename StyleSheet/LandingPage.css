@@ -1,9 +1,9 @@
 ﻿body {
     font-family: "Poppins", sans-serif;
     background-color: #f8f9fa;
-    background-image: url('../images/hero1.jpg');
     background-size: contain;
     color: #343a40;
+    background: linear-gradient(to bottom, #09016c, #000000);
 }
 
 /* Navbar Styling */
@@ -71,8 +71,8 @@
     justify-content: center;
     color: white;
     text-align: center;
-    min-height: 90vh;
-    max-height: 90vh;
+    min-height: 100vh;
+    max-height: 100vh;
     z-index: 1;
 }
 
@@ -95,111 +95,128 @@ select.form-control.sizeing, .sizeing, .button.btn.btn-primary.btn-lg.btn-block.
     z-index: 1;
 }
 
-/* Search Section */
-/*.search-section {
-    padding: 20px;
-    background: rgba(22, 68, 186, 0.9);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative; 
-}*/
+/* Counter Section Styling */
+.section-counter .col-6 {
+width: 21%;
+padding: 1%;
+text-align: center;
+border-radius: 20px;
+color: #fff;
+transition: background-color 0.3s ease, transform 0.3s ease;
+}
 
-.jobsection {
+.opacity-box {
+margin: 6%;
+background: rgba(255, 255, 255, 0);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 1);
+border-radius: 10px;
+padding: 5%;
+}
+
+.section-counter .col-lg-3:nth-child(1) {
+background-color: #ff6f61; /* Coral */
+}
+
+.section-counter .col-lg-3:nth-child(2) {
+background-color: #6f42c1; /* Purple */
+}
+
+.section-counter .col-lg-3:nth-child(3) {
+background-color: #20c997; /* Teal */
+}
+
+.section-counter .col-lg-3:nth-child(4) {
+background-color: #ffc107; /* Amber */
+}
+
+.section-counter .col-lg-3:hover {
+background-color: #000000; /* Darken on hover */
+transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
 .number {
-    font-size: 3.2rem;
-    font-weight: 900;
-    color: #fff;
+font-size: 3.2rem;
+font-weight: 900;
 }
 
 .caption {
-    font-size: 1rem;
-    display: block;
-    color: rgba(255, 255, 255, 0.7);
+font-size: 1rem;
+display: block;
+color: rgba(255, 255, 255, 0.7);
 }
 
-.search-section h3 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight: 600;
-}
 
-.search-section .form-control {
-    margin-bottom: 15px;
-    background-color: #f8f9fa;
-    border: 1px solid #ced4da;
-    color: #495057;
-}
 
-.search-section .form-control::placeholder {
-    color: #6c757d;
-}
-/* Browse Categories Section */
+
+/* Browse Categories Section Styling */
 .browse-categories {
-    margin: 50px 0;
+    margin: 10%;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border-radius: 15px;
     text-align: center;
+    color: #fff;
 }
 
 .browse-categories h3 {
-    font-weight: 600;
+    font-size: 2rem;
+    font-weight: 700;
     margin-bottom: 20px;
+    color: #ff6f61; /* Vibrant color for the heading */
 }
 
 .categories {
     display: flex;
-    justify-content: space-evenly;
-    margin-top: 20px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .category-box {
-    background-color: #ffffff;
-    padding: 15px;
+    width: 20%;
+    padding: 20px;
+    margin: 10px;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 22%;
-    margin-bottom: 15px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.category-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border: 1px solid #007bff;
+    color: #fff;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add box shadow */
 }
 
 .category-box i {
     font-size: 2.5rem;
-    color: #007bff;
+    margin-bottom: 10px;
 }
 
 .category-box h5 {
-    margin-top: 10px;
+    font-size: 1.2rem;
     font-weight: 600;
+}
+
+/* Hover Effect for Category Boxes */
+.category-box:hover {
+    background: rgba(0, 0, 0, 0.7); /* Darken background on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Increase shadow on hover */
 }
 
 .show-all-btn {
     margin-top: 20px;
-    border: 1px solid #007bff;
-    color: #007bff;
-    font-family: "Muli", sans-serif;
-    background: none;
     padding: 10px 20px;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 1px;
+    border: none;
     border-radius: 5px;
-    transition: color 0.4s linear, border-color 0.4s linear;
+    background: #ff6f61; /* Button background color */
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .show-all-btn:hover {
-    color: #ffffff;
-    border-color: #ffffff;
-    background-color: #007bff;
+    background: #ff3f4d; /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
 }
+
 /* Resume Upload Section */
 .resume-section {
     padding: 20px;
