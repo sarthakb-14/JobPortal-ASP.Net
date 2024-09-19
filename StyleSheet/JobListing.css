@@ -268,7 +268,6 @@ li{
     min-height: 900px;
 }
 
-<style>
 .bg-image {
     background-size: cover;
     background-repeat: no-repeat;
@@ -403,7 +402,6 @@ img.img-fluid.logo-1 {
 .navbar-nav {
     --bs-nav-link-padding-x: 0;
     --bs-nav-link-padding-y: 0.5rem;
-    --bs-nav-link-font-weight:;
     --bs-nav-link-color: var(--bs-navbar-color);
     --bs-nav-link-hover-color: var(--bs-navbar-hover-color);
     --bs-nav-link-disabled-color: var(--bs-navbar-disabled-color);

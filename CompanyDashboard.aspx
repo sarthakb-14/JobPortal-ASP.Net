@@ -35,7 +35,6 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             background: linear-gradient(90deg, rgba(0,123,255,1) 0%, rgba(0,212,255,1) 100%);
-            -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             padding: 20px 0;
         }
