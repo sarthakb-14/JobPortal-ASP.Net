@@ -1,5 +1,4 @@
 ﻿
-
 using System;
 using System.Data.SqlClient;
 
@@ -7,11 +6,12 @@ namespace JobPortal
 {
     public partial class JobPortalLogin : System.Web.UI.Page
     {
+        protected string userRole;
         // Connection string
         string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=C927QV3\\SQLEXPRESS";
 
         // This variable will store the role (Student, Company, Admin)
-        private string userRole = "Student";
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,6 +24,11 @@ namespace JobPortal
         // This is triggered when the user clicks the Login button
         protected void LoginButton_Click(object sender, EventArgs e)
         {
+
+            userRole = roleHiddenField.Value;
+
+            
+            
             // Get the username and password input
             string username = UsernameTextBox.Text.Trim();
             string password = PasswordTextBox.Text.Trim();
@@ -52,7 +57,7 @@ namespace JobPortal
                 }
                 else if (userRole == "Admin")
                 {
-                    Response.Redirect("AdminDashboard.aspx");
+                    Response.Redirect("AdminPage.aspx");
                 }
             }
             else

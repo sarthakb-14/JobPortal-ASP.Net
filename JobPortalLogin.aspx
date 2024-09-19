@@ -169,6 +169,9 @@
         function loadLoginForm(role) {
             document.querySelector('.dynamic-content').style.display = 'block';
 
+            // Set hidden field value based on role
+            document.getElementById('roleHiddenField').value = role;
+
             // Change the form heading and link based on role
             var formHeading = document.querySelector('.login-card h2');
             var registerLink = document.querySelector('.small-link');
@@ -176,10 +179,12 @@
                 formHeading.innerText = 'Student Login';
                 registerLink.href = 'Registration.aspx';
                 registerLink.innerHTML = "Don't have an account? <strong>Register</strong>";
+                registerLink.style.display = 'block';  // Show the link
             } else if (role === 'Company') {
                 formHeading.innerText = 'Company Login';
                 registerLink.href = 'Registration.aspx';
                 registerLink.innerHTML = "Don't have an account? <strong>Register as Company</strong>";
+                registerLink.style.display = 'block';  // Show the link
             } else if (role === 'Admin') {
                 formHeading.innerText = 'Admin Login';
                 registerLink.href = '#';  // Admin may not need a register link
@@ -213,6 +218,9 @@
             </div>
         </div>
 
+        <!-- Hidden field to store role -->
+        <asp:HiddenField ID="roleHiddenField" runat="server" />
+
         <!-- Container for the dynamically loaded login form -->
         <div class="dynamic-content">
             <div class="login-card">
@@ -222,11 +230,11 @@
                     <asp:RequiredFieldValidator ID="UsernameRequired" runat="server" ControlToValidate="UsernameTextBox" ErrorMessage="Username/Email is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                 </div>
                 <div class="form-group">
-                    <asp:TextBox ID="PasswordTextBox" runat="server" CssClass="form-control" Placeholder="Password" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox ID="PasswordTextBox" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Password"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="PasswordTextBox" ErrorMessage="Password is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                 </div>
-                <asp:Button ID="LoginButton" runat="server" CssClass="button" Text="Login" OnClick="LoginButton_Click" />
-                <a href="Registration.aspx" class="small-link">Don't have an account? <strong>Register</strong></a> <!-- Register Link -->
+                <asp:Button ID="LoginButton" runat="server" Text="Login" CssClass="button" OnClick="LoginButton_Click" />
+                <a href="Registration.aspx" class="small-link">Don't have an account? <strong>Register</strong></a>
             </div>
         </div>
     </form>
