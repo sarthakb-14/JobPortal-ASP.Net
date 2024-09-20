@@ -17,6 +17,7 @@ namespace JobPortal
 
         protected void ViewJobButton_Click(object sender, EventArgs e)
         {
+
             string jobId = JobIDInput.Text;
 
             // Simple validation: Check if the Job ID is not empty
@@ -43,7 +44,7 @@ namespace JobPortal
             }
 
 
-
+            
 
             int jobid = int.Parse(JobIDInput.Text);
             string sarthak = "uid=sa; password=manager@123; database = JobPortal; server = DK27QV3\\SQLEXPRESS";

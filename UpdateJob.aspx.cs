@@ -16,15 +16,12 @@ namespace JobPortal
             
         }
 
-        protected void UpdateButton_Click(object sender, EventArgs e)
-        {
-
-        }
+        int jobid;
 
         protected void SubmitButton_Click(object sender, EventArgs e)
         {
 
-            int jobid;
+            
             // Validate if JobIDTextBox has a valid number
             if (int.TryParse(JobIDTextBox.Text, out jobid))
             {
@@ -72,6 +69,32 @@ namespace JobPortal
             }
 
 
-        }   
+        }
+
+        protected void UpdateButton_Click(object sender, EventArgs e)
+        {
+            string sarthak = "uid=sa; password=manager@123; database = JobPortal; server = DK27QV3\\SQLEXPRESS";
+            SqlConnection con = new SqlConnection(sarthak);
+            con.Open();
+            try
+            {
+                jobid = int.Parse(JobIDTextBox.Text);
+                
+                string jtitle = JobTitleTextBox.Text;
+                string exp = ExperienceTextBox.Text;
+                string salary = SalaryTextBox.Text;
+                DateTime deadline = DateTime.Parse(DeadlineTextBox.Text).Date;
+                int vacancy = int.Parse(VacancyTextBox.Text);
+                string empstatus = EmploymentStatusDropDown.SelectedValue;
+                string jd = JobDescriptionTextBox.Text;
+                SqlCommand cmd = new SqlCommand("update joblist set jobtitle='" + jtitle + "',jobexperience='" + exp + "',jobsalary='" + salary + "',jobdeadline='" + deadline + "',jobvacancy=" + vacancy + ",jobemployeementstatus='" + empstatus + "',jobJD='" + jd + "' where jobid = " + jobid + "", con);
+                cmd.ExecuteNonQuery();
+            }
+            catch(Exception ex) {
+                Response.Write("<script>alert(" + ex.Message + ");</script>");
+            }
+            
+            con.Close() ;
+        }
     }
 }

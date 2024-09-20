@@ -8,7 +8,7 @@ namespace JobPortal
     {
         protected string userRole;
         // Connection string
-        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=C927QV3\\SQLEXPRESS";
+        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=DK27QV3\\SQLEXPRESS";
 
         // This variable will store the role (Student, Company, Admin)
         
@@ -46,14 +46,43 @@ namespace JobPortal
 
             if (isValidUser)
             {
+
+                string cid = null;
+                string cname = null; // Variable to store company name
+
+                // Fetch the cid and cname if the user is a company
+                if (userRole == "Company")
+                {
+                    using (SqlConnection con = new SqlConnection(connectionString))
+                    {
+                        con.Open();
+                        string query = "SELECT cid, cname FROM company WHERE (cemail = @Username OR cusername = @Username) AND cpassword = @Password";
+                        using (SqlCommand cmd = new SqlCommand(query, con))
+                        {
+                            // Use parameters to avoid SQL injection
+                            cmd.Parameters.AddWithValue("@Username", username);
+                            cmd.Parameters.AddWithValue("@Password", password);
+
+                            SqlDataReader dr = cmd.ExecuteReader();
+                            if (dr.Read())
+                            {
+                                cid = dr["cid"].ToString();
+                                cname = dr["cname"].ToString(); 
+                                
+                            }
+                        }
+                    }
+                }
+
                 // Redirect user to respective dashboard or homepage
                 if (userRole == "Student")
                 {
                     Response.Redirect("StudentDashboard.aspx");
                 }
-                else if (userRole == "Company")
+                else if (userRole == "Company" && cid!=null)
                 {
-                    Response.Redirect("CompanyDashboard.aspx");
+                    
+                    Response.Redirect("CompanyDashboard.aspx?cid="+cid+"&cname="+cname);
                 }
                 else if (userRole == "Admin")
                 {
@@ -65,6 +94,8 @@ namespace JobPortal
                 // Invalid login - display error message
                 Response.Write("<script>alert('Invalid login credentials. Please try again.');</script>");
             }
+
+            
         }
 
         // Method to validate user credentials based on the role

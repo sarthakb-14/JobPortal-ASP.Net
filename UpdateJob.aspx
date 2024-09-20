@@ -125,8 +125,8 @@
                 <asp:DropDownList ID="EmploymentStatusDropDown" runat="server" CssClass="form-control">
                     <asp:ListItem Text="Fulltime" Value="Fulltime"></asp:ListItem>
                     <asp:ListItem Text="Part-time" Value="Part-time"></asp:ListItem>
-                    <asp:ListItem Text="Internship" Value="internship"></asp:ListItem>
-                    <asp:ListItem Text="Contract" Value="contract"></asp:ListItem>
+                    <asp:ListItem Text="Internship" Value="Internship"></asp:ListItem>
+                    <asp:ListItem Text="Contract" Value="Contract"></asp:ListItem>
                 </asp:DropDownList>
             </div>
 
