@@ -4,6 +4,7 @@
     background-size: contain;
     color: #343a40;
     background: linear-gradient(to bottom, #09016c, #000000);
+    user-select: none;
 }
 
 /* Navbar Styling */
@@ -15,7 +16,7 @@
     z-index: 100;
 }
 
-.navbar > * {
+.navbar>* {
     flex: 1;
 }
 
@@ -31,7 +32,8 @@
     font-weight: 400;
 }
 
-.nav-link:hover, .navbar-brand:hover {
+.nav-link:hover,
+.navbar-brand:hover {
     color: snow;
 }
 
@@ -57,7 +59,7 @@
     background-color: #007bff;
 }
 
-.gap > li{
+.gap>li {
     width: 100%;
 }
 
@@ -87,7 +89,9 @@
     margin-bottom: 20px;
 }
 
-select.form-control.sizeing, .sizeing, .button.btn.btn-primary.btn-lg.btn-block.text-white.btn-search.sizeing {
+select.form-control.sizeing,
+.sizeing,
+.button.btn.btn-primary.btn-lg.btn-block.text-white.btn-search.sizeing {
     height: calc(2em + 1rem + 2px);
     padding: 0.5rem 1rem;
     font-size: 1rem;
@@ -97,90 +101,92 @@ select.form-control.sizeing, .sizeing, .button.btn.btn-primary.btn-lg.btn-block.
 
 /* Counter Section Styling */
 .section-counter .col-6 {
-width: 21%;
-padding: 1%;
-text-align: center;
-border-radius: 20px;
-color: #fff;
-transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 21%;
+    padding: 1%;
+    text-align: center;
+    border-radius: 20px;
+    color: #fff;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .opacity-box {
-margin: 6%;
-background: rgba(255, 255, 255, 0);
-box-shadow: 0 4px 30px rgba(0, 0, 0, 1);
-border-radius: 10px;
-padding: 5%;
+    margin: 6%;
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 1);
+    border-radius: 10px;
+    padding: 5%;
 }
 
 .section-counter .col-lg-3:nth-child(1) {
-background-color: #ff6f61; /* Coral */
+    background-color: #ff6f61;
+    /* Coral */
 }
 
 .section-counter .col-lg-3:nth-child(2) {
-background-color: #6f42c1; /* Purple */
+    background-color: #6f42c1;
+    /* Purple */
 }
 
 .section-counter .col-lg-3:nth-child(3) {
-background-color: #20c997; /* Teal */
+    background-color: #20c997;
+    /* Teal */
 }
 
 .section-counter .col-lg-3:nth-child(4) {
-background-color: #ffc107; /* Amber */
+    background-color: #ffc107;
+    /* Amber */
 }
 
 .section-counter .col-lg-3:hover {
-background-color: #000000; /* Darken on hover */
-transform: scale(1.05); /* Slightly enlarge on hover */
+    background-color: #000000;
+    /* Darken on hover */
+    transform: scale(1.05);
+    /* Slightly enlarge on hover */
 }
 
 .number {
-font-size: 3.2rem;
-font-weight: 900;
+    font-size: 3.2rem;
+    font-weight: 900;
 }
 
 .caption {
-font-size: 1rem;
-display: block;
-color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    display: block;
+    color: rgba(255, 255, 255, 0.7);
 }
-
-
 
 
 /* Browse Categories Section Styling */
 .browse-categories {
-    margin: 10%;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    margin: 6%;
+    padding: 5%;
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 15px;
     text-align: center;
     color: #fff;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 1);
 }
 
 .browse-categories h3 {
     font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #ff6f61; /* Vibrant color for the heading */
+    font-weight: 500;
+    margin-bottom: 5%;
 }
 
 .categories {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
+    margin-bottom: 2%;
 }
 
 .category-box {
     width: 20%;
     padding: 20px;
     margin: 10px;
-    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
-    color: #fff;
-    text-align: center;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add box shadow */
 }
 
 .category-box i {
@@ -195,9 +201,12 @@ color: rgba(255, 255, 255, 0.7);
 
 /* Hover Effect for Category Boxes */
 .category-box:hover {
-    background: rgba(0, 0, 0, 0.7); /* Darken background on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Increase shadow on hover */
+    background: rgba(0, 0, 0, 0.7);
+    /* Darken background on hover */
+    transform: scale(1.05);
+    /* Slightly enlarge on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    /* Increase shadow on hover */
 }
 
 .show-all-btn {
@@ -205,50 +214,81 @@ color: rgba(255, 255, 255, 0.7);
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background: #ff6f61; /* Button background color */
+    background: #d6a50d;
     color: #fff;
-    font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .show-all-btn:hover {
-    background: #ff3f4d; /* Darker shade on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
+    background: #d68b0d;
+    transform: scale(1.2);
 }
 
-/* Resume Upload Section */
-.resume-section {
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+
 /* How It Works Section */
 .how-it-works-section {
-    padding: 20px;
     text-align: center;
-    margin-bottom: 50px;
+    color: rgb(255, 255, 255);
+    box-shadow: rgb(114 114 114) 0px 4px 30px;
+    margin: 6%;
+    padding: 5%;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+}
+
+.how-it-works-section h3 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 5%;
+    color: #ff6f61;
+    /* Vibrant color for the heading */
 }
 
 .how-it-works-card {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5%;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
 }
 
-.how-it-works-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.how-it-works-card i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #ff6f61;
+    /* Icon color matching the theme */
 }
+
+.how-it-works-card h5 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.how-it-works-card p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    /* Lighter text for description */
+}
+
+/* Hover Effect for How It Works Cards */
+.how-it-works-card:hover {
+    background: rgba(0, 0, 0, 0.7);
+    /* Darker background on hover */
+    transform: scale(1.05);
+    /* Slightly enlarge on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    /* Increase shadow on hover */
+}
+
+
 /* Footer */
 .footer {
-    padding: 40px;
-    background-color: #f1f3f5;
-    color: #343a40;
+    padding: 5%;
+    background-color: #000000;
+    color: #ffffff;
     text-align: center;
 }
 

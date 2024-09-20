@@ -149,7 +149,7 @@
 
 
         <!-- How It Works Section -->
-        <section class="how-it-works-section container">
+        <section class="how-it-works-section">
             <h3>How the Portal Works</h3>
             <div class="row">
                 <div class="col-md-4">
@@ -176,8 +176,10 @@
             </div>
         </section>
 
+
         <!-- Footer Section -->
         <footer class="footer">
+            <hr class="w-100 bg-white mb-5" />
             <div class="footer-content container">
                 <div>
                     <h5>About Us</h5>
@@ -185,9 +187,9 @@
                 </div>
                 <div>
                     <h5>Contact Info</h5>
-                    <p>Email: <a href="mailto:info@jobportal.com">info@jobportal.com</a></p>
-                    <p>Phone: +123-456-7890</p>
-                    <p>Address: 1234 Job Street, Employment City, Jobland</p>
+                    <p>Email: <a href="mailto:utkarsh.singh@finthrive.com">info@jobportal.com</a></p>
+                    <p>Phone: +919090909090</p>
+                    <p>Address: 15th, Finthrive Global, Unitech CyberPark, Gurugram</p>
                 </div>
             </div>
             <p>&copy; 2024 Job Portal. All Rights Reserved.</p>
