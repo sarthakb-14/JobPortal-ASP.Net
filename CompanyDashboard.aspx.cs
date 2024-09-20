@@ -15,7 +15,13 @@ namespace JobPortal
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            string sarthak = "uid=sa; password=manager@123; database = JobPortal; server = DK27QV3\\SQLEXPRESS";
+            string cname = Request.QueryString["cname"];
+            companyLabel.Text = cname;
+        }
+
+        protected void Openclick_Click(object sender, EventArgs e)
+        {
+            string sarthak = "uid=sa; password=manager@123; database = JobPortal; server = 7Y27QV3\\SQLEXPRESS";
             SqlConnection con = new SqlConnection(sarthak);
             con.Open();
 
@@ -33,38 +39,60 @@ namespace JobPortal
 
 
             con.Close();
-            string cname = Request.QueryString["cname"];
-            companyLabel.Text = cname;
         }
 
         protected void UpdateProfile_Click(object sender, EventArgs e)
         {
-            string sarthak = "uid=sa; password=manager@123; database = JobPortal; server = DK27QV3\\SQLEXPRESS";
-            SqlConnection con = new SqlConnection(sarthak);
-            con.Open();
-            try
+            string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string cid = Request.QueryString["cid"];
-                string cname = CompanyNameTextBox.Text;
-                string address = AddressTextBox.Text;
-                string city = CityTextBox.Text;
-                string email = EmailTextBox.Text;
+                try
+                {
+                    con.Open();
 
-                SqlCommand cmd = new SqlCommand("update company set cname = '" + cname + "', cemail = '" + email + "', caddress = '" + address + "', cemail = '" + email + "' where cid='" + cid + "'", con);
-                cmd.ExecuteNonQuery();
-                Response.Write("<script>alert('Profile Updated Successfully!');</script>");
-            }
-            catch(Exception ex) {
-                Response.Write("<script>alert(" + ex.Message + ");</script>");
-            }
+                    // Fetch the Company ID from query string
+                    int cid = int.Parse(Request.QueryString["cid"]);
 
-            con.Close();
+                    // Fetch form values
+                    string cname = CompanyNameTextBox.Text;
+                    string address = AddressTextBox.Text;
+                    string city = CityTextBox.Text;
+                    string email = EmailTextBox.Text;
+
+                    // Use parameterized queries to prevent SQL Injection
+                    string query = "UPDATE company SET cname = @cname, cemail = @cemail, caddress = @caddress, ccity = @ccity WHERE cid = @cid";
+
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddWithValue("@cname", cname);
+                        cmd.Parameters.AddWithValue("@cemail", email);
+                        cmd.Parameters.AddWithValue("@caddress", address);
+                        cmd.Parameters.AddWithValue("@ccity", city);
+                        cmd.Parameters.AddWithValue("@cid", cid);
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Success message
+                    Response.Write("<script>alert('Profile Updated Successfully!"+cname+"');</script>");
+                }
+                catch (Exception ex)
+                {
+                    // Show error message
+                    Response.Write("<script>alert('" + ex.Message.Replace("'", "\\'") + "');</script>");
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
         }
+
 
         protected void ChangePassword_Click(object sender, EventArgs e)
         {
             string cid = Request.QueryString["cid"];
-            string sarthak = "uid=sa; password=manager@123; database = JobPortal; server = DK27QV3\\SQLEXPRESS";
+            string sarthak = "uid=sa; password=manager@123; database = JobPortal; server = 7Y27QV3\\SQLEXPRESS";
             SqlConnection con = new SqlConnection(sarthak);
             con.Open();
             try
@@ -104,7 +132,7 @@ namespace JobPortal
             {
                 string cid = Request.QueryString["cid"];
                 
-                string sarthak = "uid=sa; password=manager@123; database = JobPortal; server = DK27QV3\\SQLEXPRESS";
+                string sarthak = "uid=sa; password=manager@123; database = JobPortal; server = 7Y27QV3\\SQLEXPRESS";
                 string jobtitle = JobTitleTextBox.Text;
                 string experience = ExperienceTextBox.Text;
                 string salary = SalaryTextBox.Text;

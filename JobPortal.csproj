@@ -169,6 +169,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="StyleSheet\LandingPage.css" />
+    <Content Include="StyleSheet\StudentDashboard.css" />
     <Content Include="UpdateJob.aspx" />
     <Content Include="ViewJob.aspx" />
     <Content Include="ViewSwitcher.ascx" />

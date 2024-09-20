@@ -32,5 +32,14 @@ namespace JobPortal
         {
 
         }
+        protected void SaveProfileButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ChangePasswordButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

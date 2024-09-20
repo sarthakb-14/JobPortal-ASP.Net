@@ -11,7 +11,7 @@ namespace JobPortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label1.Text = "120";
+
         }
         protected void btnHome_Click(object sender, EventArgs e)
         {

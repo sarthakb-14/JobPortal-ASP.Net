@@ -1,392 +1,111 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="JobListings.aspx.cs" Inherits="JobPortal.JobListings" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-  <head runat="server">
-    <title></title>
-    <link rel="stylesheet" href="./StyleSheet/JobListing.css" />
-  </head>
-  <body id="top">
-      <form id="form1" runat="server">
-    <div class="site-wrap">
-      <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header">
-          <div class="site-mobile-menu-close mt-3">
-            <span class="icon-close2 js-menu-toggle"></span>
-          </div>
-        </div>
-      </div>
-       <nav class="navbar navbar-expand-lg">
-         <div>
-             <a class="navbar-brand" href="#">Job Portal</a>
-         </div>
-         <div class="navbar-collapse navlink justify-content-center" id="navbarNav">
-             <ul class="navbar-nav gap text-center w-100">
-                 <li>
-                     <a class="nav-link" href="LandingPage.aspx">Home</a>
-                 </li>
-                 <li>
-                     <a class="nav-link" href="JobListings.aspx">Job Listings</a>
-                 </li>
-                 <li>
-                     <a class="nav-link" href="#">Contact Us</a>
-                 </li>
-             </ul>
-         </div>
-         <div>
-             <ul class="navbar-nav justify-content-end">
-                 <li class="nav-item">
-                     <asp:Button runat="server" CssClass="btn" Text="Register" />
-                 </li>
-                 <li class="nav-item">
-                     <asp:Button runat="server" CssClass="btn" Text="Login" />
-                 </li>
-             </ul>
-         </div>
-     </nav>
+<head runat="server">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>Job Listing</title>
+     <!-- Google Fonts -->
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Muli:wght@400;600&display=swap" rel="stylesheet">
+     <!-- BootStrap -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+     <!-- FontAwesome Icons -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+     <link rel="stylesheet" href="StyleSheet/JobListing.css"/>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <!-- Navbar Section -->
+        <nav class="navbar navbar-expand-lg">
+            <div>
+                <a class="navbar-brand" href="#">Job Portal</a>
+            </div>
+            <div class="navbar-collapse navlink" id="navbarNav">
+                <ul class="navbar-nav gap text-center w-100">
+                    <li>
+                        <a class="nav-link" href="LandingPage.aspx">Home</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="JobListings.aspx">Job Listings</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item">
+                        <asp:Button runat="server" CssClass="btn" Text="Register" OnClientClick="window.location.href='Registration.aspx'; return false;" />
+                    </li>
+                    <li class="nav-item">
+                        <asp:Button runat="server" CssClass="btn" Text="Login" OnClientClick="window.location.href='JobPortalLogin.aspx'; return false;" />
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-      <section class="home-section section-hero inner-page overlay bg-image" style="background-image: url('./images/hero1.jpg');" id="home-section">
-        <div class="container">
-          <div class="row align-items-center justify-content-center">
-            <div class="col-md-12">
-              <div class="mb-5 text-center">
-                <h1 class="text-black font-weight-bold">Job Listings</h1>
-                <p>Find your dream jobs in our powerful career website template.</p>
-              </div>
+        <!-- Banner Section -->
+        <div class="banner">
+            <div class="w-75">
+                <h1>Your Dream Job Awaits</h1>
+                <p>Find jobs that fit your skills, preferences, and aspirations</p>
+                <div class="row mb-5">
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                        <input type="text" class="form-control form-control-lg sizeing" placeholder="Job title, keywords...">
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                        <select class="form-select sizeing">
+                            <option selected>Anywhere</option>
+                            <option>San Francisco</option>
+                            <option>Palo Alto</option>
+                            <option>New York</option>
+                            <option>Manhattan</option>
+                            <option>Ontario</option>
+                            <option>Toronto</option>
+                            <option>Kansas</option>
+                            <option>Mountain View</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                        <select class="form-select sizeing">
+                            <option selected>Any</option>
+                            <option>Full Time</option>
+                            <option>Part Time</option>
+                            <option>Internship</option>
+                            <option>Freelancer</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search sizeing">Search Job</button>
+                    </div>
+                </div> 
             </div>
-          </div>
         </div>
-      </section>
-      <section class="site-section">
-        <div class="container">
-          <div class="row mb-5 justify-content-center">
-            <div class="col-md-7 text-center">
-              <h2 class="section-title mb-2"><span>
-                  <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-                  </span> Job Listed</h2>
-            </div>
-          </div>
-          <div class="gridView">
 
-          </div>
-          <div class="mb-5">
-            <div class="row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
-              <div class="col-md-2">
-                <a href="job-single.html">
-                  <img src="./images/featured-listing-1.jpg" alt="Image" class="img-fluid">
-                </a>
-              </div>
-              <div class="col-md-4">
-                <span class="badge badge-primary px-2 py-1 mb-3">Freelancer</span>
-                <h2>
-                  <a href="job-single.html">Dropbox Product Designer</a>
-                </h2>
-                <p class="meta">Publisher: <strong>John Stewart</strong> In: <strong>Design</strong>
-                </p>
-              </div>
-              <div class="col-md-3 text-left">
-                <h3>Melbourn</h3>
-                <span class="meta">Australia</span>
-              </div>
-              <div class="col-md-3 text-md-right">
-                <strong class="text-black">$60k — $100k</strong>
-              </div>
-            </div>
-            <div class="row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
-              <div class="col-md-2">
-                <a href="job-single.html">
-                  <img src="./images/featured-listing-1.jpg" alt="Image" class="img-fluid" />
-                </a>
-              </div>
-              <div class="col-md-4">
-                <span class="badge badge-warning px-2 py-1 mb-3">Full-time</span>
-                <h2>
-                  <a href="job-single.html">Creative Director in Intercom</a>
-                </h2>
-                <p class="meta">Publisher: <strong>John Stewart</strong> In: <strong>Design</strong>
-                </p>
-              </div>
-              <div class="col-md-3 text-left">
-                <h3>London</h3>
-                <span class="meta">United Kingdom</span>
-              </div>
-              <div class="col-md-3 text-md-right">
-                <strong class="text-black">$60k — $100k</strong>
-              </div>
-            </div>
-            <div class="row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
-              <div class="col-md-2">
-                <a href="job-single.html">
-                  <img src="./images/featured-listing-1.jpg" alt="Image" class="img-fluid">
-                </a>
-              </div>
-              <div class="col-md-4">
-                <span class="badge badge-success px-2 py-1 mb-3">Part-time</span>
-                <h2>
-                  <a href="job-single.html">FullStack Developer in Shopify</a>
-                </h2>
-                <p class="meta">Publisher: <strong>John Stewart</strong> In: <strong>Design</strong>
-                </p>
-              </div>
-              <div class="col-md-3 text-left">
-                <h3>London</h3>
-                <span class="meta">United Kingdom</span>
-              </div>
-              <div class="col-md-3 text-md-right">
-                <strong class="text-black">$60k — $100k</strong>
-              </div>
-            </div>
-            <div class="row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
-              <div class="col-md-2">
-                <a href="job-single.html">
-                  <img src="./images/featured-listing-1.jpg" alt="Image" class="img-fluid">
-                </a>
-              </div>
-              <div class="col-md-4">
-                <span class="badge badge-primary px-2 py-1 mb-3">Freelancer</span>
-                <h2>
-                  <a href="job-single.html">Dropbox Product Designer</a>
-                </h2>
-                <p class="meta">Publisher: <strong>John Stewart</strong> In: <strong>Design</strong>
-                </p>
-              </div>
-              <div class="col-md-3 text-left">
-                <h3>Melbourn</h3>
-                <span class="meta">Australia</span>
-              </div>
-              <div class="col-md-3 text-md-right">
-                <strong class="text-black">$60k — $100k</strong>
-              </div>
-            </div>
-            <div class="row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
-              <div class="col-md-2">
-                <a href="job-single.html">
-                  <img src="./images/featured-listing-1.jpg" alt="Image" class="img-fluid">
-                </a>
-              </div>
-              <div class="col-md-4">
-                <span class="badge badge-warning px-2 py-1 mb-3">Full-time</span>
-                <h2>
-                  <a href="job-single.html">Creative Director in Intercom</a>
-                </h2>
-                <p class="meta">Publisher: <strong>John Stewart</strong> In: <strong>Design</strong>
-                </p>
-              </div>
-              <div class="col-md-3 text-left">
-                <h3>London</h3>
-                <span class="meta">United Kingdom</span>
-              </div>
-              <div class="col-md-3 text-md-right">
-                <strong class="text-black">$60k — $100k</strong>
-              </div>
-            </div>
-            <div class="row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
-              <div class="col-md-2">
-                <a href="job-single.html">
-                  <img src="./images/featured-listing-1.jpg" alt="Image" class="img-fluid">
-                </a>
-              </div>
-              <div class="col-md-4">
-                <span class="badge badge-success px-2 py-1 mb-3">Part-time</span>
-                <h2>
-                  <a href="job-single.html">FullStack Developer in Shopify</a>
-                </h2>
-                <p class="meta">Publisher: <strong>John Stewart</strong> In: <strong>Design</strong>
-                </p>
-              </div>
-              <div class="col-md-3 text-left">
-                <h3>London</h3>
-                <span class="meta">United Kingdom</span>
-              </div>
-              <div class="col-md-3 text-md-right">
-                <strong class="text-black">$60k — $100k</strong>
-              </div>
-            </div>
-            <div class="row align-items-start job-item border-bottom pb-3 mb-3 pt-3">
-              <div class="col-md-2">
-                <a href="job-single.html">
-                  <img src="./images/featured-listing-1.jpg" alt="Image" class="img-fluid">
-                </a>
-              </div>
-              <div class="col-md-4">
-                <span class="badge badge-success px-2 py-1 mb-3">Part-time</span>
-                <h2>
-                  <a href="job-single.html">FullStack Developer in Shopify</a>
-                </h2>
-                <p class="meta">Publisher: <strong>John Stewart</strong> In: <strong>Design</strong>
-                </p>
-              </div>
-              <div class="col-md-3 text-left">
-                <h3>London</h3>
-                <span class="meta">United Kingdom</span>
-              </div>
-              <div class="col-md-3 text-md-right">
-                <strong class="text-black">$60k — $100k</strong>
-              </div>
-            </div>
-          </div>
-          <div class="row pagination-wrap">
-            <div class="col-md-6 text-center text-md-left">
-              <div class="custom-pagination ml-auto">
-                <a href="#" class="prev">Previous</a>
-                <div class="d-inline-block">
-                  <a href="#" class="active">1</a>
-                  <a href="#">2</a>
-                  <a href="#">3</a>
-                  <a href="#">4</a>
+
+
+
+        <!-- Footer Section -->
+        <footer class="footer">
+            <hr class="w-100 bg-white mb-5" />
+            <div class="footer-content container">
+                <div>
+                    <h5>About Us</h5>
+                    <p>Job Portal is a leading platform connecting employers with top talent. We help individuals find their dream jobs while enabling companies to hire the best candidates.</p>
                 </div>
-                <a href="#" class="next">Next</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="site-section py-4 mb-5 border-top">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-12 text-center mt-4 mb-5">
-              <div class="row justify-content-center">
-                <div class="col-md-7">
-                  <h2 class="section-title mb-2">Our Candidates Work In Company</h2>
-                  <p class="lead">Porro error reiciendis commodi beatae omnis similique voluptate rerum ipsam fugit mollitia ipsum facilis expedita tempora suscipit iste</p>
+                <div>
+                    <h5>Contact Info</h5>
+                    <p>Email: <a href="mailto:utkarsh.singh@finthrive.com">info@jobportal.com</a></p>
+                    <p>Phone: +919090909090</p>
+                    <p>Address: 15th, Finthrive Global, Unitech CyberPark, Gurugram</p>
                 </div>
-              </div>
             </div>
-            <div class="col-6 col-lg-3 col-md-6 text-center">
-              <img src="/images/logo_mailchimp.jpg" alt="Image" class="img-fluid logo-1">
-            </div>
-            <div class="col-6 col-lg-3 col-md-6 text-center">
-              <img src="/images/logo_paypal.jpg" alt="Image" class="img-fluid logo-2">
-            </div>
-            <div class="col-6 col-lg-3 col-md-6 text-center">
-              <img src="/images/logo_stripe.jpg" alt="Image" class="img-fluid logo-3">
-            </div>
-            <div class="col-6 col-lg-3 col-md-6 text-center">
-              <img src="/images/logo_visa.jpg" alt="Image" class="img-fluid logo-4">
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="py-5 bg-image overlay-primary fixed overlay" style="background-image: url('./images/hero1.jpg');">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-md-8">
-              <h2 class="text-white">Looking For A Job?</h2>
-              <p class="mb-0 text-white lead">Lorem ipsum dolor sit amet consectetur adipisicing elit tempora adipisci impedit.</p>
-            </div>
-            <div class="col-md-3 ml-auto">
-              <a href="#" class="btn btn-warning btn-block btn-lg">Sign Up</a>
-            </div>
-          </div>
-        </div>
-      </section>
-      <footer class="site-footer">
-        <div class="container">
-          <div class="row mb-5">
-            <div class="col-6 col-md-3 mb-4 mb-md-0">
-              <h3>Search Trending</h3>
-              <ul class="list-unstyled">
-                <li>
-                  <a href="#">Web Design</a>
-                </li>
-                <li>
-                  <a href="#">Graphic Design</a>
-                </li>
-                <li>
-                  <a href="#">Web Developers</a>
-                </li>
-                <li>
-                  <a href="#">Python</a>
-                </li>
-                <li>
-                  <a href="#">HTML5</a>
-                </li>
-                <li>
-                  <a href="#">CSS3</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-6 col-md-3 mb-4 mb-md-0">
-              <h3>Company</h3>
-              <ul class="list-unstyled">
-                <li>
-                  <a href="#">About Us</a>
-                </li>
-                <li>
-                  <a href="#">Career</a>
-                </li>
-                <li>
-                  <a href="#">Blog</a>
-                </li>
-                <li>
-                  <a href="#">Resources</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-6 col-md-3 mb-4 mb-md-0">
-              <h3>Support</h3>
-              <ul class="list-unstyled">
-                <li>
-                  <a href="#">Support</a>
-                </li>
-                <li>
-                  <a href="#">Privacy</a>
-                </li>
-                <li>
-                  <a href="#">Terms of Service</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-6 col-md-3 mb-4 mb-md-0">
-              <h3>Contact Us</h3>
-              <div class="footer-social">
-                <a href="#">
-                  <span class="icon-facebook"></span>
-                </a>
-                <a href="#">
-                  <span class="icon-twitter"></span>
-                </a>
-                <a href="#">
-                  <span class="icon-instagram"></span>
-                </a>
-                <a href="#">
-                  <span class="icon-linkedin"></span>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="row text-center">
-            <div class="col-12">
-              <p> Copyright © <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
-                <script>
-                    document.write(new Date().getFullYear());
-                </script>2024 All rights reserved | This template is made with <i class="icon-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Gujjar Boys</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/stickyfill.min.js"></script>
-    <script src="js/jquery.fancybox.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.animateNumber.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+            <p>&copy; 2024 Job Portal. All Rights Reserved.</p>
+        </footer>
+    </form>
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'UA-23581568-13');
-    </script>
-    <script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;8c1f75ef0e2bb2d7&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true}},&quot;version&quot;:&quot;2024.8.0&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;}" crossorigin="anonymous"></script>
-      </form>
-  </body>
+    <!-- Including Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
 </html>

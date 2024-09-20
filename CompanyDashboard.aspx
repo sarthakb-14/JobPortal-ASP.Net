@@ -235,6 +235,17 @@
             margin-bottom: 0;
         }
 
+        .card-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+
     </style>
 </head>
 <body>
@@ -393,8 +404,10 @@
                 <!-- Update Profile Card and Form -->
                 <div class="col-md-6">
                     <div class="dashboard-card" id="update-profile-card">
-                        <i class="fas fa-user-edit fa-3x"></i>
-                        <h3>Update Profile</h3>
+                        <asp:LinkButton ID="btnUpdateProfile" runat="server" OnClick="Openclick_Click" CssClass="card-link">
+                            <i class="fas fa-user-edit fa-3x"></i>
+                            <h3>Update Profile</h3>
+                        </asp:LinkButton>
                     </div>
                     <div id="update-profile-form" class="form-card">
                         <h2>Update Profile</h2>
@@ -467,8 +480,6 @@
             const form = document.getElementById('change-password-form');
             form.style.display = form.style.display === 'block' ? 'none' : 'block';
         };
-
-       
        
     </script>
 </body>
