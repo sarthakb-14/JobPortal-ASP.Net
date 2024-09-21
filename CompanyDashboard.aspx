@@ -253,7 +253,10 @@
     <!-- Navbar -->
    
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Dashboard</a>
+        <a class="nav-link">
+            <i class="fas fa-user-circle fa-2x"></i> <!-- Profile Picture Icon -->
+            <asp:Label runat="server" ID="Label1">Company</asp:Label><!-- Label Text -->
+        </a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -269,13 +272,10 @@
                     <a class="nav-link" href="#manage-account-section">Manage Account</a>
                 </li>
 
-                <!-- Profile Picture and Label -->
                 <li class="nav-item">
-                    <a class="nav-link">
-                        <i class="fas fa-user-circle fa-2x"></i> <!-- Profile Picture Icon -->
-                        <asp:Label runat="server" ID="companyLabel">Company</asp:Label><!-- Label Text -->
-                    </a>
+                    <asp:Button ID="LogoutButton" runat="server" CssClass="btn btn-danger" Text="Logout" OnClick="Logout_Click" />
                 </li>
+                
             </ul>
         </div>
     </nav>
@@ -351,37 +351,35 @@
     <div id="manage-job-options" style="display: none; margin-top: 20px;">
         <div class="row">
             <!-- View Job Card -->
-            <div class="col-md-4" >
-                <a href="ViewJob.aspx" style="text-decoration : none"><div class="dashboard-card" runat="server">
-    <i class="fas fa-eye fa-3x"></i>
-    <h3>View Job</h3>
-    
-</div></a>
-                
-            </div>
+            <div class="col-md-4">
+    <asp:LinkButton ID="ViewJobLinkButton" runat="server" OnClick="ViewJobLinkButton_Click" CssClass="dashboard-card" style="cursor: pointer; text-decoration:none">
+        <i class="fas fa-eye fa-3x"></i>
+        <h3>View Job</h3>
+    </asp:LinkButton>
+</div>
 
             <!-- Update Job Card -->
             
             <div class="col-md-4">
-                <a style="text-decoration : none" href="UpdateJob.aspx">
-                    <div class="dashboard-card">
-                    <i class="fas fa-edit fa-3x"></i>
-                    <h3>Update Job</h3>
-    
-                </div>
-                </a>
+                
+                    <asp:LinkButton ID="UpdateJobLink" runat="server" OnClick="UpdateJobLink_Click" CssClass="dashboard-card" style="cursor: pointer; text-decoration:none">
+    <i class="fas fa-edit fa-3x"></i>
+    <h3>Update Job</h3>
+</asp:LinkButton>
+
+               
                 
             </div>
 
             <!-- Delete Job Card -->
             <div class="col-md-4">
-                <a style ="text-decoration : none" href="DeleteJob.aspx">
-                    <div class="dashboard-card">
+                
+                  <asp:LinkButton ID="DeleteJobButton" runat="server" CssClass="dashboard-card" OnClick="DeleteJobButton_Click" style="cursor: pointer; text-decoration:none">
     <i class="fas fa-trash fa-3x"></i>
     <h3>Delete Job</h3>
-    
-</div>
-                </a>
+</asp:LinkButton>
+
+             
                 
             </div>
         </div>
@@ -474,6 +472,8 @@
             const form = document.getElementById('update-profile-form');
             form.style.display = form.style.display === 'block' ? 'none' : 'block';
         };
+
+        
 
         // Toggle the Change Password form
         document.getElementById('change-password-card').onclick = function () {

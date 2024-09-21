@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace JobPortal
 {
@@ -12,71 +8,75 @@ namespace JobPortal
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!IsPostBack)
+            {
+                string cid = Request.QueryString["cid"];
+                if (!string.IsNullOrEmpty(cid))
+                {
+                    LoadJobs(cid);
+                }
+                else
+                {
+                    jobList.Text = "<div class='col-12'><h5>Company ID is missing.</h5></div>";
+                }
+            }
         }
 
-        protected void ViewJobButton_Click(object sender, EventArgs e)
+        private void LoadJobs(string cid)
         {
+            string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=DK27QV3\\SQLEXPRESS";
 
-            string jobId = JobIDInput.Text;
-
-            // Simple validation: Check if the Job ID is not empty
-            if (!string.IsNullOrEmpty(jobId))
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                // If the Job ID is valid, trigger JavaScript to show the job details container
-                string script = @"
-                    <script type='text/javascript'>
-                        document.getElementById('job-details-container').style.display = 'block';
-                    </script>";
+                con.Open();
+                string countQuery = "SELECT COUNT(*) FROM joblist WHERE cid = @cid";
+                SqlCommand countCommand = new SqlCommand(countQuery, con);
+                countCommand.Parameters.AddWithValue("@cid", cid);
 
-                // Register the script on the page to run after the button click event
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showJobDetails", script, false);
-            }
-            else
-            {
-                // Optionally, display an error message if Job ID is missing (can be implemented with a label)
-                string errorMessageScript = @"
-                    <script type='text/javascript'>
-                        alert('Please enter a valid Job ID.');
-                    </script>";
+                int jobCount = (int)countCommand.ExecuteScalar();
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "error", errorMessageScript, false);
-            }
-
-
-            
-
-            int jobid = int.Parse(JobIDInput.Text);
-            string sarthak = "uid=sa; password=manager@123; database = JobPortal; server = DK27QV3\\SQLEXPRESS";
-            SqlConnection con = new SqlConnection(sarthak);
-            con.Open();
-            SqlCommand cmd = new SqlCommand("select * from joblist where jobid = " + jobid + "", con);
-            SqlDataReader dr = cmd.ExecuteReader();
-            if (dr.Read())
-            {
-                JobTitleTextBox.Text = dr["jobtitle"].ToString();
-                CompanyIDTextBox.Text = dr["cid"].ToString();
-                ExperienceTextBox.Text = dr["jobexperience"].ToString();
-                SalaryTextBox.Text = dr["jobsalary"].ToString();
-                // Convert jobdeadline to DateTime and extract only the Date, then format it as yyyy-MM-dd
-                if (dr["jobdeadline"] != DBNull.Value)
+                if (jobCount > 0)
                 {
-                    DateTime jobDeadline = Convert.ToDateTime(dr["jobdeadline"]).Date;
-                    DeadlineTextBox.Text = jobDeadline.ToString("yyyy-MM-dd");
-                }
+                    string jobQuery = "SELECT * FROM joblist WHERE cid = @cid";
+                    SqlCommand jobCommand = new SqlCommand(jobQuery, con);
+                    jobCommand.Parameters.AddWithValue("@cid", cid);
+                    SqlDataReader reader = jobCommand.ExecuteReader();
 
-                // Convert jobpublishdate to DateTime and extract only the Date, then format it as yyyy-MM-dd
-                if (dr["jobpublishdate"] != DBNull.Value)
+                    while (reader.Read())
+                    {
+                        string jobTitle = reader["jobtitle"].ToString();
+                        string jobDescription = reader["jobJD"].ToString();
+                        string jobSalary = reader["jobsalary"].ToString();
+                        string jobVacancy = reader["jobvacancy"].ToString();
+                        string jobEmploymentStatus = reader["jobemployeementstatus"].ToString();
+                        string jobExperience = reader["jobexperience"].ToString();
+
+                        // Create a div for each job listing
+                        string jobDiv = $@"
+                            <div class='col-md-4 mb-4'>
+                                <div class='card'>
+                                    <div class='card-header'>
+                                        {jobTitle}
+                                    </div>
+                                    <div class='card-body'>
+                                        <p class='card-text'><strong>Job Description:</strong> {jobDescription}</p>
+                                        <p class='card-text'><strong>Salary:</strong> {jobSalary}</p>
+                                        <p class='card-text'><strong>Vacancy:</strong> {jobVacancy}</p>
+                                        <p class='card-text'><strong>Employment Status:</strong> {jobEmploymentStatus}</p>
+                                        <p class='card-text'><strong>Experience:</strong> {jobExperience}</p>
+                                    </div>
+                                </div>
+                            </div>";
+
+                        // Add the job div to the page
+                        jobList.Text += jobDiv;
+                    }
+                }
+                else
                 {
-                    DateTime jobPublishDate = Convert.ToDateTime(dr["jobpublishdate"]).Date;
-                    PublishDateTextBox.Text = jobPublishDate.ToString("yyyy-MM-dd");
+                    jobList.Text = "<div class='col-12'><h5>No jobs available.</h5></div>";
                 }
-
-                VacancyTextBox.Text = dr["jobvacancy"].ToString();
-                EmploymentStatusDropDown.SelectedValue = dr["jobemployeementstatus"].ToString();
-                JobDescriptionTextBox.Text = dr["jobJD"].ToString();
             }
-            con.Close();
         }
     }
 }

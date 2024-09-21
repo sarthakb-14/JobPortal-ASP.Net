@@ -10,18 +10,22 @@ using System.Web.UI.WebControls;
 
 namespace JobPortal
 {
+    
     public partial class CompanyDashboard : System.Web.UI.Page
     {
         
+        string sarthak = "uid=sa; password=manager@123; database = JobPortal; server = DK27QV3\\SQLEXPRESS";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             string cname = Request.QueryString["cname"];
-            companyLabel.Text = cname;
+            Label1.Text = cname;
+           
         }
 
         protected void Openclick_Click(object sender, EventArgs e)
         {
-            string sarthak = "uid=sa; password=manager@123; database = JobPortal; server = 7Y27QV3\\SQLEXPRESS";
+          
             SqlConnection con = new SqlConnection(sarthak);
             con.Open();
 
@@ -43,8 +47,8 @@ namespace JobPortal
 
         protected void UpdateProfile_Click(object sender, EventArgs e)
         {
-            string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
-            using (SqlConnection con = new SqlConnection(connectionString))
+          
+            using (SqlConnection con = new SqlConnection(sarthak))
             {
                 try
                 {
@@ -92,39 +96,63 @@ namespace JobPortal
         protected void ChangePassword_Click(object sender, EventArgs e)
         {
             string cid = Request.QueryString["cid"];
-            string sarthak = "uid=sa; password=manager@123; database = JobPortal; server = 7Y27QV3\\SQLEXPRESS";
-            SqlConnection con = new SqlConnection(sarthak);
-            con.Open();
-            try
-            {
-                string oldpass = OldPasswordTextBox.Text;
-                string newpass = NewPasswordTextBox.Text;
-                string cnfmpass = ConfirmPasswordTextBox.Text;
-                SqlCommand cmd0 = new SqlCommand("select cpassword from company", con);
-                SqlDataReader dr = cmd0.ExecuteReader();
-                string opass=null;
-                if (dr.Read()) {
-                    opass = dr["cpassword"].ToString();
+      
 
-                }
-                if (oldpass != opass)
-                {
-                    Response.Write("<script>alert('Old Password is not correct!');</script>");
-                }
-                if (newpass != cnfmpass)
-                {
-                    Response.Write("<script>alert('New Password and Confirm Password fields should match!');</script>");
-                }
-                SqlCommand cmd = new SqlCommand("update company set cpassword = '"+newpass+"' where cid = '"+cid+"'", con);
-                cmd.ExecuteNonQuery();
-                Response.Write("<script>alert('Password Changed Successfully!');</script>");
-            }
-            catch (Exception ex)
+            using (SqlConnection con = new SqlConnection(sarthak))
             {
-                Response.Write("<script>alert(" + ex.Message + ");</script>");
+                con.Open();
+                try
+                {
+                    string oldpass = OldPasswordTextBox.Text;
+                    string newpass = NewPasswordTextBox.Text;
+                    string cnfmpass = ConfirmPasswordTextBox.Text;
+
+                    // Validate passwords
+                    if (newpass != cnfmpass)
+                    {
+                        Response.Write("<script>alert('New Password and Confirm Password fields should match!');</script>");
+                        return;
+                    }
+
+                    // Fetch old password
+                    string opass = null;
+                    using (SqlCommand cmd0 = new SqlCommand("SELECT cpassword FROM company WHERE cid = @cid", con))
+                    {
+                        cmd0.Parameters.AddWithValue("@cid", cid);
+                        using (SqlDataReader dr = cmd0.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                opass = dr["cpassword"].ToString();
+                            }
+                        }
+                    }
+
+                    // Check if the old password matches
+                    if (oldpass != opass)
+                    {
+                        Response.Write("<script>alert('Old Password is not correct!');</script>");
+                        return;
+                    }
+
+                    // Update new password using a parameterized query
+                    using (SqlCommand cmd = new SqlCommand("UPDATE company SET cpassword = @newpass WHERE cid = @cid", con))
+                    {
+                        cmd.Parameters.AddWithValue("@newpass", newpass);
+                        cmd.Parameters.AddWithValue("@cid", cid);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    Response.Write("<script>alert('Password Changed Successfully!');</script>");
+                }
+                catch (Exception ex)
+                {
+                    // Proper escaping for JavaScript
+                    Response.Write($"<script>alert('Error: {ex.Message.Replace("'", "\\'")}');</script>");
+                }
             }
-            con.Close();
         }
+
         protected void postJob_Click(object sender, EventArgs e)
         {
 
@@ -132,7 +160,7 @@ namespace JobPortal
             {
                 string cid = Request.QueryString["cid"];
                 
-                string sarthak = "uid=sa; password=manager@123; database = JobPortal; server = 7Y27QV3\\SQLEXPRESS";
+                
                 string jobtitle = JobTitleTextBox.Text;
                 string experience = ExperienceTextBox.Text;
                 string salary = SalaryTextBox.Text;
@@ -153,6 +181,23 @@ namespace JobPortal
             }
             
         }
-        
+        protected void Logout_Click(object sender, EventArgs e) {
+            Response.Redirect("LandingPage.aspx");
+        }
+        protected void ViewJobLinkButton_Click(object sender, EventArgs e)
+        {
+            string cid = Request.QueryString["cid"]; 
+            Response.Redirect($"ViewJob.aspx?cid={cid}");
+        }
+        protected void UpdateJobLink_Click(object sender, EventArgs e)
+        {
+            string cid = Request.QueryString["cid"];
+            Response.Redirect($"UpdateJob.aspx?cid={cid}");
+        }
+        protected void DeleteJobButton_Click(object sender, EventArgs e)
+        {
+            string cid = Request.QueryString["cid"];
+            Response.Redirect($"DeleteJob.aspx?cid={cid}");
+        }
     }
 }
