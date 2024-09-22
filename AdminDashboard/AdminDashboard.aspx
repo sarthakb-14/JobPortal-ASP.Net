@@ -151,19 +151,19 @@
     <div class="Heading"><h2></h2></div>
     <form id="form1" runat="server">
         <div class="dashboard-container">
-            <div class="dashboard-card" onclick="window.location.href='Search.aspx';">
+            <div class="dashboard-card" onclick="window.location.href='../SearchAll.aspx';">
                 <i class="fas fa-search"></i>
                 <h3>Search</h3>
                 <p>Company Details, Student Details, Total Job Posting, Total Company</p>
             </div>
 
-            <div class="dashboard-card" onclick="window.location.href='ManageStudents.aspx';">
+            <div class="dashboard-card" onclick="window.location.href='../ManageStudents.aspx';">
                 <i class="fas fa-user-graduate"></i>
                 <h3>Manage Students</h3>
                 <p>View and manage student details and applications</p>
             </div>
 
-            <div class="dashboard-card" onclick="window.location.href='ManageCompanies.aspx';">
+            <div class="dashboard-card" onclick="window.location.href='../ManageCompanies.aspx';">
                 <i class="fas fa-building"></i>
                 <h3>Manage Companies</h3>
                 <p>View and manage company details and job postings</p>

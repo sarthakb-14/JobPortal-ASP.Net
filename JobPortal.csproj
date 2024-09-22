@@ -129,6 +129,7 @@
     <Content Include="ManageCompanies.aspx" />
     <Content Include="ManageStudents.aspx" />
     <Content Include="Registration.aspx" />
+    <Content Include="SearchAll.aspx" />
     <Content Include="StudentDashboard.aspx" />
     <Content Include="images\bg_dashboard.jpg" />
     <Content Include="StyleSheet\CompanyDashboard.css" />
@@ -271,6 +272,13 @@
     </Compile>
     <Compile Include="Registration.aspx.designer.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SearchAll.aspx.cs">
+      <DependentUpon>SearchAll.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchAll.aspx.designer.cs">
+      <DependentUpon>SearchAll.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ManageStudents.aspx.cs" Inherits="JobPortal.ManageStudents" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SearchAll.aspx.cs" Inherits="JobPortal.SearchAll" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Manage Students</title>
+    <title>Search All</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <style>
         body {
@@ -52,31 +52,21 @@
             margin-right: 10px;
         }
 
-        .button, .btn-search {
-            border-radius: 11px;
-            padding: 0 1em;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .button {
-            background-color: transparent;
-            color: #fff;
-            border: 0.2em solid red;
-            transition: all 0.6s ease;
-            height: 37px;
-        }
-
-        .button:hover {
-            background-color: red;
-            color: #fff;
-        }
-
         .btn-search {
             background-color: transparent;
             color: #fff;
+            width: 7em;
+            height: 2.5em;
             border: 0.2em solid blue;
+            border-radius: 11px;
+            text-align: center;
             transition: all 0.6s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
         }
 
         .btn-search:hover {
@@ -88,6 +78,7 @@
             width: 100%;
             margin: 0 auto;
             border-collapse: collapse;
+            border-radius: 20px;
             background-color: transparent;
             border: none;
         }
@@ -104,10 +95,6 @@
             border-bottom: 1px solid darkblue;
         }
 
-        .grid-view tr {
-            border-bottom: 1px solid darkblue;
-        }
-
         .grid-view tr:hover {
             background-color: rgba(8, 7, 44, 0.5);
         }
@@ -116,42 +103,28 @@
 <body>
     <form id="form1" runat="server">
         <div class="grid-container">
-            <h2>Manage Students</h2>
+            <h2>Search Across All</h2>
 
             <!-- Search form -->
             <div class="search-container">
-                <asp:TextBox ID="txtSearch" runat="server" placeholder="Search..." CssClass="form-control" />
-                <asp:DropDownList ID="ddlSearchColumn" runat="server" CssClass="form-control">
-                    <asp:ListItem Text="Student Name" Value="sname" />
-                    <asp:ListItem Text="Email" Value="semail" />
-                    <asp:ListItem Text="Username" Value="susername" />
-                    <asp:ListItem Text="Contact Number" Value="scontactno" />
-                    <asp:ListItem Text="Skills" Value="sskills" />
+                <asp:DropDownList ID="ddlEntity" runat="server" CssClass="form-control" AutoPostBack="True" OnSelectedIndexChanged="ddlEntity_SelectedIndexChanged">
+                    <asp:ListItem Text="Select Entity" Value="" />
+                    <asp:ListItem Text="Student" Value="student" />
+                    <asp:ListItem Text="Job" Value="joblist" />
+                    <asp:ListItem Text="Company" Value="company" />
+                    <asp:ListItem Text="Admin" Value="admin" />
+                    <asp:ListItem Text="Apply Job" Value="applyjob" />
                 </asp:DropDownList>
+
+                <asp:TextBox ID="txtSearch" runat="server" placeholder="Search..." CssClass="form-control" />
+                <asp:DropDownList ID="ddlSearchColumn" runat="server" CssClass="form-control"></asp:DropDownList>
                 <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn-search" OnClick="btnSearch_Click" />
             </div>
 
-            <!-- GridView for displaying students -->
-            <asp:GridView ID="GridView1" runat="server" CssClass="grid-view" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging">
-                <Columns>
-                    <asp:BoundField DataField="sname" HeaderText="Student Name" />
-                    <asp:BoundField DataField="semail" HeaderText="Email" />
-                    <asp:BoundField DataField="susername" HeaderText="Username" />
-                    <asp:BoundField DataField="sdob" HeaderText="Date of Birth" />
-                    <asp:BoundField DataField="sgender" HeaderText="Gender" />
-                    <asp:BoundField DataField="saddress" HeaderText="Address" />
-                    <asp:BoundField DataField="scontactno" HeaderText="Contact Number" />
-                    <asp:BoundField DataField="sskills" HeaderText="Skills" />
-                    <asp:TemplateField HeaderText="Action">
-                        <ItemTemplate>
-                            <button class="button" onclick="return confirm('Are you sure you want to delete this record?');">Delete</button>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
+            <!-- GridView for displaying the search results -->
+            <asp:GridView ID="GridView1" runat="server" CssClass="grid-view" AutoGenerateColumns="True" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging">
             </asp:GridView>
         </div>
     </form>
 </body>
 </html>
-
-
