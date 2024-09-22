@@ -8,7 +8,7 @@ namespace JobPortal
     {
         protected string userRole;
         // Connection string
-        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
+        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=C927QV3\\SQLEXPRESS";
 
         // This variable will store the role (Student, Company, Admin)
         
@@ -86,7 +86,7 @@ namespace JobPortal
                 }
                 else if (userRole == "Admin")
                 {
-                    Response.Redirect("AdminPage.aspx");
+                    Response.Redirect("AdminDashboard/AdminDashboard.aspx");
                 }
             }
             else
