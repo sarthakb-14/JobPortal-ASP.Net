@@ -131,6 +131,7 @@
     <Content Include="Registration.aspx" />
     <Content Include="StudentDashboard.aspx" />
     <Content Include="images\bg_dashboard.jpg" />
+    <Content Include="StyleSheet\CompanyDashboard.css" />
     <Content Include="StyleSheet\JobListing.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />

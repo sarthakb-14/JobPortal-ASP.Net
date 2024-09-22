@@ -3,7 +3,7 @@
     background-color: #f8f9fa;
     background-size: contain;
     color: #343a40;
-    background: linear-gradient(to bottom, #09016c, #000000);
+    background: linear-gradient(to bottom, #09016c 0%, #000000 90%);
     user-select: none;
 }
 

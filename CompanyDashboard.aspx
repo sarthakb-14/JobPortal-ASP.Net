@@ -10,11 +10,11 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Bootstrap -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-
-    <style>
+    <link rel="stylesheet" href="StyleSheet/CompanyDashboard.css" />
+   <%-- <style>
         body {
             font-family: 'Poppins', sans-serif;
             background: url('images/bg_dashboard.jpg') no-repeat center center fixed;
@@ -24,7 +24,6 @@
 
         .navbar {
             margin-bottom: 20px;
-            
         }
 
         h1 {
@@ -79,22 +78,29 @@
             background-color: #007bff;
             border: none;
         }
+
         #post-job-form {
             display: none;
-            width: 50%; /* Takes up 70% of the screen width */
-            margin: 0 auto; /* Centers the form horizontally */
-            background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white background */
+            width: 50%;
+            /* Takes up 70% of the screen width */
+            margin: 0 auto;
+            /* Centers the form horizontally */
+            background-color: rgba(255, 255, 255, 0.15);
+            /* Semi-transparent white background */
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(10px);
-            position: relative; /* Ensures the form stays in its section */
-            margin-top : 90px;
+            position: relative;
+            /* Ensures the form stays in its section */
+            margin-top: 90px;
         }
 
         #post-job-form h2 {
-            color: #fff; /* Makes the text color white */
+            color: #fff;
+            /* Makes the text color white */
         }
+
         .post-job-form label {
             color: white;
             font-weight: bold;
@@ -107,9 +113,11 @@
         }
 
         .post-job-form .btn-primary {
-            width: 20%; /* Button spans the entire width */
-            border-radius : 10px;
+            width: 20%;
+            /* Button spans the entire width */
+            border-radius: 10px;
         }
+
         /* General form card styling */
         .form-card {
             display: none;
@@ -146,7 +154,7 @@
         }
 
         /* Form Heading */
-        #update-profile-form h2, 
+        #update-profile-form h2,
         #change-password-form h2 {
             text-align: center;
             color: white;
@@ -154,7 +162,7 @@
         }
 
         /* Labels inside the forms */
-        #update-profile-form label, 
+        #update-profile-form label,
         #change-password-form label {
             color: white;
             font-weight: bold;
@@ -213,21 +221,21 @@
         }
 
         /* Hover Effect for Cards */
-        #update-profile-card:hover, 
+        #update-profile-card:hover,
         #change-password-card:hover {
             background-color: rgba(0, 123, 255, 0.2);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
         }
 
         /* Icons inside the cards */
-        #update-profile-card i, 
+        #update-profile-card i,
         #change-password-card i {
             color: white;
             margin-bottom: 15px;
         }
 
         /* Card Headings */
-        #update-profile-card h3, 
+        #update-profile-card h3,
         #change-password-card h3 {
             color: white;
             text-transform: uppercase;
@@ -236,178 +244,132 @@
         }
 
         .card-link {
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-    display: block;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-}
-
-
-    </style>
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+    </style>--%>
 </head>
 <body>
     <form id="form1" runat="server">
-    <!-- Navbar -->
-   
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="nav-link">
-            <i class="fas fa-user-circle fa-2x"></i> <!-- Profile Picture Icon -->
-            <asp:Label runat="server" ID="Label1">Company</asp:Label><!-- Label Text -->
-        </a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#post-job-section">Post Job</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#manage-job-section">Manage Job</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#applied-job-report-section">Applied Job Report</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#manage-account-section">Manage Account</a>
-                </li>
-
-                <li class="nav-item">
-                    <asp:Button ID="LogoutButton" runat="server" CssClass="btn btn-danger" Text="Logout" OnClick="Logout_Click" />
-                </li>
-                
-            </ul>
-        </div>
-    </nav>
-
-
-    <!-- Page Title -->
-    <h1>Company Dashboard</h1>
-
-    <!-- Sections -->
-
-    <!-- Post Job Section -->
-    <div id="post-job-section" class="section">
-        
-        <div class="dashboard-card" id="post-job-card" onclick="loadCard()">
-            <i class="fas fa-briefcase fa-3x"></i>
-            <h3>Post Job</h3>
-        </div>
-
-        <div id="post-job-form" class="post-job-form">
-            <!-- Job Title -->
-            <label for="JobTitleTextBox">Job Title</label>
-            <asp:TextBox ID="JobTitleTextBox" runat="server" CssClass="form-control" Placeholder="Job Title"></asp:TextBox>
-
-            <!-- Experience Required -->
-            <label for="ExperienceTextBox">Experience Required</label>
-            <asp:TextBox ID="ExperienceTextBox" runat="server" CssClass="form-control" Placeholder="Experience Required"></asp:TextBox>
-
-            <!-- Salary (Range) -->
-            <label for="SalaryTextBox">Salary</label>
-            <asp:TextBox ID="SalaryTextBox" runat="server" CssClass="form-control" Placeholder="Salary (Range)"></asp:TextBox>
-
-            <!-- Deadline -->
-            <label for="DeadlineTextBox">Deadline</label>
-            <asp:TextBox ID="DeadlineTextBox" runat="server" CssClass="form-control" TextMode="Date" Placeholder="Deadline"></asp:TextBox>
-
-            <!-- Publish Date -->
-            <label for="PublishDateTextBox">Publish Date</label>
-            <asp:TextBox ID="PublishDateTextBox" runat="server" CssClass="form-control" TextMode="Date" Placeholder="Publish Date"></asp:TextBox>
-
-            <!-- Vacancy -->
-            <label for="VacancyTextBox">Vacancy</label>
-            <asp:TextBox ID="VacancyTextBox" runat="server" CssClass="form-control" TextMode="Number" Placeholder="Vacancy"></asp:TextBox>
-
-            <!-- Employment Status -->
-            <label for="EmploymentStatusDropDown">Employment Status</label>
-            <asp:DropDownList ID="EmploymentStatusDropDown" runat="server" CssClass="form-control">
-                <asp:ListItem Text="Full-Time" Value="Full-Time"></asp:ListItem>
-                <asp:ListItem Text="Part-Time" Value="Part-Time"></asp:ListItem>
-                <asp:ListItem Text="Contract" Value="Contract"></asp:ListItem>
-                <asp:ListItem Text="Internship" Value="Internship"></asp:ListItem>
-                
-            </asp:DropDownList>
-
-            <!-- Job Description -->
-            <label for="JobDescriptionTextBox">Job Description</label>
-            <asp:TextBox ID="JobDescriptionTextBox" runat="server" CssClass="form-control" TextMode="MultiLine" Placeholder="Job Description"></asp:TextBox>
-
-            <!-- Post Job Button -->
-            <asp:Button ID="PostJobButton" runat="server" CssClass="btn btn-primary" Text="Post Job" OnClick="postJob_Click" />
-
-        </div>
-    </div>
-
-    <!-- Manage Job Section -->
-    <div id="manage-job-section" class="section">
-    
-    <div class="dashboard-card" id="manage-job-card" onclick="toggleManageJob()">
-        <i class="fas fa-tasks fa-3x"></i>
-        <h3>Manage Job</h3>
-    </div>
-
-    <!-- Manage Job Options (Initially Hidden) -->
-    <div id="manage-job-options" style="display: none; margin-top: 20px;">
-        <div class="row">
-            <!-- View Job Card -->
-            <div class="col-md-4">
-    <asp:LinkButton ID="ViewJobLinkButton" runat="server" OnClick="ViewJobLinkButton_Click" CssClass="dashboard-card" style="cursor: pointer; text-decoration:none">
-        <i class="fas fa-eye fa-3x"></i>
-        <h3>View Job</h3>
-    </asp:LinkButton>
-</div>
-
-            <!-- Update Job Card -->
-            
-            <div class="col-md-4">
-                
-                    <asp:LinkButton ID="UpdateJobLink" runat="server" OnClick="UpdateJobLink_Click" CssClass="dashboard-card" style="cursor: pointer; text-decoration:none">
-    <i class="fas fa-edit fa-3x"></i>
-    <h3>Update Job</h3>
-</asp:LinkButton>
-
-               
-                
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="nav-link">
+                <i class="fas fa-user-circle fa-2x"></i>
+                <asp:Label runat="server" ID="Label1">Company</asp:Label>
+            </a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#post-job-section">Post Job</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#manage-job-section">Manage Job</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#applied-job-report-section">Applied Job Report</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#manage-account-section">Manage Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <asp:Button ID="LogoutButton" runat="server" CssClass="btn btn-danger" Text="Logout" OnClick="Logout_Click" />
+                    </li>
+                </ul>
             </div>
+        </nav>
 
-            <!-- Delete Job Card -->
-            <div class="col-md-4">
-                
-                  <asp:LinkButton ID="DeleteJobButton" runat="server" CssClass="dashboard-card" OnClick="DeleteJobButton_Click" style="cursor: pointer; text-decoration:none">
-    <i class="fas fa-trash fa-3x"></i>
-    <h3>Delete Job</h3>
-</asp:LinkButton>
-
-             
-                
+        <!-- Page Title -->
+        <h1>Company Dashboard</h1>
+        <div id="post-job-section" class="section">
+            <div class="dashboard-card" id="post-job-card" onclick="loadCard()">
+                <i class="fas fa-briefcase fa-3x"></i>
+                <h3>Post Job</h3>
+            </div>
+            <div id="post-job-form" class="post-job-form">
+                <label for="JobTitleTextBox">Job Title</label>
+                <asp:TextBox ID="JobTitleTextBox" runat="server" CssClass="form-control" Placeholder="Job Title"></asp:TextBox>
+                <label for="ExperienceTextBox">Experience Required</label>
+                <asp:TextBox ID="ExperienceTextBox" runat="server" CssClass="form-control" Placeholder="Experience Required"></asp:TextBox>
+                <label for="SalaryTextBox">Salary</label>
+                <asp:TextBox ID="SalaryTextBox" runat="server" CssClass="form-control" Placeholder="Salary (Range)"></asp:TextBox>
+                <label for="DeadlineTextBox">Deadline</label>
+                <asp:TextBox ID="DeadlineTextBox" runat="server" CssClass="form-control" TextMode="Date" Placeholder="Deadline"></asp:TextBox>
+                <label for="PublishDateTextBox">Publish Date</label>
+                <asp:TextBox ID="PublishDateTextBox" runat="server" CssClass="form-control" TextMode="Date" Placeholder="Publish Date"></asp:TextBox>
+                <label for="VacancyTextBox">Vacancy</label>
+                <asp:TextBox ID="VacancyTextBox" runat="server" CssClass="form-control" TextMode="Number" Placeholder="Vacancy"></asp:TextBox>
+                <label for="EmploymentStatusDropDown">Employment Status</label>
+                <asp:DropDownList ID="EmploymentStatusDropDown" runat="server" CssClass="form-control">
+                    <asp:ListItem Text="Full-Time" Value="Full-Time"></asp:ListItem>
+                    <asp:ListItem Text="Part-Time" Value="Part-Time"></asp:ListItem>
+                    <asp:ListItem Text="Contract" Value="Contract"></asp:ListItem>
+                    <asp:ListItem Text="Internship" Value="Internship"></asp:ListItem>
+                </asp:DropDownList>
+                <label for="JobDescriptionTextBox">Job Description</label>
+                <asp:TextBox ID="JobDescriptionTextBox" runat="server" CssClass="form-control" TextMode="MultiLine" Placeholder="Job Description"></asp:TextBox>
+                <asp:Button ID="PostJobButton" runat="server" CssClass="btn btn-primary" Text="Post Job" OnClick="PostJob_Click" />
             </div>
         </div>
-    </div>
-</div>
 
-    <!-- Applied Job Report Section -->
-    <div id="applied-job-report-section" class="section">
-        
-        <div class="dashboard-card">
-            <i class="fas fa-file-alt fa-3x"></i>
-            <h3>Applied Job Report</h3>
+        <!-- Manage Job Section -->
+        <div id="manage-job-section" class="section">
+            <div class="dashboard-card" id="manage-job-card" onclick="toggleManageJob()">
+                <i class="fas fa-tasks fa-3x"></i>
+                <h3>Manage Job</h3>
+            </div>
+            <div id="manage-job-options" style="display: none; margin-top: 20px;">
+                <div class="row">
+                    <div class="col-md-4">
+                        <asp:LinkButton ID="ViewJobLinkButton" runat="server" OnClick="ViewJobLinkButton_Click" CssClass="dashboard-card" style="cursor: pointer; text-decoration:none">
+                            <i class="fas fa-eye fa-3x"></i>
+                            <h3>View Job</h3>
+                        </asp:LinkButton>
+                    </div>
+                    <div class="col-md-4">
+                        <asp:LinkButton ID="UpdateJobLink" runat="server" OnClick="UpdateJobLink_Click" CssClass="dashboard-card" style="cursor: pointer; text-decoration:none">
+                            <i class="fas fa-edit fa-3x"></i>
+                            <h3>Update Job</h3>
+                        </asp:LinkButton>
+                    </div>
+                    <div class="col-md-4">
+                        <asp:LinkButton ID="DeleteJobButton" runat="server" CssClass="dashboard-card" OnClick="DeleteJobButton_Click" style="cursor: pointer; text-decoration:none">
+                            <i class="fas fa-trash fa-3x"></i>
+                            <h3>Delete Job</h3>
+                        </asp:LinkButton>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <!-- Manage Account Section -->
+        <!-- Applied Job Report Section -->
+        <div id="applied-job-report-section" class="section">
+            <div class="dashboard-card">
+                <i class="fas fa-file-alt fa-3x"></i>
+                <h3>Applied Job Report</h3>
+            </div>
+        </div>
+
+        <!-- Manage Account Section -->
         <div id="manage-account-section" class="section">
             <h2>Manage Account</h2>
             <div class="row">
                 <!-- Update Profile Card and Form -->
                 <div class="col-md-6">
                     <div class="dashboard-card" id="update-profile-card">
-                        <asp:LinkButton ID="btnUpdateProfile" runat="server" OnClick="Openclick_Click" CssClass="card-link">
+                         <asp:LinkButton ID="btnUpdateProfile" runat="server" 
+                            OnClick="Openclick_Click" 
+                            OnClientClick="return toggleProfileForm();" 
+                            CssClass="card-link">
                             <i class="fas fa-user-edit fa-3x"></i>
                             <h3>Update Profile</h3>
                         </asp:LinkButton>
                     </div>
-                    <div id="update-profile-form" class="form-card">
+                    <div id="update-profile-form" class="form-card" style="display: none;">
                         <h2>Update Profile</h2>
                         <label for="CompanyNameTextBox">Company Name</label>
                         <asp:TextBox ID="CompanyNameTextBox" runat="server" CssClass="form-control" Placeholder="Company Name"></asp:TextBox>
@@ -434,7 +396,7 @@
                         <label for="NewPasswordTextBox">New Password</label>
                         <asp:TextBox ID="NewPasswordTextBox" runat="server" CssClass="form-control" TextMode="Password" Placeholder="New Password"></asp:TextBox>
                         <label for="ConfirmPasswordTextBox">Confirm Password</label>
-                        <asp:TextBox ID="ConfirmPasswordTextBox" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Confirm Password">"Confirm Password"</asp:TextBox>
+                        <asp:TextBox ID="ConfirmPasswordTextBox" runat="server" CssClass="form-control" TextMode="Password" Placeholder="Confirm Password"></asp:TextBox>
                         <asp:Button ID="ChangePasswordButton" runat="server" CssClass="btn btn-primary" Text="Change Password" OnClick="ChangePassword_Click"/>
                     </div>
                 </div>
@@ -450,11 +412,7 @@
         // Toggle the Post Job form
         function loadCard() {
             const postJobForm = document.getElementById('post-job-form');
-            if (postJobForm.style.display === 'block') {
-                postJobForm.style.display = 'none'; // Hide the form if it's visible
-            } else {
-                postJobForm.style.display = 'block'; // Show the form as a card
-            }
+            postJobForm.style.display = postJobForm.style.display === 'block' ? 'none' : 'block';
         }
 
         // Toggle Manage Job options
@@ -463,25 +421,38 @@
             manageJobOptions.style.display = manageJobOptions.style.display === 'block' ? 'none' : 'block';
         }
 
-        function toggleManageAccount() {
-            const manageAccountOptions = document.getElementById('manage-account-options');
-            manageAccountOptions.style.display = manageAccountOptions.style.display === 'block' ? 'none' : 'block';
-        }
         // Toggle Update Profile form
-        document.getElementById('update-profile-card').onclick = function () {
-            const form = document.getElementById('update-profile-form');
-            form.style.display = form.style.display === 'block' ? 'none' : 'block';
-        };
+        let formVisible = false;
 
-        
+        function toggleProfileForm() {
+            const form = document.getElementById('update-profile-form');
+
+            // If the form is already visible, allow the postback
+            if (formVisible) {
+                return true;  // Allow the postback
+            } else {
+                form.style.display = 'block';  // Show the form
+                formVisible = true;  // Set the state
+                return false;  // Prevent immediate postback
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Reset the form visibility on postback
+            const form = document.getElementById('update-profile-form');
+            if (form) {
+                form.style.display = 'none';
+                formVisible = false;  // Reset state
+            }
+        });
 
         // Toggle the Change Password form
         document.getElementById('change-password-card').onclick = function () {
             const form = document.getElementById('change-password-form');
             form.style.display = form.style.display === 'block' ? 'none' : 'block';
         };
-       
     </script>
 </body>
 </html>
+
 
