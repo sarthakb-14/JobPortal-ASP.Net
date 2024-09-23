@@ -49,7 +49,7 @@
 
         <!-- Search Section -->
         <section class="container d-flex flex-column">
-            <h3 class="mt-4 mb-4 fs-1 text-center">Filter Jobs</h3>
+            <h3 class="fs-1 text-center" style="margin-top: 8%;margin-bottom: 3%;">Filter Jobs</h3>
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
                     <input type="text" class="form-control form-control-lg sizeing" placeholder="Job title, keywords..." />
@@ -74,55 +74,8 @@
 
 
         <!-- Job Card Section -->
-        <%--<section class="container mt-4">
-            <asp:Label CssClass="dynamic-label" runat="server">10,234 Jobs Listed</asp:Label>
-            <div class="row mb-5">
-                <div class="col-md-12">
-                    <asp:Repeater ID="JobCardRepeater" runat="server">
-                        <ItemTemplate>
-                            <!-- Job Info Column -->
-                            <div class="job-card mb-4 p-4 shadow-sm rounded border bg-white position-relative">
-                                <div class="row align-items-center">
-                                    <div class="col-md-4 d-flex">
-                                        <div class="job-info">
-                                            <div class="badge bg-primary text-white mb-2">Freelancer</div>
-                                            <a href='<%# Eval("JobLink") %>' class="job-title h5 text-dark mb-1 d-block">
-                                                <%# Eval("JobTitle") %>
-                                            </a>
-                                            <p class="job-meta text-muted">
-                                                Publisher: <strong><%# Eval("Publisher") %></strong>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p class="job-location mb-0"><strong>Location</strong><br /> <%# Eval("Location") %></p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p class="job-vacancy mb-0"><strong>Vacancies</strong><br /> <%# Eval("VacancyCount") %></p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p class="job-salary mb-0"><strong>Salary</strong><br /> <%# Eval("SalaryRange") %></p>
-                                    </div>
-                                    <div class="col-md-2 text-end">
-                                        <asp:Button runat="server" CssClass="btn btn-warning px-4" Text="Apply" OnClick="ApplyJob" />
-                                    </div>
-                                </div>
-                                <!-- Job Description -->
-                                <div class="row w-75">
-                                    <div class="col-md-12">
-                                        <p class="job-description mb-0"><strong>Description</strong><br /></p>
-                                        <asp:Label CssClass="job-description-text text-muted" runat="server" Text='<%# Eval("JobDescription") %>'></asp:Label>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr />
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </div>
-            </div>
-        </section>--%>
         <section class="container mt-5 mb-5">
-            <asp:Label CssClass="mb-2 fs-3" runat="server">10,234 Jobs Listed</asp:Label>
+            <asp:Label ID="JobNumberLabel" CssClass="mb-2 fs-3" runat="server"></asp:Label>
             <div class="row mt-3">
                 <div class="col-md-12">
                     <asp:Repeater ID="JobCardRepeater" runat="server">
@@ -132,9 +85,9 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-4 d-flex">
                                         <div class="job-info">
-                                            <div class="badge bg-primary text-white mb-2">Freelancer</div>
+                                            <div class="badge bg-primary text-white mb-2"><%# Eval("JobType") %></div>
                                             <a href='<%# Eval("JobLink") %>' class="job-title h5 text-dark mb-1 d-block">
-                                                <%# Eval("JobTitle") %>
+                                               <%# Eval("JobTitle") %>
                                             </a>
                                             <p class="job-meta text-muted">
                                                 Publisher: <strong><%# Eval("Publisher") %></strong>
@@ -142,7 +95,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-2">
-                                        <p class="job-location mb-0"><strong>Location</strong><br /> <%# Eval("Location") %></p>
+                                        <p class="job-location mb-0"><strong>Location</strong><br /> <%# Eval("JobLocation") %></p>
                                     </div>
                                     <div class="col-md-2">
                                         <p class="job-vacancy mb-0"><strong>Vacancies</strong><br /> <%# Eval("VacancyCount") %></p>
@@ -167,28 +120,23 @@
                     </asp:Repeater>
                 </div>
             </div>
-            <!-- PageNo -->
+
+            <!-- Pagination -->
             <div class="row pagination-wrap">
                 <nav aria-label="Page navigation" class="custom-pagination">
                     <ul class="pagination">
-                        <li class="page-item">
-                            <a href="#" class="page-link prev" aria-label="Previous">
-                                <span aria-hidden="true">Previous</span>
-                            </a>
-                        </li>
-                        <li class="page-item"><a href="#" class="page-link active">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item">
-                            <a href="#" class="page-link next" aria-label="Next">
-                                <span aria-hidden="true">Next</span>
-                            </a>
-                        </li>
+                        <asp:Repeater ID="PaginationRepeater" runat="server">
+                            <ItemTemplate>
+                                <li class="page-item <%# Eval("CssClass") %>">
+                                    <a href="?page=<%# Eval("Value") %>" class="page-link"><%# Eval("Text") %></a>
+                                </li>
+                            </ItemTemplate>
+                        </asp:Repeater>
                     </ul>
                 </nav>
             </div>
         </section>
+
 
         <!-- Detail Section -->
         <section class="site-section py-4 mb-5 border-top">
