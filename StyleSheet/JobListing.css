@@ -1,9 +1,7 @@
 ﻿body {
     font-family: "Poppins", sans-serif;
-    background-color: #f8f9fa;
     background-size: contain;
     color: #343a40;
-    background: linear-gradient(to bottom, #09016c, #000000);
     user-select: none;
 }
 
@@ -75,20 +73,18 @@
     justify-content: center;
     color: white;
     text-align: center;
-    min-height: 100vh;
-    max-height: 100vh;
+    height: 70vh;
     z-index: 1;
 }
 
 .banner h1 {
-    position: relative;
-    font-size: 4rem;
+    font-size: 2rem;
+    margin-top: 5%;
 }
 
 .banner p {
-    position: relative;
     font-size: 1.2rem;
-    margin-bottom: 20px;
+    color: #9fa19d;
 }
 
 select.form-control.sizeing,
@@ -101,6 +97,57 @@ select.form-control.sizeing,
     z-index: 1;
 }
 
+
+/* Job Card Section */
+/*.job-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}*/
+
+.job-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.job-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transform: translateY(-3px);
+    transition: all 0.3s ease;
+}
+
+.job-title:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.job-meta {
+    color: #666;
+    font-size: 14px;
+}
+
+.job-location, .job-vacancy, .job-salary {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.job-description-text {
+    border-radius: 4px;
+    color: #333;
+    font-size: 14px;
+}
+
+
+
+/* Detail */
+.img-fluid {
+    max-width: 200px;
+    height: 100px;
+}
 
 
 /* Footer */
