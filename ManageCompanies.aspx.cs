@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -13,10 +12,6 @@ namespace JobPortal
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            Response.Cache.SetExpires(DateTime.UtcNow.AddHours(-1));
-            Response.Cache.SetNoStore();
-
             // Check if aid and aname are available in the query string
             string adminId = Request.QueryString["aid"];
             string adminName = Request.QueryString["aname"];
@@ -25,6 +20,7 @@ namespace JobPortal
             {
                 // Redirect to JobPortalLogin if query string parameters are missing
                 Response.Redirect(ResolveUrl("~/JobPortalLogin.aspx"));
+
             }
             else
             {

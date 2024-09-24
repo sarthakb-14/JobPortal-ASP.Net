@@ -14,7 +14,26 @@ namespace JobPortal
         {
             if (!IsPostBack)
             {
-                LoadStudents();
+                // Check if aid and aname are available in the query string
+                string adminId = Request.QueryString["aid"];
+                string adminName = Request.QueryString["aname"];
+
+                if (string.IsNullOrEmpty(adminId) || string.IsNullOrEmpty(adminName))
+                {
+                    // Redirect to JobPortalLogin if query string parameters are missing
+                    Response.Redirect(ResolveUrl("~/JobPortalLogin.aspx"));
+
+                }
+                else
+                {
+                    // Set the admin name in the label for profile display
+                    lblAdminName.Text = adminName;
+                }
+
+                if (!IsPostBack)
+                {
+                    LoadStudents();
+                }
             }
         }
 
@@ -76,6 +95,13 @@ namespace JobPortal
                 cmd.Parameters.AddWithValue("@StudentId", studentId);
                 cmd.ExecuteNonQuery();
             }
+        }
+
+        protected void LogoutButton_Click(object sender, EventArgs e)
+        {
+            // Clear session and redirect to login page
+            Session.Clear();
+            Response.Redirect("LandingPage.aspx");
         }
     }
 }

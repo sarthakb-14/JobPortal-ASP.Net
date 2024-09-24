@@ -8,10 +8,25 @@ namespace JobPortal
 {
     public partial class SearchAll : System.Web.UI.Page
     {
-        private string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
+        private string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=C927QV3\\SQLEXPRESS";
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Check if aid and aname are available in the query string
+            string adminId = Request.QueryString["aid"];
+            string adminName = Request.QueryString["aname"];
+
+            if (string.IsNullOrEmpty(adminId) || string.IsNullOrEmpty(adminName))
+            {
+                // Redirect to JobPortalLogin if query string parameters are missing
+                Response.Redirect(ResolveUrl("~/JobPortalLogin.aspx"));
+
+            }
+            else
+            {
+                // Set the admin name in the label for profile display
+                lblAdminName.Text = adminName;
+            }
             if (!IsPostBack)
             {
                 // Initially, clear search columns dropdown
@@ -121,6 +136,13 @@ namespace JobPortal
         {
             GridView1.PageIndex = e.NewPageIndex;
             btnSearch_Click(sender, e); // Retain search query when changing pages
+        }
+
+        protected void LogoutButton_Click(object sender, EventArgs e)
+        {
+            // Clear session and redirect to login page
+            Session.Clear();
+            Response.Redirect("LandingPage.aspx");
         }
     }
 }

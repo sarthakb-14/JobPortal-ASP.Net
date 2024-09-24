@@ -5,13 +5,60 @@
 <head runat="server">
     <title>Search All</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+     <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <style>
         body {
             background: url('images/bg_dashboard.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #ffffff;
         }
+        .logout-btn {
+          background-color: transparent;
+          color: #fff;
+          width: 7em;
+          height: 2.5em;
+          border: 0.2em solid #007bff;
+          border-radius: 11px;
+          text-align: center;
+          transition: all 0.6s ease;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 1em;
+          position: relative;
+          font-weight: bold;
+          letter-spacing: 1px;
+          margin-left: 13px;
+        }
 
+        .logout-btn:hover {
+          background-color: #007bff;
+          cursor: pointer;
+          color: #fff;
+        }
+
+        .logout-btn:focus {
+          outline: none;
+          box-shadow: none;
+        }
+
+        .profile-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .profile-icon {
+            font-size: 2rem;
+            margin-right: 10px;
+        } 
         h2 {
             padding-bottom: 20px;
             padding-top: 20px;
@@ -98,13 +145,20 @@
         .grid-view tr:hover {
             background-color: rgba(8, 7, 44, 0.5);
         }
+        #lblAdminName {
+            font-family: 'Poppins', sans-serif;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div class="grid-container">
             <h2>Search Across All</h2>
-
+            <div class="profile-container">
+                <i class="fas fa-user-circle profile-icon"></i>
+                <asp:Label ID="lblAdminName" runat="server" Text=""></asp:Label>
+               <asp:Button ID="Button1" runat="server" Text="Logout" CssClass="logout-btn" OnClick="LogoutButton_Click" />
+            </div>
             <!-- Search form -->
             <div class="search-container">
                 <asp:DropDownList ID="ddlEntity" runat="server" CssClass="form-control" AutoPostBack="True" OnSelectedIndexChanged="ddlEntity_SelectedIndexChanged">
