@@ -78,7 +78,7 @@
                                         <asp:TextBox ID="txtJobExperience" runat="server" Text='<%# Eval("jobexperience") %>' CssClass="form-control" />
                                     </p>
                                     <asp:Button ID="btnUpdate" runat="server" Text="Update" 
-                                        CommandArgument='<%# Eval("jobId") %>' OnCommand="btnUpdate_Command" CssClass="btn btn-primary" />
+                                        CommandArgument='<%# Eval("jobId") %>' OnCommand="btnUpdate_Command" CssClass="btn btn-primary" CommandName="Update"/>
                                 </div>
                             </div>
                         </div>
