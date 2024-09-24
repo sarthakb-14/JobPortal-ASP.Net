@@ -8,18 +8,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="StyleSheet/StudentDashboard.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMt23jLRrWwG0GsF4Z5v4G5j3Bl1r5d30T9mF9" crossorigin="anonymous" />
-</head>
+<link rel="stylesheet" href="
+https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/></head>
 <body>
     <form id="form1" class="m-0" runat="server" enctype="multipart/form-data">
         <header>
             <div class="container d-flex justify-content-between align-items-center">
                 <h1>Student Dashboard</h1>
                 <nav>
-                    <ul class="nav">
-                        <li class="nav-item">
-                            <i class="fas fa-user-circle fa-lg me-2"></i> <!-- Profile icon -->
-                            <span id="studentName" runat="server"></span> <!-- Student's name -->
+                    <ul class="nav" >
+                        <li class="nav-item d-flex align-items-center profile-container">
+                            <i class="fas fa-user-circle profile-icon"></i>
+                            <asp:Label ID="lblStudentName" runat="server" CssClass="me-3"></asp:Label> <!-- Student name -->
                         </li>
                         <li class="nav-item"><a href="LandingPage.aspx" class="nav-link">Logout</a></li>
                         <li class="nav-item"><a href="#" onclick="loadManageProfile()" class="nav-link">Edit Profile</a></li>
@@ -105,11 +106,10 @@
         }
 
         function redirectToJobList() {
-            window.location.href = "JobListings.aspx";
+            window.location.href = "JobListings.aspx?sid=<%=Request.QueryString["sid"] %>";
         }
 
-        // Set the student's name from the query string
-        document.getElementById("studentName").innerText = "<%= Request.QueryString["sname"] %>";
+        
     </script>
 </body>
 </html>

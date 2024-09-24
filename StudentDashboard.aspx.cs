@@ -7,6 +7,7 @@ namespace JobPortal
 {
     public partial class StudentDashboard : System.Web.UI.Page
     {
+        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=DK27QV3\\SQLEXPRESS";
         protected void Page_Load(object sender, EventArgs e)
         {
             // Check if 'sid' and 'sname' are present in the query string
@@ -20,13 +21,18 @@ namespace JobPortal
             if (!IsPostBack)
             {
                 LoadStudentProfile();
+                string studentName = Request.QueryString["sname"];
+                if (!string.IsNullOrEmpty(studentName))
+                {
+                    lblStudentName.Text = studentName;
+                }
             }
         }
 
         private void LoadStudentProfile()
         {
             string sid = Request.QueryString["sid"];
-            string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=GF27QV3\\SQLEXPRESS";
+            
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -51,7 +57,7 @@ namespace JobPortal
         protected void SaveProfileButton_Click(object sender, EventArgs e)
         {
             string sid = Request.QueryString["sid"];
-            string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=GF27QV3\\SQLEXPRESS";
+           
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -73,7 +79,7 @@ namespace JobPortal
         protected void ChangePasswordButton_Click(object sender, EventArgs e)
         {
             string sid = Request.QueryString["sid"];
-            string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=GF27QV3\\SQLEXPRESS";
+            
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {

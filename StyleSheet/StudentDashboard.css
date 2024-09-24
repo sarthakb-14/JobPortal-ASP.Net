@@ -145,3 +145,28 @@ form button:hover {
     border-color: #0056b3;
     box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
 }
+
+.profile-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.profile-icon {
+    font-size: 2rem;
+    margin-right: 10px;
+}
+
+i.fas.fa-user-circle.profile-icon {
+    margin-right: 5px;
+}
+
+.fa-solid, .fas {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    margin-right: 5px;
+}
