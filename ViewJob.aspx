@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ViewJob.aspx.cs" Inherits="JobPortal.ViewJob" %>
 
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -44,8 +43,25 @@
     <div class="container mt-5">
         <h1 class="text-center mb-4">View Jobs</h1>
         <div class="row" id="job-list">
-            <!-- Job details will be populated here -->
-            <asp:Literal ID="jobList" runat="server"></asp:Literal>
+            <asp:Repeater ID="jobRepeater" runat="server">
+                <ItemTemplate>
+                    <div class='col-md-4 mb-4'>
+                        <div class='card'>
+                            <div class='card-header'>
+                                <%# Eval("jobtitle") %>
+                            </div>
+                            <div class='card-body'>
+                                <p class='card-text'><strong>Job Description:</strong> <%# Eval("jobJD") %></p>
+                                <p class='card-text'><strong>Salary:</strong> <%# Eval("jobsalary") %></p>
+                                <p class='card-text'><strong>Vacancy:</strong> <%# Eval("jobvacancy") %></p>
+                                <p class='card-text'><strong>Employment Status:</strong> <%# Eval("jobemployeementstatus") %></p>
+                                <p class='card-text'><strong>Experience:</strong> <%# Eval("jobexperience") %></p>
+                            </div>
+                        </div>
+                    </div>
+                </ItemTemplate>
+                
+            </asp:Repeater>
         </div>
     </div>
 

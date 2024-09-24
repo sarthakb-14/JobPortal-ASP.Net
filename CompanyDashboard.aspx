@@ -14,7 +14,7 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" href="StyleSheet/CompanyDashboard.css" />
-   <%-- <style>
+    <style>
         body {
             font-family: 'Poppins', sans-serif;
             background: url('images/bg_dashboard.jpg') no-repeat center center fixed;
@@ -252,7 +252,25 @@
             height: 100%;
             text-align: center;
         }
-    </style>--%>
+        
+        @media (min-width: 992px) {
+            .navbar-expand-lg .navbar-collapse {
+                display: flex !important;
+                flex-basis: auto;
+                justify-content : space-around;
+            }
+        }
+        li.nav-item {
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        @media (min-width: 992px) {
+            ul.navbar-nav.ml-auto {
+                /* padding-right: 5px; */
+                margin-left: 42px;
+            }
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -276,11 +294,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#manage-account-section">Manage Account</a>
                     </li>
-                    <li class="nav-item">
-                        <asp:Button ID="LogoutButton" runat="server" CssClass="btn btn-danger" Text="Logout" OnClick="Logout_Click" />
-                    </li>
+                    
                 </ul>
+                 
             </div>
+            <asp:Button ID="LogoutButton" runat="server" CssClass="btn btn-danger" Text="Logout" OnClick="Logout_Click" />
         </nav>
 
         <!-- Page Title -->

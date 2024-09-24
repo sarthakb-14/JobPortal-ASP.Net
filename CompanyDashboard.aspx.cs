@@ -7,7 +7,7 @@ namespace JobPortal
     public partial class CompanyDashboard : System.Web.UI.Page
     {
 
-        private readonly string conStr = "uid=sa; password=manager@123; database = JobPortal; server = 7Y27QV3\\SQLEXPRESS";
+        private readonly string conStr = "uid=sa; password=manager@123; database = JobPortal; server = DK27QV3\\SQLEXPRESS";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -71,8 +71,9 @@ namespace JobPortal
                 finally
                 {
                     con.Close();
-                    Page_Load(sender,e);
+                    Page_Load(sender, e);
                 }
+                
             }
         }
 

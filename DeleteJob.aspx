@@ -1,8 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DeleteJob.aspx.cs" Inherits="JobPortal.DeleteJob" %>
 
-
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -30,6 +28,9 @@
             font-size: 1.25rem;
             font-weight: bold;
         }
+        .card-text {
+            font-size: 0.9rem;
+        }
         .card-header {
             background-color: #007bff; /* Blue header */
             color: white;
@@ -39,13 +40,33 @@
     </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Delete Jobs</h1>
-        <div class="row" id="job-list">
-            <!-- Job details will be populated here -->
-            <asp:Literal ID="jobList" runat="server"></asp:Literal>
+    <form id="form1" runat="server">
+        <div class="container mt-5">
+            <h1 class="text-center mb-4">Delete Jobs</h1>
+            <div class="row" id="job-list">
+                <asp:Repeater ID="jobRepeater" runat="server">
+                    <ItemTemplate>
+                        <div class='col-md-4 mb-4'>
+                            <div class='card'>
+                                <div class='card-header'>
+                                    <%# Eval("jobtitle") %>
+                                </div>
+                                <div class='card-body'>
+                                    <p class='card-text'><strong>Job Description:</strong> <%# Eval("jobJD") %></p>
+                                    <p class='card-text'><strong>Salary:</strong> <%# Eval("jobsalary") %></p>
+                                    <p class='card-text'><strong>Vacancy:</strong> <%# Eval("jobvacancy") %></p>
+                                    <p class='card-text'><strong>Employment Status:</strong> <%# Eval("jobemployeementstatus") %></p>
+                                    <p class='card-text'><strong>Experience:</strong> <%# Eval("jobexperience") %></p>
+                                    <asp:Button ID="btnDelete" runat="server" Text="Delete" 
+                                        CommandArgument='<%# Eval("jobId") %>' OnCommand="btnDelete_Command" CssClass="btn btn-danger" />
+                                </div>
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
         </div>
-    </div>
+    </form>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
