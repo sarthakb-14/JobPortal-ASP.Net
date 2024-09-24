@@ -150,15 +150,6 @@ namespace JobPortal
         protected global::System.Web.UI.WebControls.LinkButton DeleteJobButton;
 
         /// <summary>
-        /// btnUpdateProfile control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnUpdateProfile;
-
-        /// <summary>
         /// CompanyNameTextBox control.
         /// </summary>
         /// <remarks>
@@ -168,31 +159,31 @@ namespace JobPortal
         protected global::System.Web.UI.WebControls.TextBox CompanyNameTextBox;
 
         /// <summary>
-        /// AddressTextBox control.
+        /// CompanyEmailTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AddressTextBox;
+        protected global::System.Web.UI.WebControls.TextBox CompanyEmailTextBox;
 
         /// <summary>
-        /// CityTextBox control.
+        /// CompanyAddressTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CityTextBox;
+        protected global::System.Web.UI.WebControls.TextBox CompanyAddressTextBox;
 
         /// <summary>
-        /// EmailTextBox control.
+        /// CompanyCityTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox EmailTextBox;
+        protected global::System.Web.UI.WebControls.TextBox CompanyCityTextBox;
 
         /// <summary>
         /// UpdateProfileButton control.

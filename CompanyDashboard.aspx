@@ -366,38 +366,39 @@
 
         <!-- Applied Job Report Section -->
         <div id="applied-job-report-section" class="section">
-            <div class="dashboard-card">
+            <div class="dashboard-card" id="applied-job-report-card" onclick="redirectToAppliedJobReport()">
                 <i class="fas fa-file-alt fa-3x"></i>
                 <h3>Applied Job Report</h3>
             </div>
         </div>
 
+
         <!-- Manage Account Section -->
         <div id="manage-account-section" class="section">
             <h2>Manage Account</h2>
             <div class="row">
+                
                 <!-- Update Profile Card and Form -->
                 <div class="col-md-6">
                     <div class="dashboard-card" id="update-profile-card">
-                         <asp:LinkButton ID="btnUpdateProfile" runat="server" 
-                            OnClick="Openclick_Click" 
-                            OnClientClick="return toggleProfileForm();" 
-                            CssClass="card-link">
-                            <i class="fas fa-user-edit fa-3x"></i>
-                            <h3>Update Profile</h3>
-                        </asp:LinkButton>
+                        <i class="fas fa-user-edit fa-3x"></i>
+                        <h3>Update Profile</h3>
                     </div>
-                    <div id="update-profile-form" class="form-card" style="display: none;">
+                    <div id="update-profile-form" class="form-card">
                         <h2>Update Profile</h2>
                         <label for="CompanyNameTextBox">Company Name</label>
                         <asp:TextBox ID="CompanyNameTextBox" runat="server" CssClass="form-control" Placeholder="Company Name"></asp:TextBox>
-                        <label for="AddressTextBox">Address</label>
-                        <asp:TextBox ID="AddressTextBox" runat="server" CssClass="form-control" Placeholder="Address"></asp:TextBox>
-                        <label for="CityTextBox">City</label>
-                        <asp:TextBox ID="CityTextBox" runat="server" CssClass="form-control" Placeholder="City"></asp:TextBox>
-                        <label for="EmailTextBox">Email</label>
-                        <asp:TextBox ID="EmailTextBox" runat="server" CssClass="form-control" Placeholder="Email"></asp:TextBox>
-                        <asp:Button ID="UpdateProfileButton" runat="server" CssClass="btn btn-primary" Text="Update" OnClick="UpdateProfile_Click"/>
+        
+                        <label for="CompanyEmailTextBox">Company Email</label>
+                        <asp:TextBox ID="CompanyEmailTextBox" runat="server" CssClass="form-control" Placeholder="Company Email"></asp:TextBox>
+        
+                        <label for="CompanyAddressTextBox">Company Address</label>
+                        <asp:TextBox ID="CompanyAddressTextBox" runat="server" CssClass="form-control" Placeholder="Company Address"></asp:TextBox>
+        
+                        <label for="CompanyCityTextBox">Company City</label>
+                        <asp:TextBox ID="CompanyCityTextBox" runat="server" CssClass="form-control" Placeholder="Company City"></asp:TextBox>
+        
+                        <asp:Button ID="UpdateProfileButton" runat="server" CssClass="btn btn-primary" Text="Update" OnClick="UpdateProfileButton_Click" />
                     </div>
                 </div>
 
@@ -439,36 +440,23 @@
             manageJobOptions.style.display = manageJobOptions.style.display === 'block' ? 'none' : 'block';
         }
 
-        // Toggle Update Profile form
-        let formVisible = false;
-
-        function toggleProfileForm() {
+        
+        document.getElementById('update-profile-card').onclick = function () {
             const form = document.getElementById('update-profile-form');
-
-            // If the form is already visible, allow the postback
-            if (formVisible) {
-                return true;  // Allow the postback
-            } else {
-                form.style.display = 'block';  // Show the form
-                formVisible = true;  // Set the state
-                return false;  // Prevent immediate postback
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            // Reset the form visibility on postback
-            const form = document.getElementById('update-profile-form');
-            if (form) {
-                form.style.display = 'none';
-                formVisible = false;  // Reset state
-            }
-        });
+            form.style.display = form.style.display === 'block' ? 'none' : 'block';
+        };
+        
 
         // Toggle the Change Password form
         document.getElementById('change-password-card').onclick = function () {
             const form = document.getElementById('change-password-form');
             form.style.display = form.style.display === 'block' ? 'none' : 'block';
         };
+
+        function redirectToAppliedJobReport() {
+            window.location.href = "AppliedJobReport.aspx";
+        }
+
     </script>
 </body>
 </html>

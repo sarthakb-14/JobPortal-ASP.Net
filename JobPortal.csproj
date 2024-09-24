@@ -101,6 +101,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="AdminDashboard\AdminDashboard.aspx" />
+    <Content Include="AppliedJobReport.aspx" />
     <Content Include="CompanyDashboard.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -192,6 +193,13 @@
     </Compile>
     <Compile Include="AdminDashboard\AdminDashboard.aspx.designer.cs">
       <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppliedJobReport.aspx.cs">
+      <DependentUpon>AppliedJobReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppliedJobReport.aspx.designer.cs">
+      <DependentUpon>AppliedJobReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">

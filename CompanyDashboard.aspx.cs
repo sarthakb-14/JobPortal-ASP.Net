@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Data.SqlClient;
 
 namespace JobPortal
@@ -21,107 +22,61 @@ namespace JobPortal
             {
                 // Update the label with the company name if available
                 Label1.Text = cname;
+                LoadCompanyDetails();
             }
         }
 
-        // Event handler for opening the update profile form
-        protected void Openclick_Click(object sender, EventArgs e)
+        private void LoadCompanyDetails()
         {
-            SqlConnection con = new SqlConnection(conStr);
-            try
+            string connectionString = conStr;
+            string query = "SELECT cname, cemail, caddress, ccity FROM company WHERE cid = @CompanyID"; // Assuming you have a CompanyID
+
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@CompanyID", Request.QueryString["cid"]); // Get the logged-in company ID from the session
                 con.Open();
-                // Select all company information (assuming only one row for the current company)
-                SqlCommand cmd = new SqlCommand("SELECT * FROM company WHERE cid = @cid", con);
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                // Get the company ID from the query string and add it as a parameter
-                string cidStr = Request.QueryString["cid"];
-                int cid;
-
-                if (!int.TryParse(cidStr, out cid))
+                if (reader.HasRows)
                 {
-                    // If cid is not valid, throw an error or show a user-friendly message
-                    Label1.Text = "Invalid company ID.";
-                    return;
+                    while (reader.Read())
+                    {
+                        CompanyNameTextBox.Text = reader["cname"].ToString();
+                        CompanyEmailTextBox.Text = reader["cemail"].ToString();
+                        CompanyAddressTextBox.Text = reader["caddress"].ToString();
+                        CompanyCityTextBox.Text = reader["ccity"].ToString();
+                    }
                 }
 
-                cmd.Parameters.AddWithValue("@cid", cid);
-                SqlDataReader dr = cmd.ExecuteReader();
-
-                if (dr.Read())
-                {
-                    // Populate the text boxes with the company details
-                    CompanyNameTextBox.Text = dr["cname"].ToString();
-                    AddressTextBox.Text = dr["caddress"].ToString();
-                    CityTextBox.Text = dr["ccity"].ToString();
-                    EmailTextBox.Text = dr["cemail"].ToString();
-                }
-                else
-                {
-                    // Handle case where no company data is found for the given ID
-                    Label1.Text = "Company not found.";
-                }
-            }
-            catch (Exception ex)
-            {
-                // Handle any database or query errors
-                Label1.Text = "Error retrieving company information: " + ex.Message;
-            }
-            finally
-            {
                 con.Close();
             }
         }
 
-        // Event handler for updating the company profile
-        protected void UpdateProfile_Click(object sender, EventArgs e)
+        // Update the company details in the database
+        protected void UpdateProfileButton_Click(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(conStr))
+            string connectionString = conStr;
+            string updateQuery = "UPDATE Company SET cname = @CompanyName, cemail = @CompanyEmail, caddress = @CompanyAddress, ccity = @CompanyCity WHERE cid = @CompanyID";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                try
-                {
-                    con.Open();
+                SqlCommand cmd = new SqlCommand(updateQuery, con);
+                cmd.Parameters.AddWithValue("@CompanyID", Request.QueryString["cid"]);
+                cmd.Parameters.AddWithValue("@CompanyName", CompanyNameTextBox.Text);
+                cmd.Parameters.AddWithValue("@CompanyEmail", CompanyEmailTextBox.Text);
+                cmd.Parameters.AddWithValue("@CompanyAddress", CompanyAddressTextBox.Text);
+                cmd.Parameters.AddWithValue("@CompanyCity", CompanyCityTextBox.Text);
 
-                    // Retrieve the company ID from query string
-                    string cidStr = Request.QueryString["cid"];
-                    int cid;
-
-                    if (!int.TryParse(cidStr, out cid))
-                    {
-                        // Show an error if the company ID is invalid
-                        Label1.Text = "Invalid company ID.";
-                        return;
-                    }
-
-                    // Update the company profile based on the form inputs
-                    SqlCommand cmd = new SqlCommand("UPDATE company SET cname = @cname, caddress = @caddress, ccity = @ccity, cemail = @cemail WHERE cid = @cid", con);
-                    cmd.Parameters.AddWithValue("@cid", cid);
-                    cmd.Parameters.AddWithValue("@cname", CompanyNameTextBox.Text);
-                    cmd.Parameters.AddWithValue("@caddress", AddressTextBox.Text);
-                    cmd.Parameters.AddWithValue("@ccity", CityTextBox.Text);
-                    cmd.Parameters.AddWithValue("@cemail", EmailTextBox.Text);
-
-                    // Execute the update command
-                    int rowsAffected = cmd.ExecuteNonQuery();
-
-                    if (rowsAffected > 0)
-                    {
-                        // Show success message
-                        Label1.Text = "Profile updated successfully.";
-                    }
-                    else
-                    {
-                        // Show error if the update fails
-                        Label1.Text = "Profile update failed.";
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Handle any database or update errors
-                    Label1.Text = "Error updating profile: " + ex.Message;
-                }
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
             }
+
+            // Optionally, add a success message or redirect the user
+            Response.Write("<script>alert('Profile updated successfully!');</script>");
         }
+    
 
 
     protected void ChangePassword_Click(object sender, EventArgs e)
