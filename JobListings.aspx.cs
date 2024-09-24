@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Security.Cryptography;
 using System.Web.UI.WebControls;
 
 namespace JobPortal
 {
 	public partial class JobListings : System.Web.UI.Page
 	{
-		private readonly string connStr = "uid=sa; password=manager@123; database=JobPortal; server=DK27QV3\\SQLEXPRESS";
+		private readonly string connStr = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
 		private readonly int PageSize = 8; // Number of jobs per page
 		private int PageIndex = 1; // Current page index
 		string sname,sid;
@@ -38,7 +37,7 @@ namespace JobPortal
 			{
 				con.Open();
 				string jobQuery = @"
-                    SELECT j.jobtitle, j.jobexperience, j.jobemployeementstatus, j.jobJD, j.jobsalary, j.jobvacancy, c.cname, c.ccity 
+                    SELECT j.jobtitle, j.jobexperience, j.jobemployeementstatus, j.jobJD, j.jobsalary, j.jobvacancy, c.cname, c.ccity, c.cwebsiteurl 
                     FROM joblist j 
                     INNER JOIN company c ON j.cid = c.cid
                     ORDER BY j.jobid 
@@ -119,7 +118,7 @@ namespace JobPortal
 			{
 				con.Open();
 				SqlCommand jobCommand = new SqlCommand(@"
-					SELECT j.jobtitle, j.jobexperience, j.jobemployeementstatus, j.jobJD, j.jobsalary, j.jobvacancy, c.cname, c.ccity, c.cwebsiteurl AS cwebsiteurl
+					SELECT j.jobtitle, j.jobexperience, j.jobemployeementstatus, j.jobJD, j.jobsalary, j.jobvacancy, c.cname, c.ccity, c.cwebsiteurl
 					FROM joblist j
 					INNER JOIN company c ON j.cid = c.cid
 					LEFT JOIN applyjob a ON j.jobid = a.jobid AND a.sid = @StudentID
