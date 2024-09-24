@@ -10,21 +10,27 @@ namespace JobPortal
 		private readonly string connStr = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
 		private readonly int PageSize = 8; // Number of jobs per page
 		private int PageIndex = 1; // Current page index
-		string sname,sid;
-
+		string sname, sid;
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			sname = Request.QueryString["sname"];
-			sid = Request.QueryString["sid"];
+			try
+			{
+				sname = Request.QueryString["sname"];
+				sid = Request.QueryString["sid"];
+			}
+			catch (Exception ex)
+			{
+				sname = null;
+				sid = null;
+				ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Error: sid or sname not found." +ex.Message+"');", true);
+			}
 			if (!IsPostBack)
 			{
-				// Get current page number from query string, default is 1
 				if (!string.IsNullOrEmpty(Request.QueryString["page"]))
 				{
 					PageIndex = int.Parse(Request.QueryString["page"]);
 				}
-				
 				JobNumber();
 				LoadJobData();
 				SetupPagination();
@@ -51,16 +57,7 @@ namespace JobPortal
 			}
 		}
 
-		private void JobNumber()
-		{
-			using (SqlConnection con = new SqlConnection(connStr))
-			{
-				con.Open();
-				SqlCommand jobCommand = new SqlCommand("SELECT COUNT(*) as JobCount FROM joblist j, company c WHERE j.cid = c.cid;", con);
-				int jobCount = (int)jobCommand.ExecuteScalar();
-				JobNumberLabel.Text = $"{jobCount} Jobs Listed";
-			}
-		}
+
 
 		private void SetupPagination()
 		{
@@ -74,22 +71,53 @@ namespace JobPortal
 				// Add previous button
 				if (PageIndex > 1)
 				{
-					pagination.Add(new { Value = PageIndex - 1, Text = "Previous", CssClass = "prev" });
+					string prevUrl = $"JobListings.aspx?page={PageIndex - 1}";
+					if (!string.IsNullOrEmpty(sid) && !string.IsNullOrEmpty(sname))
+					{
+						prevUrl += $"&sid={sid}&sname={sname}";
+					}
+					pagination.Add(new { Value = PageIndex - 1, Text = "Previous", CssClass = "prev", Url = prevUrl });
 				}
 				// Add page numbers
 				for (int i = 1; i <= totalPages; i++)
 				{
-					pagination.Add(new { Value = i, Text = i.ToString(), CssClass = i == PageIndex ? "active" : "" });
+					string pageUrl = $"JobListings.aspx?page={i}";
+					if (!string.IsNullOrEmpty(sid) && !string.IsNullOrEmpty(sname))
+					{
+						pageUrl += $"&sid={sid}&sname={sname}";
+					}
+					pagination.Add(new { Value = i, Text = i.ToString(), CssClass = i == PageIndex ? "active" : "", Url = pageUrl });
 				}
 				// Add next button
 				if (PageIndex < totalPages)
 				{
-					pagination.Add(new { Value = PageIndex + 1, Text = "Next", CssClass = "next" });
+					string nextUrl = $"JobListings.aspx?page={PageIndex + 1}";
+					if (!string.IsNullOrEmpty(sid) && !string.IsNullOrEmpty(sname))
+					{
+						nextUrl += $"&sid={sid}&sname={sname}";
+					}
+					pagination.Add(new { Value = PageIndex + 1, Text = "Next", CssClass = "next", Url = nextUrl });
 				}
+
 				PaginationRepeater.DataSource = pagination;
 				PaginationRepeater.DataBind();
 			}
 		}
+
+
+
+		private void JobNumber()
+		{
+			using (SqlConnection con = new SqlConnection(connStr))
+			{
+				con.Open();
+				SqlCommand jobCommand = new SqlCommand("SELECT COUNT(*) as JobCount FROM joblist j, company c WHERE j.cid = c.cid;", con);
+				int jobCount = (int)jobCommand.ExecuteScalar();
+				JobNumberLabel.Text = $"{jobCount} Jobs Listed";
+			}
+		}
+
+
 
 		protected string GetBadgeClass(string jobType)
 		{
@@ -109,31 +137,52 @@ namespace JobPortal
 		}
 
 
+
 		protected void FilterJob_Click(object sender, EventArgs e)
 		{
 			string key = keyword.Text;
-			string loc = location.Text; 
+			string loc = location.Text;
 			string time = timing.SelectedValue;
+
 			using (SqlConnection con = new SqlConnection(connStr))
 			{
 				con.Open();
-				SqlCommand jobCommand = new SqlCommand(@"
-					SELECT j.jobtitle, j.jobexperience, j.jobemployeementstatus, j.jobJD, j.jobsalary, j.jobvacancy, c.cname, c.ccity, c.cwebsiteurl
-					FROM joblist j
-					INNER JOIN company c ON j.cid = c.cid
-					LEFT JOIN applyjob a ON j.jobid = a.jobid AND a.sid = @StudentID
-					WHERE a.applyid IS NULL
-					ORDER BY j.jobid
-					OFFSET (@PageIndex - 1) * @PageSize ROWS
-					FETCH NEXT @PageSize ROWS ONLY;
-					", con);
+
+				string jobQuery = @"
+			SELECT j.jobtitle, j.jobexperience, j.jobemployeementstatus, j.jobJD, j.jobsalary, j.jobvacancy, c.cname, c.ccity, c.cwebsiteurl
+			FROM joblist j
+			INNER JOIN company c ON j.cid = c.cid
+			LEFT JOIN applyjob a ON j.jobid = a.jobid AND a.sid = @StudentID
+			WHERE a.applyid IS NULL
+			AND (@Key IS NULL OR j.jobtitle LIKE '%' + @Key + '%' OR c.cname LIKE '%' + @Key + '%' OR j.jobsalary LIKE '%' + @Key + '%')
+			AND (@Loc IS NULL OR c.ccity LIKE '%' + @Loc + '%')
+			AND (@Time IS NULL OR j.jobemployeementstatus = @Time)
+			ORDER BY j.jobid
+			OFFSET (@PageIndex - 1) * @PageSize ROWS
+			FETCH NEXT @PageSize ROWS ONLY;";
+
+				SqlCommand jobCommand = new SqlCommand(jobQuery, con);
+
+				// Check if `sid` is present or not
+				if (string.IsNullOrEmpty(sid))
+				{
+					// Show an alert and exit method if `sid` is missing
+					ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Error: Student ID is missing. Please log in again.');", true);
+					return;
+				}
 
 				jobCommand.Parameters.AddWithValue("@StudentID", sid);
+				jobCommand.Parameters.AddWithValue("@Key", string.IsNullOrEmpty(key) ? (object)DBNull.Value : key);
+				jobCommand.Parameters.AddWithValue("@Loc", string.IsNullOrEmpty(loc) ? (object)DBNull.Value : loc);
+				jobCommand.Parameters.AddWithValue("@Time", string.IsNullOrEmpty(time) ? (object)DBNull.Value : time);
 				jobCommand.Parameters.AddWithValue("@PageIndex", PageIndex);
 				jobCommand.Parameters.AddWithValue("@PageSize", PageSize);
+
 				CallingReader(jobCommand);
 			}
 		}
+
+
 
 
 		protected void ApplyJob_Click(object sender, EventArgs e)
@@ -149,6 +198,7 @@ namespace JobPortal
 				command.ExecuteNonQuery();
 			}
 		}
+
 
 
 		private void CallingReader(SqlCommand jobCommand)

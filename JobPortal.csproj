@@ -134,6 +134,8 @@
     <Content Include="ManageStudents.aspx" />
     <Content Include="Registration.aspx" />
     <Content Include="SearchAll.aspx" />
+    <Content Include="SQL Database\JobSQL1.sql" />
+    <Content Include="SQL Database\JobSQL2.sql" />
     <Content Include="StudentDashboard.aspx" />
     <Content Include="images\bg_dashboard.jpg" />
     <Content Include="StyleSheet\CompanyDashboard.css" />
