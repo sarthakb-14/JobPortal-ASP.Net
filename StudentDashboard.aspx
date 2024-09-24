@@ -33,29 +33,34 @@
             <div id="job-search">
                 <div class="card search-card text-center" onclick="redirectToJobList()">
                     <div class="card-body">
-                        <i class="fas fa-search fa-3x"></i> <!-- FontAwesome Search Icon -->
+                        <i class="fas fa-search fa-3x"></i>
                         <h5 class="card-title mt-3">Search</h5>
-                        <h6 class="card-body p-0">Dream Job, Company Details, Job Posting and Vaccancies</h6>
+                        <h6 class="card-body p-0">Dream Job, Company Details, Job Posting and Vacancies</h6>
                     </div>
                 </div>
             </div>
 
             <!-- Apply Job Section -->
             <section id="applied-job">
-                <asp:GridView ID="JobGridView" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-bordered" GridLines="None">
+                <h2>Applied Jobs</h2>
+                <asp:GridView ID="JobGridView" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-bordered" GridLines="None" 
+                             OnSelectedIndexChanged="JobGridView_SelectedIndexChanged" AllowPaging="True" PageSize="5" 
+                             OnPageIndexChanging="JobGridView_PageIndexChanging">
                     <Columns>
                         <asp:BoundField DataField="JobTitle" HeaderText="Job Title" />
                         <asp:BoundField DataField="CompanyName" HeaderText="Company Name" />
                         <asp:BoundField DataField="Location" HeaderText="Location" />
+                        <asp:BoundField DataField="ApplicationDate" HeaderText="Application Date" DataFormatString="{0:yyyy-MM-dd}" />
                         <asp:TemplateField HeaderText="Actions">
                             <ItemTemplate>
-                                <asp:Button ID="ApplyButton" runat="server" Text="Delete" CssClass="btn btn-primary" CommandName="Delete" CommandArgument='<%# Eval("JobId") %>' />
+                                <asp:Button ID="DeleteButton" runat="server" Text="Delete" CssClass="btn btn-danger" 
+                                            CommandName="Delete" CommandArgument='<%# Eval("AppliedJobId") %>' 
+                                            OnCommand="DeleteButton_Command" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </section>
-
 
             <!-- Manage Profile Section -->
             <section id="manage-profile" style="display:none;">
@@ -131,21 +136,12 @@
                 passwordSection.style.display = 'none';
             } else {
                 profileSection.style.display = 'block';
-                passwordSection.style.display = 'block';
+                passwordSection.style.display = 'none';
             }
         }
 
-        function showCategory(category) {
-            // Implement the logic to display job listings based on the selected category
-            console.log('Selected category:', category);
-        }
-
-        function showMoreCategories() {
-            // Implement the logic to display more job categories
-            console.log('Show more categories');
-        }
         function redirectToJobList() {
-            window.location.href = 'JobListings.aspx'; // Replace 'JobList.aspx' with the actual URL of the job listing page
+            window.location.href = 'JobListings.aspx'; // Replace with the actual URL of the job listing page
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
