@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace JobPortal
 {
-    public partial class AdminDashboard : System.Web.UI.Page
+	public partial class AdminDashboard : System.Web.UI.Page
     {
-        private string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=C927QV3\\SQLEXPRESS";
+        private string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
 
         protected void Page_Load(object sender, EventArgs e)
         {
