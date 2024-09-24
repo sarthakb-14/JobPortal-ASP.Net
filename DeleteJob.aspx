@@ -58,7 +58,7 @@
                                     <p class='card-text'><strong>Employment Status:</strong> <%# Eval("jobemployeementstatus") %></p>
                                     <p class='card-text'><strong>Experience:</strong> <%# Eval("jobexperience") %></p>
                                     <asp:Button ID="btnDelete" runat="server" Text="Delete" 
-                                        CommandArgument='<%# Eval("jobId") %>' OnCommand="btnDelete_Command" CssClass="btn btn-danger" />
+                                        CommandArgument='<%# Eval("jobId") %>' OnCommand="btnDelete_Command" CssClass="btn btn-danger" CommandName="Delete" />
                                 </div>
                             </div>
                         </div>

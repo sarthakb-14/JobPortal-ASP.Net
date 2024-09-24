@@ -20,6 +20,7 @@ namespace JobPortal
                 else
                 {
                     // Handle case when cid is not provided, like showing an error or a message
+                    Response.Write($"Error: cid not provided");
                 }
             }
         }
