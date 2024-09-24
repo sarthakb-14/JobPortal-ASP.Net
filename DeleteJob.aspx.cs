@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -14,11 +15,11 @@ namespace JobPortal
                 string cid = Request.QueryString["cid"];
                 if (!string.IsNullOrEmpty(cid))
                 {
-                    LoadJobs(cid);
+                    LoadJobs(cid); // Pass the cid to load jobs for that specific category
                 }
                 else
                 {
-                    jobList.Text = "<div class='col-12'><h5>Company ID is missing.</h5></div>";
+                    // Handle case when cid is not provided, like showing an error or a message
                 }
             }
         }
@@ -30,70 +31,61 @@ namespace JobPortal
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
-                string jobQuery = "SELECT * FROM joblist WHERE cid = @cid";
+                string jobQuery = "SELECT * FROM joblist WHERE cid = @cid"; // Filter by cid from query string
                 SqlCommand jobCommand = new SqlCommand(jobQuery, con);
-                jobCommand.Parameters.AddWithValue("@cid", cid);
-                SqlDataReader reader = jobCommand.ExecuteReader();
+                jobCommand.Parameters.AddWithValue("@cid", cid); // Pass the cid parameter to SQL query
+                SqlDataAdapter adapter = new SqlDataAdapter(jobCommand);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
 
-                while (reader.Read())
-                {
-                    string jobId = reader["jobid"].ToString();
-                    string jobTitle = reader["jobtitle"].ToString();
-                    string jobDescription = reader["jobJD"].ToString();
-                    string jobSalary = reader["jobsalary"].ToString();
-                    string jobVacancy = reader["jobvacancy"].ToString();
-                    string jobEmploymentStatus = reader["jobemployeementstatus"].ToString();
-                    string jobExperience = reader["jobexperience"].ToString();
-
-                    // Create a div for each job listing with delete button
-                    string jobDiv = $@"
-                        <div class='col-md-4 mb-4'>
-                            <div class='card'>
-                                <div class='card-header'>
-                                    <h5 class='card-title'>{jobTitle}</h5>
-                                </div>
-                                <div class='card-body'>
-                                    <p class='card-text'><strong>Job Description:</strong> {jobDescription}</p>
-                                    <p class='card-text'><strong>Salary:</strong> {jobSalary}</p>
-                                    <p class='card-text'><strong>Vacancy:</strong> {jobVacancy}</p>
-                                    <p class='card-text'><strong>Employment Status:</strong> {jobEmploymentStatus}</p>
-                                    <p class='card-text'><strong>Experience:</strong> {jobExperience}</p>
-                                    <asp:Button ID='DeleteButton{jobId}' runat='server' Text='Delete' CssClass='btn btn-danger' OnClick='DeleteJob_Click' CommandArgument='{jobId}' />
-                                </div>
-                            </div>
-                        </div>";
-
-                    // Add the job div to the page
-                    jobList.Text += jobDiv;
-                }
+                jobRepeater.DataSource = dt;
+                jobRepeater.DataBind();
             }
         }
 
-        protected void DeleteJob_Click(object sender, EventArgs e)
+        protected void btnDelete_Command(object sender, CommandEventArgs e)
         {
-            Button deleteButton = (Button)sender;
-            string jobId = deleteButton.CommandArgument;
-
-            // Delete job from the database
-            string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=DK27QV3\\SQLEXPRESS";
-            using (SqlConnection con = new SqlConnection(connectionString))
+            //int jobId = Convert.ToInt32(e.CommandArgument);
+            //Response.Write($"{jobId}<br/>");
+            if (e.CommandName == "Delete")
             {
-                con.Open();
-                string deleteQuery = "DELETE FROM joblist WHERE jobid = @jobId";
-                SqlCommand deleteCommand = new SqlCommand(deleteQuery, con);
-                deleteCommand.Parameters.AddWithValue("@jobId", jobId);
-
-                int rowsAffected = deleteCommand.ExecuteNonQuery();
-
-                if (rowsAffected > 0)
+                try
                 {
-                    Response.Write("<script>alert('Job deleted successfully!'); window.location.reload();</script>");
+                    int jobId = Convert.ToInt32(e.CommandArgument);
+
+                    // Add a debug statement or label to display jobId for verification
+                    Response.Write($"Deleting jobId: {jobId}<br/>");
+
+                    string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=DK27QV3\\SQLEXPRESS";
+
+                    using (SqlConnection con = new SqlConnection(connectionString))
+                    {
+                        con.Open();
+                        string deleteQuery = "DELETE FROM joblist WHERE jobId = @jobId";
+                        SqlCommand deleteCommand = new SqlCommand(deleteQuery, con);
+                        deleteCommand.Parameters.AddWithValue("@jobId", jobId);
+
+                        int rowsAffected = deleteCommand.ExecuteNonQuery();
+
+                        // Debug how many rows were affected (should be 1 if successful)
+                        Response.Write($"Rows deleted: {rowsAffected}<br/>");
+                    }
+
+                    // Reload jobs after deletion
+                    string cid = Request.QueryString["cid"];
+                    if (!string.IsNullOrEmpty(cid))
+                    {
+                        LoadJobs(cid); // Reload jobs for the same cid after deletion
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    Response.Write("<script>alert('Delete failed. Please try again.');</script>");
+                    // Log the error to see if there's any issue
+                    Response.Write($"Error: {ex.Message}");
                 }
             }
         }
+
     }
 }
+

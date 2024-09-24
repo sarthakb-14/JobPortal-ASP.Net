@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UpdateJob.aspx.cs" Inherits="JobPortal.UpdateJob" %>
 
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,6 +28,9 @@
             font-size: 1.25rem;
             font-weight: bold;
         }
+        .card-text {
+            font-size: 0.9rem;
+        }
         .card-header {
             background-color: #007bff; /* Blue header */
             color: white;
@@ -38,13 +40,53 @@
     </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Update Job</h1>
-        <div class="row" id="job-list">
-            <!-- Job details will be populated here -->
-            <asp:Literal ID="jobList" runat="server"></asp:Literal>
+    <form id="form1" runat="server">
+        <div class="container mt-5">
+            <h1 class="text-center mb-4">Update Jobs</h1>
+            <div class="row" id="job-list">
+                <asp:Repeater ID="jobRepeater" runat="server">
+                    <ItemTemplate>
+                        <div class='col-md-4 mb-4'>
+                            <div class='card'>
+                                <div class='card-header'>
+                                    <asp:TextBox ID="txtJobTitle" runat="server" Text='<%# Eval("jobtitle") %>' CssClass="form-control" />
+                                </div>
+                                <div class='card-body'>
+                                    <p class='card-text'>
+                                        <strong>Job Description:</strong> 
+                                        <asp:TextBox ID="txtJobJD" runat="server" Text='<%# Eval("jobJD") %>' CssClass="form-control" TextMode="MultiLine" />
+                                    </p>
+                                    <p class='card-text'>
+                                        <strong>Salary:</strong> 
+                                        <asp:TextBox ID="txtJobSalary" runat="server" Text='<%# Eval("jobsalary") %>' CssClass="form-control" />
+                                    </p>
+                                    <p class='card-text'>
+                                        <strong>Vacancy:</strong> 
+                                        <asp:TextBox ID="txtJobVacancy" runat="server" Text='<%# Eval("jobvacancy") %>' CssClass="form-control" />
+                                    </p>
+                                    <p class='card-text'>
+                                        <strong>Employment Status:</strong> 
+                                        <asp:DropDownList ID="ddlJobStatus" runat="server" CssClass="form-control">
+                                            <asp:ListItem Value="Full-Time" Text="Full-Time"></asp:ListItem>
+                                            <asp:ListItem Value="Part-Time" Text="Part-Time"></asp:ListItem>
+                                            <asp:ListItem Value="Contract" Text="Contract"></asp:ListItem>
+                                            <asp:ListItem Value="Internship" Text="Internship"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </p>
+                                    <p class='card-text'>
+                                        <strong>Experience:</strong> 
+                                        <asp:TextBox ID="txtJobExperience" runat="server" Text='<%# Eval("jobexperience") %>' CssClass="form-control" />
+                                    </p>
+                                    <asp:Button ID="btnUpdate" runat="server" Text="Update" 
+                                        CommandArgument='<%# Eval("jobId") %>' OnCommand="btnUpdate_Command" CssClass="btn btn-primary" CommandName="Update"/>
+                                </div>
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
         </div>
-    </div>
+    </form>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
