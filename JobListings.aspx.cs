@@ -118,6 +118,5 @@ namespace JobPortal
 
 
 		protected void ApplyJob(object sender, EventArgs e) { }
-
-    }
+	}
 }

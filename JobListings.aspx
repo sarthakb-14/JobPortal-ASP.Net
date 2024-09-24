@@ -28,7 +28,7 @@
             <div>
                 <ul class="navbar-nav justify-content-end">
                     <li class="nav-item">
-                        <asp:Button runat="server" CssClass="btn" Text="Register" OnClientClick="window.location.href='Registration.aspx'; return false;" OnClick="Unnamed1_Click" />
+                        <asp:Button runat="server" CssClass="btn" Text="Register" OnClientClick="window.location.href='Registration.aspx'; return false;" />
                     </li>
                     <li class="nav-item">
                         <asp:Button runat="server" CssClass="btn" Text="Login" OnClientClick="window.location.href='JobPortalLogin.aspx'; return false;" />
