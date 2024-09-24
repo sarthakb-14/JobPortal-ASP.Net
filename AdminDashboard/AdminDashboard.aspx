@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <!-- Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <!-- FontAwesome Icons -->
@@ -42,16 +42,47 @@
         }
 
         .Heading {
-            margin-top: 5px; /* Added top margin */
+            margin-top: 5px;
         }
 
+        
+        .logout-btn {
+          background-color: transparent;
+          color: #fff;
+          width: 7em;
+          height: 2.5em;
+          border: 0.2em solid #007bff;
+          border-radius: 11px;
+          text-align: center;
+          transition: all 0.6s ease;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 1em;
+          position: relative;
+          font-weight: bold;
+          letter-spacing: 1px;
+          margin-left: 13px;
+        }
+
+        .logout-btn:hover {
+          background-color: #007bff;
+          cursor: pointer;
+          color: #fff;
+        }
+
+        .logout-btn:focus {
+          outline: none;
+          box-shadow: none;
+        }
+       
         .dashboard-container {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
             max-width: 1200px;
-            margin-top: 20px; /* Reduced margin-top for the cards */
+            margin-top: 20px;
             z-index: 1;
         }
 
@@ -135,6 +166,21 @@
             font-weight: bold;
         }
 
+        .profile-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .profile-icon {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+
         @media (max-width: 992px) {
             .dashboard-container, .stats-container {
                 flex-direction: column;
@@ -149,21 +195,28 @@
 </head>
 <body>
     <div class="Heading"><h2></h2></div>
+    
+    <div class="profile-container">
+        <i class="fas fa-user-circle profile-icon"></i>
+        <asp:Label ID="lblAdminName" runat="server" Text=""></asp:Label>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+    
     <form id="form1" runat="server">
         <div class="dashboard-container">
-            <div class="dashboard-card" onclick="window.location.href='../SearchAll.aspx';">
+            <div class="dashboard-card" onclick="window.location.href='../SearchAll.aspx?aid=<%= Request.QueryString["aid"] %>&aname=<%= Request.QueryString["aname"] %>';">
                 <i class="fas fa-search"></i>
                 <h3>Search</h3>
                 <p>Company Details, Student Details, Total Job Posting, Total Company</p>
             </div>
 
-            <div class="dashboard-card" onclick="window.location.href='../ManageStudents.aspx';">
+            <div class="dashboard-card" onclick="window.location.href='../ManageStudents.aspx?aid=<%= Request.QueryString["aid"] %>&aname=<%= Request.QueryString["aname"] %>';">
                 <i class="fas fa-user-graduate"></i>
                 <h3>Manage Students</h3>
                 <p>View and manage student details and applications</p>
             </div>
 
-            <div class="dashboard-card" onclick="window.location.href='../ManageCompanies.aspx';">
+            <div class="dashboard-card" onclick="window.location.href='../ManageCompanies.aspx?aid=<%= Request.QueryString["aid"] %>&aname=<%= Request.QueryString["aname"] %>';">
                 <i class="fas fa-building"></i>
                 <h3>Manage Companies</h3>
                 <p>View and manage company details and job postings</p>
@@ -189,10 +242,13 @@
     </form>
 
     <script>
+        function logout() {
+            window.location.href = '../JobPortalLogin.aspx';
+        }
+
         $(document).ready(function () {
             var text = "Admin Dashboard";
             var index = 0;
-            var interval;
 
             function typeWriter() {
                 if (index < text.length) {
@@ -213,4 +269,3 @@
     </script>
 </body>
 </html>
-

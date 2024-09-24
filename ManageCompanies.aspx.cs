@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -8,10 +9,29 @@ namespace JobPortal
 {
     public partial class ManageCompanies : System.Web.UI.Page
     {
-        private string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
+        private string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=C927QV3\\SQLEXPRESS";
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetExpires(DateTime.UtcNow.AddHours(-1));
+            Response.Cache.SetNoStore();
+
+            // Check if aid and aname are available in the query string
+            string adminId = Request.QueryString["aid"];
+            string adminName = Request.QueryString["aname"];
+
+            if (string.IsNullOrEmpty(adminId) || string.IsNullOrEmpty(adminName))
+            {
+                // Redirect to JobPortalLogin if query string parameters are missing
+                Response.Redirect(ResolveUrl("~/JobPortalLogin.aspx"));
+            }
+            else
+            {
+                // Set the admin name in the label for profile display
+                lblAdminName.Text = adminName;
+            }
+
             if (!IsPostBack)
             {
                 LoadCompanies();
@@ -78,5 +98,14 @@ namespace JobPortal
                 cmd.ExecuteNonQuery();
             }
         }
+
+        protected void LogoutButton_Click(object sender, EventArgs e)
+        {
+            // Clear session and redirect to login page
+            Session.Clear();
+            Response.Redirect("LandingPage.aspx");
+        }
+
+
     }
 }

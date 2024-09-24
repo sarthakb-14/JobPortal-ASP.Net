@@ -1,14 +1,30 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Web;
 
 namespace JobPortal
 {
-	public partial class AdminDashboard : System.Web.UI.Page
+    public partial class AdminDashboard : System.Web.UI.Page
     {
-        private string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
+        private string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=C927QV3\\SQLEXPRESS";
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Check if aid and aname are available in the query string
+            string adminId = Request.QueryString["aid"];
+            string adminName = Request.QueryString["aname"];
+
+            if (string.IsNullOrEmpty(adminId) || string.IsNullOrEmpty(adminName))
+            {
+                // Redirect to JobPortalLogin if query string parameters are missing
+                Response.Redirect("../JobPortalLogin.aspx");
+            }
+            else
+            {
+                // Set the admin name in the label for profile display
+                lblAdminName.Text = adminName;
+            }
+
             if (!IsPostBack)
             {
                 LoadStatistics();
@@ -50,6 +66,13 @@ namespace JobPortal
                 // Handle exceptions (optional)
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        protected void LogoutButton_Click(object sender, EventArgs e)
+        {
+            // Clear session and redirect to login page
+            Session.Clear();
+            Response.Redirect("../LandingPage.aspx");
         }
     }
 }
