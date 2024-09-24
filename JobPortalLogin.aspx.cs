@@ -6,7 +6,7 @@ namespace JobPortal
     public partial class JobPortalLogin : System.Web.UI.Page
     {
         protected string userRole;
-        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=C927QV3\\SQLEXPRESS";
+        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=DK27QV3\\SQLEXPRESS";
 
         protected void Page_Load(object sender, EventArgs e)
         {

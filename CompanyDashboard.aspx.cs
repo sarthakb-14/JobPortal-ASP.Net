@@ -7,6 +7,7 @@ namespace JobPortal
 
     public partial class CompanyDashboard : System.Web.UI.Page
     {
+        
 
         private readonly string conStr = "uid=sa; password=manager@123; database = JobPortal; server = DK27QV3\\SQLEXPRESS";
 
@@ -186,6 +187,13 @@ namespace JobPortal
         {
             string cid = Request.QueryString["cid"];
             Response.Redirect($"DeleteJob.aspx?cid={cid}");
+        }
+
+        protected void RedirectToAppliedJobReport_Click(object sender, EventArgs e)
+        {
+            // Redirect to the AppliedJobReport.aspx page
+            string cid = Request.QueryString["cid"];
+            Response.Redirect($"AppliedJobReport.aspx?cid={cid}");
         }
     }
 }

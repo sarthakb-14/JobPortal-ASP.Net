@@ -7,7 +7,7 @@ namespace JobPortal
 {
 	public partial class JobListings : System.Web.UI.Page
 	{
-		private readonly string connStr = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
+		private readonly string connStr = "uid=sa; password=manager@123; database=JobPortal; server=DK27QV3\\SQLEXPRESS";
 		private readonly int PageSize = 8; // Number of jobs per page
 		private int PageIndex = 1; // Current page index
 		string sname, sid;

@@ -24,6 +24,15 @@ namespace JobPortal
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// lblStudentName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblStudentName;
+
+        /// <summary>
         /// JobGridView control.
         /// </summary>
         /// <remarks>
@@ -31,15 +40,6 @@ namespace JobPortal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView JobGridView;
-
-        /// <summary>
-        /// EnrollmentTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox EnrollmentTextBox;
 
         /// <summary>
         /// NameTextBox control.
@@ -60,24 +60,6 @@ namespace JobPortal
         protected global::System.Web.UI.WebControls.TextBox EmailTextBox;
 
         /// <summary>
-        /// PhoneTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox PhoneTextBox;
-
-        /// <summary>
-        /// AddressTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AddressTextBox;
-
-        /// <summary>
         /// DOBTextBox control.
         /// </summary>
         /// <remarks>
@@ -94,6 +76,24 @@ namespace JobPortal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList GenderDropDown;
+
+        /// <summary>
+        /// AddressTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox AddressTextBox;
+
+        /// <summary>
+        /// PhoneTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox PhoneTextBox;
 
         /// <summary>
         /// SaveProfileButton control.
@@ -121,15 +121,6 @@ namespace JobPortal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox NewPasswordTextBox;
-
-        /// <summary>
-        /// ConfirmPasswordTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ConfirmPasswordTextBox;
 
         /// <summary>
         /// ChangePasswordButton control.
