@@ -57,17 +57,7 @@
                         <input type="text" class="form-control form-control-lg sizeing" placeholder="Job title, keywords...">
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                        <select class="form-select sizeing">
-                            <option selected>Anywhere</option>
-                            <option>San Francisco</option>
-                            <option>Palo Alto</option>
-                            <option>New York</option>
-                            <option>Manhattan</option>
-                            <option>Ontario</option>
-                            <option>Toronto</option>
-                            <option>Kansas</option>
-                            <option>Mountain View</option>
-                        </select>
+                        <input type="text" class="form-control form-control-lg sizeing" placeholder="Location..." />
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
                         <select class="form-select sizeing">

@@ -8,7 +8,7 @@ namespace JobPortal
     {
         protected string userRole;
         // Connection string
-        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=C927QV3\\SQLEXPRESS";
+        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
 
         // This variable will store the role (Student, Company, Admin)
         
@@ -47,8 +47,8 @@ namespace JobPortal
             if (isValidUser)
             {
 
-                string cid = null;
-                string cname = null; // Variable to store company name
+                string id = null;
+                string name = null; // Variable to store company name
 
                 // Fetch the cid and cname if the user is a company
                 if (userRole == "Company")
@@ -66,23 +66,46 @@ namespace JobPortal
                             SqlDataReader dr = cmd.ExecuteReader();
                             if (dr.Read())
                             {
-                                cid = dr["cid"].ToString();
-                                cname = dr["cname"].ToString(); 
+                                id = dr["cid"].ToString();
+                                name = dr["cname"].ToString(); 
                                 
                             }
                         }
                     }
                 }
 
-                // Redirect user to respective dashboard or homepage
-                if (userRole == "Student")
+				if (userRole == "Student")
+				{
+					using (SqlConnection con = new SqlConnection(connectionString))
+					{
+						con.Open();
+						string query = "SELECT sid, sname FROM student WHERE (semail = @Username OR susername = @Username) AND spassword = @Password";
+						using (SqlCommand cmd = new SqlCommand(query, con))
+						{
+							// Use parameters to avoid SQL injection
+							cmd.Parameters.AddWithValue("@Username", username);
+							cmd.Parameters.AddWithValue("@Password", password);
+
+							SqlDataReader dr = cmd.ExecuteReader();
+							if (dr.Read())
+							{
+								id = dr["sid"].ToString();
+								name = dr["sname"].ToString();
+
+							}
+						}
+					}
+				}
+
+				// Redirect user to respective dashboard or homepage
+				if (userRole == "Student" && id != null)
                 {
-                    Response.Redirect("StudentDashboard.aspx");
+                    Response.Redirect("StudentDashboard.aspx?sid=" + id + "&sname=" + name);
                 }
-                else if (userRole == "Company" && cid!=null)
+                else if (userRole == "Company" && id!=null)
                 {
                     
-                    Response.Redirect("CompanyDashboard.aspx?cid="+cid+"&cname="+cname);
+                    Response.Redirect("CompanyDashboard.aspx?cid=" + id + "&cname=" + name);
                 }
                 else if (userRole == "Admin")
                 {

@@ -49,28 +49,29 @@
 
         <!-- Search Section -->
         <section class="container d-flex flex-column">
-            <h3 class="fs-1 text-center" style="margin-top: 8%;margin-bottom: 3%;">Filter Jobs</h3>
+            <h3 class="fs-2 text-center" style="margin-top: 8%; margin-bottom: 3%;">Filter Jobs</h3>
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                    <input type="text" class="form-control form-control-lg sizeing" placeholder="Job title, keywords..." />
+                    <asp:TextBox ID="keyword" CssClass="form-control form-control-lg sizeing" runat="server" Placeholder="Job title, keywords..."></asp:TextBox>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                    <input type="text" class="form-control form-control-lg sizeing" placeholder="Location..." />
+                    <asp:TextBox ID="location" CssClass="form-control form-control-lg sizeing" runat="server" Placeholder="Location..."></asp:TextBox>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                    <select class="form-select sizeing">
-                        <option selected="selected">Any</option>
-                        <option>Full Time</option>
-                        <option>Part Time</option>
-                        <option>Internship</option>
-                        <option>Freelancer</option>
-                    </select>
+                    <asp:DropDownList ID="timing" CssClass="form-select sizeing" runat="server">
+                        <asp:ListItem Selected="True" Text="Any" Value=""></asp:ListItem>
+                        <asp:ListItem Text="Full Time" Value="Full Time"></asp:ListItem>
+                        <asp:ListItem Text="Part Time" Value="Part Time"></asp:ListItem>
+                        <asp:ListItem Text="Internship" Value="Internship"></asp:ListItem>
+                        <asp:ListItem Text="Freelancer" Value="Freelancer"></asp:ListItem>
+                    </asp:DropDownList>
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search sizeing">Search Job</button>
+                    <asp:Button ID="FilterJob" runat="server" CssClass="btn btn-primary btn-lg btn-block text-white btn-search sizeing" OnClick="FilterJob_Click" Text="Search Job" />
                 </div>
             </div>
         </section>
+
 
 
         <!-- Job Card Section -->
@@ -78,16 +79,18 @@
             <asp:Label ID="JobNumberLabel" CssClass="mb-2 fs-3" runat="server"></asp:Label>
             <div class="row mt-3">
                 <div class="col-md-12">
-                    <asp:Repeater ID="JobCardRepeater" runat="server">
+                   <asp:Repeater ID="JobCardRepeater" runat="server">
                         <ItemTemplate>
                             <!-- Job Info Column -->
                             <div class="job-card mb-4 p-4 position-relative">
                                 <div class="row align-items-center">
                                     <div class="col-md-4 d-flex">
                                         <div class="job-info">
-                                            <div class="badge bg-primary text-white mb-2"><%# Eval("JobType") %></div>
+                                            <div class="badge <%# GetBadgeClass(Eval("JobType").ToString()) %> text-white mb-2">
+                                                <%# Eval("JobType") %>
+                                            </div>
                                             <a href='<%# Eval("JobLink") %>' class="job-title h5 text-dark mb-1 d-block">
-                                               <%# Eval("JobTitle") %>
+                                                <%# Eval("JobTitle") %>
                                             </a>
                                             <p class="job-meta text-muted">
                                                 Publisher: <strong><%# Eval("Publisher") %></strong>
@@ -104,7 +107,7 @@
                                         <p class="job-salary mb-0"><strong>Salary</strong><br /> <%# Eval("SalaryRange") %></p>
                                     </div>
                                     <div class="col-md-2 text-end">
-                                        <asp:Button runat="server" CssClass="btn btn-warning px-4" Text="Apply" OnClick="ApplyJob" />
+                                        <asp:Button runat="server" CssClass="btn btn-warning px-4" Text="Apply" CommandArgument="2101" OnClick="ApplyJob_Click" />
                                     </div>
                                 </div>
                                 <!-- Job Description -->

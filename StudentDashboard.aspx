@@ -134,20 +134,12 @@
                 passwordSection.style.display = 'block';
             }
         }
-
-        function showCategory(category) {
-            // Implement the logic to display job listings based on the selected category
-            console.log('Selected category:', category);
-        }
-
-        function showMoreCategories() {
-            // Implement the logic to display more job categories
-            console.log('Show more categories');
-        }
         function redirectToJobList() {
-            window.location.href = 'JobListings.aspx'; // Replace 'JobList.aspx' with the actual URL of the job listing page
+			var sid = '<%= Request.QueryString["sid"] %>';
+			var sname = '<%= Request.QueryString["sname"] %>';
+			window.location.href = "JobListings.aspx?sid=" + sid + "&sname=" + encodeURIComponent(sname);
         }
-    </script>
+	</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
