@@ -270,6 +270,17 @@
                 margin-left: 42px;
             }
         }
+        .fa-solid, .fas {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: #fff;
+        }
+        @media (min-width: 1200px) {
+            .h3, h3 {
+                font-size: 1.75rem;
+                color: #fff;
+            }
+        }
     </style>
 </head>
 <body>
@@ -366,11 +377,12 @@
 
         <!-- Applied Job Report Section -->
         <div id="applied-job-report-section" class="section">
-            <div class="dashboard-card" id="applied-job-report-card" onclick="redirectToAppliedJobReport()">
+            <asp:LinkButton ID="btnRedirectToAppliedJobReport" runat="server" CssClass="dashboard-card" OnClick="RedirectToAppliedJobReport_Click" style="text-decoration:none">
                 <i class="fas fa-file-alt fa-3x"></i>
                 <h3>Applied Job Report</h3>
-            </div>
+            </asp:LinkButton>
         </div>
+
 
 
         <!-- Manage Account Section -->
@@ -453,9 +465,7 @@
             form.style.display = form.style.display === 'block' ? 'none' : 'block';
         };
 
-        function redirectToAppliedJobReport() {
-            window.location.href = "AppliedJobReport.aspx";
-        }
+        
 
     </script>
 </body>
