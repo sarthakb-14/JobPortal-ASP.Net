@@ -51,20 +51,15 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
                     </div>
                 </div>
             </div>
-            <section id="applied-job">
-                <asp:GridView ID="JobGridView" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-bordered" GridLines="None">
-                    <Columns>
-                        <asp:BoundField DataField="JobTitle" HeaderText="Job Title" />
-                        <asp:BoundField DataField="CompanyName" HeaderText="Company Name" />
-                        <asp:BoundField DataField="Location" HeaderText="Location" />
-                        <asp:TemplateField HeaderText="Actions">
-                            <ItemTemplate>
-                                <asp:Button ID="ApplyButton" runat="server" Text="Delete" CssClass="btn btn-primary" CommandName="Delete" CommandArgument='<%# Eval("JobId") %>' />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
-            </section>
+             <section id="applied-job">
+               <h2>Your Recent Jobs Applied</h2>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-bordered" GridLines="None">
+                <Columns>
+                    <asp:BoundField DataField="CompanyName" HeaderText="Company Name" />
+                    <asp:BoundField DataField="JobTitle" HeaderText="Job Title" />
+                </Columns>
+            </asp:GridView>
+        </section>
             <section id="manage-profile" style="display:none;">
                 <h2>Edit Profile</h2>
                 <div class="profile-container w-50 mx-auto">
