@@ -75,7 +75,8 @@ namespace JobPortal
             }
 
             // Optionally, add a success message or redirect the user
-            Response.Write("<script>alert('Profile updated successfully!');</script>");
+            ClientScript.RegisterStartupScript(this.GetType(), "alert",
+            "alert('Profile updated successfully! You have to login again for security purposes'); window.location='JobPortalLogin.aspx';", true);
         }
     
 
@@ -123,7 +124,8 @@ namespace JobPortal
                         cmd.Parameters.AddWithValue("@cid", cid);
                         cmd.ExecuteNonQuery();
                     }
-                    Response.Write("<script>alert('Password Changed Successfully!');</script>");
+                    ClientScript.RegisterStartupScript(this.GetType(), "alert",
+                    "alert('Password changed successfully! You have to login again for security purposes'); window.location='JobPortalLogin.aspx';", true);
                 }
                 catch (Exception ex)
                 {
@@ -171,29 +173,33 @@ namespace JobPortal
 
         protected void ViewJobLinkButton_Click(object sender, EventArgs e)
         {
+            string cname = Request.QueryString["cname"];
             string cid = Request.QueryString["cid"];
-            Response.Redirect($"ViewJob.aspx?cid={cid}");
+            Response.Redirect($"ViewJob.aspx?cid={cid}&cname={cname}");
         }
 
 
         protected void UpdateJobLink_Click(object sender, EventArgs e)
         {
+            string cname = Request.QueryString["cname"];
             string cid = Request.QueryString["cid"];
-            Response.Redirect($"UpdateJob.aspx?cid={cid}");
+            Response.Redirect($"UpdateJob.aspx?cid={cid}&cname={cname}");
         }
 
 
         protected void DeleteJobButton_Click(object sender, EventArgs e)
         {
+            string cname = Request.QueryString["cname"];
             string cid = Request.QueryString["cid"];
-            Response.Redirect($"DeleteJob.aspx?cid={cid}");
+            Response.Redirect($"DeleteJob.aspx?cid={cid}&cname={cname}");
         }
 
         protected void RedirectToAppliedJobReport_Click(object sender, EventArgs e)
         {
+            string cname = Request.QueryString["cname"];
             // Redirect to the AppliedJobReport.aspx page
             string cid = Request.QueryString["cid"];
-            Response.Redirect($"AppliedJobReport.aspx?cid={cid}");
+            Response.Redirect($"AppliedJobReport.aspx?cid={cid}&cname={cname}");
         }
     }
 }
