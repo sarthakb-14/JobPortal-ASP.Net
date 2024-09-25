@@ -2,12 +2,13 @@
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Web.UI;
+using System.Data;
 
 namespace JobPortal
 {
     public partial class StudentDashboard : System.Web.UI.Page
     {
-        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=DK27QV3\\SQLEXPRESS";
+        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=GF27QV3\\SQLEXPRESS";
         protected void Page_Load(object sender, EventArgs e)
         {
             // Check if 'sid' and 'sname' are present in the query string
@@ -26,9 +27,33 @@ namespace JobPortal
                 {
                     lblStudentName.Text = studentName;
                 }
+                string sid = Request.QueryString["sid"]; // Extract sid from URL
+                LoadJobApplications(sid);
             }
         }
 
+        private void LoadJobApplications(string sid)
+        {
+            string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=GF27QV3\\SQLEXPRESS";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                string query = @"
+            SELECT c.cname AS CompanyName, j.jobtitle AS JobTitle
+            FROM applyjob a
+            INNER JOIN joblist j ON a.jobid = j.jobid
+            INNER JOIN company c ON j.cid = c.cid
+            WHERE a.sid = @sid
+            ORDER BY c.cname"; // Sort by CompanyName
+
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@sid", sid);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                GridView1.DataSource = ds.Tables[0];
+                GridView1.DataBind();
+            }
+        }
         private void LoadStudentProfile()
         {
             string sid = Request.QueryString["sid"];
