@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace JobPortal
 {
-    public partial class Contact : Page
+    public partial class Contact_us : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
