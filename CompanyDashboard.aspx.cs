@@ -16,12 +16,12 @@ namespace JobPortal
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Retrieve the company name from the query string
+            
             string cname = Request.QueryString["cname"];
 
             if (!IsPostBack && !string.IsNullOrEmpty(cname))
             {
-                // Update the label with the company name if available
+                
                 Label1.Text = cname;
                 LoadCompanyDetails();
             }

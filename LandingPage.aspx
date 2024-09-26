@@ -31,7 +31,7 @@
                         <a class="nav-link" href="JobListings.aspx">Job Listings</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="Contact.aspx">Contact Us</a>
+                        <a class="nav-link" href="ContactPage.aspx">Contact Us</a>
                     </li>
                 </ul>
             </div>
