@@ -135,7 +135,7 @@
                     <h5>Design</h5>
                 </div>
             </div>
-            <asp:Button runat="server" CssClass="show-all-btn" Text="Show All" />
+            <asp:Button runat="server" CssClass="show-all-btn" Text="Show All" OnClientClick="window.location.href='JobListing.aspx'; return false;"/>
         </section>
 
 
