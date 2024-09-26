@@ -20,17 +20,20 @@
             <div><a class="navbar-brand" href="#">Job Portal</a></div>
             <div class="navbar-collapse navlink" id="navbarNav">
                 <ul class="navbar-nav gap text-center w-100">
-                    <li><a class="nav-link" href="LandingPage.aspx">Home</a></li>
+                    <li><a class="nav-link" href="StudentDashboard.aspx?sid=<%=Request.QueryString["sid"] %>&sname=<%=Request.QueryString["sname"] %>">Student Dashboard</a></li>
                     <li><a class="nav-link" href="JobListings.aspx">Job Listings</a></li>
-                    <li><a class="nav-link" href="#">Contact Us</a></li>
+                    <li><a class="nav-link" href="Contact.aspx">Contact Us</a></li>
                 </ul>
             </div>
             <div>
-                <ul class="navbar-nav justify-content-end">
-                    <li class="nav-item">
+                 <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item" runat="server" id="logoutItem">
+                        <asp:Button runat="server" CssClass="btn" Text="Logout" OnClientClick="window.location.href='LandingPage.aspx'; return false;" />
+                    </li>
+                    <li class="nav-item" runat="server" id="registerItem">
                         <asp:Button runat="server" CssClass="btn" Text="Register" OnClientClick="window.location.href='Registration.aspx'; return false;" />
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" runat="server" id="loginItem">
                         <asp:Button runat="server" CssClass="btn" Text="Login" OnClientClick="window.location.href='JobPortalLogin.aspx'; return false;" />
                     </li>
                 </ul>
@@ -107,7 +110,7 @@
                                         <p class="job-salary mb-0"><strong>Salary</strong><br /> <%# Eval("SalaryRange") %></p>
                                     </div>
                                     <div class="col-md-2 text-end">
-                                        <asp:Button runat="server" CssClass="btn btn-warning px-4" Text="Apply" CommandArgument="2101" OnClick="ApplyJob_Click" />
+                                        <asp:Button runat="server" CssClass="btn btn-warning px-4" Text="Apply" CommandArgument='<%# Eval("JobId") %>' OnClick="ApplyJob_Click" />
                                     </div>
                                 </div>
                                 <!-- Job Description -->
@@ -122,21 +125,6 @@
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>
-            </div>
-
-            <!-- Pagination -->
-            <div class="row pagination-wrap">
-                <nav aria-label="Page navigation" class="custom-pagination">
-                    <ul class="pagination">
-                        <asp:Repeater ID="PaginationRepeater" runat="server">
-                            <ItemTemplate>
-                                <li class="page-item <%# Eval("CssClass") %>">
-                                    <a href="?page=<%# Eval("Value") %>" class="page-link"><%# Eval("Text") %></a>
-                                </li>
-                            </ItemTemplate>
-                        </asp:Repeater>
-                    </ul>
-                </nav>
             </div>
         </section>
 
@@ -210,6 +198,7 @@
     </form>
 
     <!-- Including Bootstrap JS and dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-rpUCW+2UNqaBLsl/XzrvUL15NFyKLOnhC5nMrCgvM9kg2MKs/JQdci9saRI4G8jI" crossorigin="anonymous"></script>
+
 </body>
 </html>
