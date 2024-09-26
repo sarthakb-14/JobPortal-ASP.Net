@@ -14,6 +14,8 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link rel="stylesheet" href="StyleSheet/LandingPage.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -52,26 +54,26 @@
             <div class="w-75">
                 <h1>Your Dream Job Awaits</h1>
                 <p>Find jobs that fit your skills, preferences, and aspirations</p>
-                <div class="row mb-5">
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                        <input type="text" class="form-control form-control-lg sizeing" placeholder="Job title, keywords...">
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                        <input type="text" class="form-control form-control-lg sizeing" placeholder="Location..." />
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                        <select class="form-select sizeing">
-                            <option selected>Any</option>
-                            <option>Full Time</option>
-                            <option>Part Time</option>
-                            <option>Internship</option>
-                            <option>Freelancer</option>
-                        </select>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block text-white btn-search sizeing">Search Job</button>
-                    </div>
-                </div> 
+                <div class="row">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                    <asp:TextBox ID="keyword" CssClass="form-control form-control-lg sizeing" runat="server" Placeholder="Job title, keywords..."></asp:TextBox>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                    <asp:TextBox ID="location" CssClass="form-control form-control-lg sizeing" runat="server" Placeholder="Location..."></asp:TextBox>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                    <asp:DropDownList ID="timing" CssClass="form-select sizeing" runat="server">
+                        <asp:ListItem Selected="True" Text="Any" Value=""></asp:ListItem>
+                        <asp:ListItem Text="Full Time" Value="Full Time"></asp:ListItem>
+                        <asp:ListItem Text="Part Time" Value="Part Time"></asp:ListItem>
+                        <asp:ListItem Text="Internship" Value="Internship"></asp:ListItem>
+                        <asp:ListItem Text="Freelancer" Value="Freelancer"></asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+                    <asp:Button ID="FilterJob" runat="server" CssClass="btn btn-primary btn-lg btn-block text-white btn-search sizeing" OnClick="FilterJob_Click" Text="Search Job" />
+                </div>
+            </div>
             </div>
         </div>
 
@@ -86,25 +88,25 @@
             <div class="row section-counter justify-content-around">
                 <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
                     <div class="d-flex align-items-center justify-content-center">
-                        <strong class="number" data-number="1930">1,930</strong>
+                        <strong class="number" id="applicants"><asp:Label ID="lblApplicants" runat="server"></asp:Label></strong>
                     </div>
                     <span class="caption">Candidates</span>
                 </div>
                 <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
                     <div class="d-flex align-items-center justify-content-center">
-                    <strong class="number" data-number="54">54</strong>
+                        <strong class="number" id="jobsPosted"><asp:Label ID="lblJobsPosted" runat="server"></asp:Label></strong>
                     </div>
                     <span class="caption">Jobs Posted</span>
                 </div>
                 <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
                     <div class="d-flex align-items-center justify-content-center">
-                        <strong class="number" data-number="120">120</strong>
+                        <strong class="number" id="jobsFilled"><asp:Label ID="lblJobsFilled" runat="server"></asp:Label></strong>
                     </div>
                     <span class="caption">Jobs Filled</span>
                 </div>
                 <div class="col-6 col-md-6 col-lg-3 mb-5 mb-lg-0">
                     <div class="d-flex align-items-center justify-content-center">
-                        <strong class="number" data-number="550">550</strong>
+                        <strong class="number" id="companies"><asp:Label ID="lblCompanies" runat="server"></asp:Label></strong>
                     </div>
                     <span class="caption">Companies</span>
                 </div>
@@ -186,7 +188,31 @@
         </footer>
     </form>
 
-    <!-- Including Bootstrap JS and dependencies -->
+
+
+    <script>
+	    $(document).ready(function () {
+		    // Function to animate number counting
+		    function animateNumber(id, targetNumber) {
+			    $({ countNum: 0 }).animate({ countNum: targetNumber }, {
+				    duration: 2000, // Duration of animation in milliseconds
+				    easing: 'linear',
+				    step: function () {
+					    $(id).text(Math.floor(this.countNum)); // Update the label text
+				    },
+				    complete: function () {
+					    $(id).text(this.countNum); // Ensure the final number is displayed
+				    }
+			    });
+		    }
+
+		    // Get the values from the server-side labels and animate
+		    animateNumber('#applicants', parseInt($('#<%= lblApplicants.ClientID %>').text()) || 0);
+		    animateNumber('#jobsPosted', parseInt($('#<%= lblJobsPosted.ClientID %>').text()) || 0);
+            animateNumber('#jobsFilled', parseInt($('#<%= lblJobsFilled.ClientID %>').text()) || 0);
+            animateNumber('#companies', parseInt($('#<%= lblCompanies.ClientID %>').text()) || 0);
+	    });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

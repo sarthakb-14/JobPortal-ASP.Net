@@ -17,7 +17,7 @@
     <form id="form1" runat="server">
         <!-- Navbar Section -->
         <nav class="navbar navbar-expand-lg">
-            <div><a class="navbar-brand" href="#">Job Portal</a></div>
+            <div><a class="navbar-brand" href="LandingPage.aspx">Job Portal</a></div>
             <div class="navbar-collapse navlink" id="navbarNav">
                 <ul class="navbar-nav gap text-center w-100">
                     <li><a class="nav-link" href="StudentDashboard.aspx?sid=<%=Request.QueryString["sid"] %>&sname=<%=Request.QueryString["sname"] %>">Student Dashboard</a></li>

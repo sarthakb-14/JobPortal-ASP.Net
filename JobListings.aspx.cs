@@ -30,40 +30,58 @@ namespace JobPortal
 				registerItem.Visible = !isSidPresent;
 				loginItem.Visible = !isSidPresent;
 				LoadJobData();
+				Session.Remove("SearchKey");
+				Session.Remove("SearchLocation");
+				Session.Remove("SearchTiming");
 			}
 		}
+
 
 
 
 		private void LoadJobData()
 		{
-			// Define the query based on whether sid is null
+			string key = Session["SearchKey"]?.ToString();
+			string loc = Session["SearchLocation"]?.ToString();
+			string time = Session["SearchTiming"]?.ToString();
+
 			string jobQuery = string.IsNullOrEmpty(sid)
-				? @"
-					SELECT j.jobid, j.jobtitle, j.jobexperience, j.jobemployeementstatus, j.jobJD, j.jobsalary, j.jobvacancy, c.cname, c.ccity, c.cwebsiteurl
-					FROM joblist j
-					INNER JOIN company c ON j.cid = c.cid"
-				: @"
-					SELECT j.jobid, j.jobtitle, j.jobexperience, j.jobemployeementstatus, j.jobJD, j.jobsalary, j.jobvacancy, c.cname, c.ccity, c.cwebsiteurl
-					FROM joblist j
-					INNER JOIN company c ON j.cid = c.cid
-					LEFT JOIN applyjob a ON j.jobid = a.jobid AND a.sid = @StudentID
-					WHERE a.applyid IS NULL";
+		   ? @"
+				SELECT j.jobid, j.jobtitle, j.jobexperience, j.jobemployeementstatus, j.jobJD, j.jobsalary, j.jobvacancy, c.cname, c.ccity, c.cwebsiteurl
+				FROM joblist j
+				INNER JOIN company c ON j.cid = c.cid
+				WHERE (@Key IS NULL OR j.jobtitle LIKE '%' + @Key + '%' OR c.cname LIKE '%' + @Key + '%' OR j.jobsalary LIKE '%' + @Key + '%')
+				AND (@Loc IS NULL OR c.ccity LIKE '%' + @Loc + '%')
+				AND (@Time IS NULL OR j.jobemployeementstatus = @Time)"
+		   : @"
+				SELECT j.jobid, j.jobtitle, j.jobexperience, j.jobemployeementstatus, j.jobJD, j.jobsalary, j.jobvacancy, c.cname, c.ccity, c.cwebsiteurl
+				FROM joblist j
+				INNER JOIN company c ON j.cid = c.cid
+				LEFT JOIN applyjob a ON j.jobid = a.jobid AND a.sid = @StudentID
+				WHERE a.applyid IS NULL
+				AND (@Key IS NULL OR j.jobtitle LIKE '%' + @Key + '%' OR c.cname LIKE '%' + @Key + '%' OR j.jobsalary LIKE '%' + @Key + '%')
+				AND (@Loc IS NULL OR c.ccity LIKE '%' + @Loc + '%')
+				AND (@Time IS NULL OR j.jobemployeementstatus = @Time)";
 
 			using (SqlConnection con = new SqlConnection(connStr))
 			{
 				con.Open();
 				SqlCommand jobCommand = new SqlCommand(jobQuery, con);
+
 				// Add parameter only if sid is not null
 				if (!string.IsNullOrEmpty(sid))
 				{
-					int studentId = int.Parse(sid); // Safely parse sid
-					jobCommand.Parameters.AddWithValue("@StudentID", studentId);
+					jobCommand.Parameters.AddWithValue("@StudentID", sid); // Set parameter for StudentID
 				}
-				CallingReader(jobCommand);
+
+				// Add additional parameters for filtering
+				jobCommand.Parameters.AddWithValue("@Key", string.IsNullOrEmpty(key) ? (object)DBNull.Value : key);
+				jobCommand.Parameters.AddWithValue("@Loc", string.IsNullOrEmpty(loc) ? (object)DBNull.Value : loc);
+				jobCommand.Parameters.AddWithValue("@Time", string.IsNullOrEmpty(time) ? (object)DBNull.Value : time);
+
+				CallingReader(jobCommand); // Call the method to process the results
 			}
 		}
-
 
 
 		protected string GetBadgeClass(string jobType)
@@ -111,7 +129,7 @@ namespace JobPortal
 				if (string.IsNullOrEmpty(sid))
 				{
 					// Show an alert and exit method if `sid` is missing
-					ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Error: Student ID is missing. Please log in again.');", true);
+					ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Please log in to view more jobs according to you.');", true);
 					return;
 				}
 
