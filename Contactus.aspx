@@ -66,7 +66,7 @@
 
         .team-member img {
             width: 150px;
-            height: 150px;;
+            height: 150px;
             border-radius: 50%;
             border: 2px solid #1e90ff; /* Blue border for images */
             margin-bottom: 10px;
