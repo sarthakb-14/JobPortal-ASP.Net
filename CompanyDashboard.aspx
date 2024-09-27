@@ -190,10 +190,14 @@
         }
 
 
-.form-card:target, .form-card[style*="block"] {
-    max-height: 1000px; 
-    opacity: 1;
-}
+        .form-card:target, .form-card[style*="block"] {
+            max-height: 1000px; 
+            opacity: 1;
+        }
+
+        option {
+            color: black;
+        }
     </style>
 </head>
 <body>

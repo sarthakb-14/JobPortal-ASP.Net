@@ -12,7 +12,7 @@ namespace JobPortal
         {
             if (!IsPostBack)
             {
-                string cid = Request.QueryString["cid"];
+                string cid = Session["UserID"].ToString();
                 if (!string.IsNullOrEmpty(cid))
                 {
                     LoadJobs(cid); // Pass the cid to load jobs for that specific category
@@ -72,7 +72,7 @@ namespace JobPortal
                     }
 
                     // Reload jobs after deletion
-                    string cid = Request.QueryString["cid"];
+                    string cid = Session["UserID"].ToString();
                     if (!string.IsNullOrEmpty(cid))
                     {
                         LoadJobs(cid); // Reload jobs for the same cid after deletion

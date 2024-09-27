@@ -17,7 +17,7 @@ namespace JobPortal
         protected void Page_Load(object sender, EventArgs e)
         {
             
-            string cname = Request.QueryString["cname"];
+            string cname = Session["UserName"].ToString();
 
             if (!IsPostBack && !string.IsNullOrEmpty(cname))
             {
@@ -35,7 +35,7 @@ namespace JobPortal
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@CompanyID", Request.QueryString["cid"]); // Get the logged-in company ID from the session
+                cmd.Parameters.AddWithValue("@CompanyID", Session["UserID"].ToString()); // Get the logged-in company ID from the session
                 con.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
 
@@ -63,7 +63,7 @@ namespace JobPortal
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand(updateQuery, con);
-                cmd.Parameters.AddWithValue("@CompanyID", Request.QueryString["cid"]);
+                cmd.Parameters.AddWithValue("@CompanyID", Session["UserID"].ToString());
                 cmd.Parameters.AddWithValue("@CompanyName", CompanyNameTextBox.Text);
                 cmd.Parameters.AddWithValue("@CompanyEmail", CompanyEmailTextBox.Text);
                 cmd.Parameters.AddWithValue("@CompanyAddress", CompanyAddressTextBox.Text);
@@ -83,7 +83,7 @@ namespace JobPortal
 
     protected void ChangePassword_Click(object sender, EventArgs e)
         {
-            string cid = Request.QueryString["cid"];
+            string cid = Session["UserID"].ToString();
             using (SqlConnection con = new SqlConnection(conStr))
             {
                 con.Open();
@@ -141,7 +141,7 @@ namespace JobPortal
 
             try
             {
-                string cid = Request.QueryString["cid"];
+                string cid = Session["UserID"].ToString();
                 string jobtitle = JobTitleTextBox.Text;
                 string experience = ExperienceTextBox.Text;
                 string salary = SalaryTextBox.Text;
@@ -173,33 +173,28 @@ namespace JobPortal
 
         protected void ViewJobLinkButton_Click(object sender, EventArgs e)
         {
-            string cname = Request.QueryString["cname"];
-            string cid = Request.QueryString["cid"];
-            Response.Redirect($"ViewJob.aspx?cid={cid}&cname={cname}");
+            
+            Response.Redirect("ViewJob.aspx");
         }
 
 
         protected void UpdateJobLink_Click(object sender, EventArgs e)
         {
-            string cname = Request.QueryString["cname"];
-            string cid = Request.QueryString["cid"];
-            Response.Redirect($"UpdateJob.aspx?cid={cid}&cname={cname}");
+            
+            Response.Redirect("UpdateJob.aspx");
         }
 
 
         protected void DeleteJobButton_Click(object sender, EventArgs e)
         {
-            string cname = Request.QueryString["cname"];
-            string cid = Request.QueryString["cid"];
-            Response.Redirect($"DeleteJob.aspx?cid={cid}&cname={cname}");
+            
+            Response.Redirect("DeleteJob.aspx");
         }
 
         protected void RedirectToAppliedJobReport_Click(object sender, EventArgs e)
         {
-            string cname = Request.QueryString["cname"];
-            // Redirect to the AppliedJobReport.aspx page
-            string cid = Request.QueryString["cid"];
-            Response.Redirect($"AppliedJobReport.aspx?cid={cid}&cname={cname}");
+            
+            Response.Redirect("AppliedJobReport.aspx");
         }
     }
 }

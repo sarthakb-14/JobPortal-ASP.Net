@@ -11,7 +11,7 @@ namespace JobPortal
         {
             if (!IsPostBack)
             {
-                string cid = Request.QueryString["cid"];
+                string cid = Session["UserID"].ToString();
                 if (!string.IsNullOrEmpty(cid))
                 {
                     LoadJobs(cid);

@@ -63,10 +63,20 @@ CREATE TABLE applyjob (
 );
 
 
+-- Create the shortlistedcandidates table
+CREATE TABLE shortlistedcandidates (
+    shortlistid INT IDENTITY(6101,1) PRIMARY KEY,  -- Auto-increment primary key for shortlist entries
+    sid INT NOT NULL,                              -- Foreign key to student table (same as in applyjob)
+    jobid INT NOT NULL,                            -- Foreign key to joblist table (same as in applyjob)
+    FOREIGN KEY (sid) REFERENCES student(sid),     -- Foreign key constraint referencing the student table
+    FOREIGN KEY (jobid) REFERENCES joblist(jobid)  -- Foreign key constraint referencing the joblist table
+);
+
+
 SELECT * FROM admin;
 SELECT * FROM company;
 SELECT * FROM student;
 SELECT * FROM joblist;
 SELECT * FROM applyjob;
-
+SELECT * FROM shortlistedcandidates
 

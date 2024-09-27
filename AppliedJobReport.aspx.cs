@@ -19,7 +19,7 @@ namespace JobPortal
         // Binds the Applied Jobs to the Repeater
         private void BindAppliedJobs()
         {
-            string cid = Request.QueryString["cid"];
+            string cid = Session["UserID"].ToString();
 
             if (string.IsNullOrEmpty(cid))
                 return;
@@ -50,11 +50,10 @@ namespace JobPortal
             }
         }
 
-        // Binds the Shortlisted Jobs to the Repeater
-        // Binds the Shortlisted Jobs to the Repeater
+       
         private void BindShortlistedJobs()
         {
-            string cid = Request.QueryString["cid"];
+            string cid = Session["UserID"].ToString();
 
             if (string.IsNullOrEmpty(cid))
                 return;
