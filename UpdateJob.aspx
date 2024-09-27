@@ -67,9 +67,9 @@
                                     <p class='card-text'>
                                         <strong>Employment Status:</strong> 
                                         <asp:DropDownList ID="ddlJobStatus" runat="server" CssClass="form-control">
-                                            <asp:ListItem Value="Full-Time" Text="Full-Time"></asp:ListItem>
-                                            <asp:ListItem Value="Part-Time" Text="Part-Time"></asp:ListItem>
-                                            <asp:ListItem Value="Contract" Text="Contract"></asp:ListItem>
+                                            <asp:ListItem Value="Full Time" Text="Full Time"></asp:ListItem>
+                                            <asp:ListItem Value="Part Time" Text="Part Time"></asp:ListItem>
+                                            <asp:ListItem Value="Freelancer" Text="Freelancer"></asp:ListItem>
                                             <asp:ListItem Value="Internship" Text="Internship"></asp:ListItem>
                                         </asp:DropDownList>
                                     </p>

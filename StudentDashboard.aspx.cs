@@ -7,13 +7,13 @@ namespace JobPortal
 {
 	public partial class StudentDashboard : System.Web.UI.Page
     {
-        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
+        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=DK27QV3\\SQLEXPRESS";
 
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Request.QueryString["sid"]) || string.IsNullOrEmpty(Request.QueryString["sname"]))
+            if (string.IsNullOrEmpty(Session["UserID"]?.ToString()) || string.IsNullOrEmpty(Session["UserName"]?.ToString()))
             {
                 Response.Redirect("JobPortalLogin.aspx");
                 return;
@@ -22,12 +22,12 @@ namespace JobPortal
             if (!IsPostBack)
             {
                 LoadStudentProfile();
-                string studentName = Request.QueryString["sname"];
+                string studentName = Session["UserName"].ToString();
                 if (!string.IsNullOrEmpty(studentName))
                 {
                     lblStudentName.Text = studentName;
                 }
-                string sid = Request.QueryString["sid"];
+                string sid = Session["UserID"].ToString();
                 LoadJobApplications(sid);
             }
         }
@@ -60,7 +60,7 @@ namespace JobPortal
 
         private void LoadStudentProfile()
         {
-            string sid = Request.QueryString["sid"];
+            string sid = Session["UserID"].ToString();
             
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -87,7 +87,7 @@ namespace JobPortal
 
         protected void SaveProfileButton_Click(object sender, EventArgs e)
         {
-			string sid = Request.QueryString["sid"];
+			string sid = Session["UserID"].ToString();
 			using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 string query = "UPDATE student SET sname = @sname, semail = @semail, sdob = @sdob, sgender = @sgender, saddress = @saddress, scontactno = @scontactno WHERE sId = @studentId";
@@ -109,7 +109,7 @@ namespace JobPortal
 
         protected void ChangePasswordButton_Click(object sender, EventArgs e)
         {
-            string sid = Request.QueryString["sid"];
+            string sid = Session["UserID"].ToString();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
