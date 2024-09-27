@@ -187,7 +187,7 @@
 <body>
 
     <!-- Home Button -->
-    <button class="home-btn">
+    <button class="home-btn" onclick="window.location.href='LandingPage.aspx'">
         <i class="fas fa-home"></i> Job Portal
     </button>
 

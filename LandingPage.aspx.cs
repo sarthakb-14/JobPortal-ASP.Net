@@ -5,7 +5,7 @@ namespace JobPortal
 {
 	public partial class LandingPage : System.Web.UI.Page
     {
-		private string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
+		private string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=GF27QV3\\SQLEXPRESS";
 
 		protected void Page_Load(object sender, EventArgs e)
         {
