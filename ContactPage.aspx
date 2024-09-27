@@ -129,7 +129,7 @@
 </div>
 <div class="team-cards">
 <div class="team-member">
-<img src="Images/team1.jpg" alt="Team Member 1" />
+<img src="Images/Devansh.jpg" alt="Team Member 1" />
 <h3>Devansh Sati</h3>
 <p>Role: Associate Software Engineer</p>
 <p>Email: <a href="mailto:devansh.sati@example.com" style="color: #1e90ff;">devansh.sati@example.com</a></p>
