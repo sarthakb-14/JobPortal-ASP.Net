@@ -80,7 +80,7 @@ namespace JobPortal
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             int sid = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
-            DeleteStudent(sid); // Call your existing method to delete the student
+            DeleteStudent(sid);
             LoadStudents(); // Refresh the GridView after deletion
         }
 
@@ -97,6 +97,7 @@ namespace JobPortal
                 }
             }
         }
+
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {

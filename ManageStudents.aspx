@@ -192,8 +192,8 @@
 
             <!-- GridView for displaying students -->
             <asp:GridView ID="GridView1" runat="server" CssClass="grid-view" AutoGenerateColumns="False" AllowPaging="True" 
-                OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand" 
-                OnRowDeleting="GridView1_RowDeleting" DataKeyNames="sid">
+                OnPageIndexChanging="GridView1_PageIndexChanging" OnRowDeleting="GridView1_RowDeleting" 
+                DataKeyNames="sid">
                 <Columns>
                     <asp:BoundField DataField="sname" HeaderText="Student Name" />
                     <asp:BoundField DataField="semail" HeaderText="Email" />
