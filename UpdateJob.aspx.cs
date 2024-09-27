@@ -12,7 +12,7 @@ namespace JobPortal
         {
             if (!IsPostBack)
             {
-                string cid = Session["UserID"].ToString();
+                string cid = Session["UserID"]?.ToString();
                 if (!string.IsNullOrEmpty(cid))
                 {
                     LoadJobs(cid); // Pass the cid to load jobs for that specific category
