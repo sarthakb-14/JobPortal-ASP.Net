@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Data.SqlClient;
-using System.Configuration;
-using System.Web.UI;
 using System.Data;
+using System.Web.UI;
 
 namespace JobPortal
 {
-    public partial class StudentDashboard : System.Web.UI.Page
+	public partial class StudentDashboard : System.Web.UI.Page
     {
-        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=GF27QV3\\SQLEXPRESS";
+        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
+
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Check if 'sid' and 'sname' are present in the query string
             if (string.IsNullOrEmpty(Request.QueryString["sid"]) || string.IsNullOrEmpty(Request.QueryString["sname"]))
             {
-                // Redirect to the login page
                 Response.Redirect("JobPortalLogin.aspx");
                 return;
             }
@@ -27,23 +27,24 @@ namespace JobPortal
                 {
                     lblStudentName.Text = studentName;
                 }
-                string sid = Request.QueryString["sid"]; // Extract sid from URL
+                string sid = Request.QueryString["sid"];
                 LoadJobApplications(sid);
             }
         }
 
+
+
         private void LoadJobApplications(string sid)
         {
-            string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=GF27QV3\\SQLEXPRESS";
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 string query = @"
-            SELECT c.cname AS CompanyName, j.jobtitle AS JobTitle
-            FROM applyjob a
-            INNER JOIN joblist j ON a.jobid = j.jobid
-            INNER JOIN company c ON j.cid = c.cid
-            WHERE a.sid = @sid
-            ORDER BY c.cname"; // Sort by CompanyName
+                    SELECT c.cname AS CompanyName, j.jobtitle AS JobTitle
+                    FROM applyjob a
+                    INNER JOIN joblist j ON a.jobid = j.jobid
+                    INNER JOIN company c ON j.cid = c.cid
+                    WHERE a.sid = @sid
+                    ORDER BY c.cname";
 
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@sid", sid);
@@ -54,6 +55,9 @@ namespace JobPortal
                 GridView1.DataBind();
             }
         }
+
+
+
         private void LoadStudentProfile()
         {
             string sid = Request.QueryString["sid"];
@@ -79,12 +83,12 @@ namespace JobPortal
             }
         }
 
+
+
         protected void SaveProfileButton_Click(object sender, EventArgs e)
         {
-            string sid = Request.QueryString["sid"];
-           
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
+			string sid = Request.QueryString["sid"];
+			using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 string query = "UPDATE student SET sname = @sname, semail = @semail, sdob = @sdob, sgender = @sgender, saddress = @saddress, scontactno = @scontactno WHERE sId = @studentId";
                 SqlCommand cmd = new SqlCommand(query, conn);
@@ -101,37 +105,32 @@ namespace JobPortal
             }
         }
 
+
+
         protected void ChangePasswordButton_Click(object sender, EventArgs e)
         {
             string sid = Request.QueryString["sid"];
-            
-
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
 
-                // Step 1: Retrieve the current password from the database
                 string query = "SELECT spassword FROM student WHERE sId = @studentId";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@studentId", sid);
                 string currentPasswordHash = cmd.ExecuteScalar()?.ToString();
 
-                // Step 2: Validate current password
-                if (currentPasswordHash == CurrentPasswordTextBox.Text) // Adjust this for proper hash verification
+                if (currentPasswordHash == CurrentPasswordTextBox.Text) 
                 {
                     // Step 3: Update the password in the database
                     string updateQuery = "UPDATE student SET spassword = @newPassword WHERE sId = @studentId";
                     SqlCommand updateCmd = new SqlCommand(updateQuery, conn);
-                    updateCmd.Parameters.AddWithValue("@newPassword", NewPasswordTextBox.Text); // Not hashed, adjust as necessary
+                    updateCmd.Parameters.AddWithValue("@newPassword", NewPasswordTextBox.Text);
                     updateCmd.Parameters.AddWithValue("@studentId", sid);
                     updateCmd.ExecuteNonQuery();
-
-                    // Success alert
                     ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Password changed successfully.');", true);
                 }
                 else
                 {
-                    // Handle incorrect current password case
                     ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('The current password is incorrect.');", true);
                 }
             }

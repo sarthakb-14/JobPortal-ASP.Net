@@ -24,6 +24,33 @@ namespace JobPortal
 		protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
 		/// <summary>
+		/// logoutItem control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.HtmlControls.HtmlGenericControl logoutItem;
+
+		/// <summary>
+		/// registerItem control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.HtmlControls.HtmlGenericControl registerItem;
+
+		/// <summary>
+		/// loginItem control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.HtmlControls.HtmlGenericControl loginItem;
+
+		/// <summary>
 		/// keyword control.
 		/// </summary>
 		/// <remarks>
@@ -76,14 +103,5 @@ namespace JobPortal
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.Repeater JobCardRepeater;
-
-		/// <summary>
-		/// PaginationRepeater control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Repeater PaginationRepeater;
 	}
 }
