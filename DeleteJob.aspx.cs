@@ -26,7 +26,7 @@ namespace JobPortal
 
         private void LoadJobs(string cid)
         {
-            string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=DK27QV3\\SQLEXPRESS";
+            string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -56,7 +56,7 @@ namespace JobPortal
                     // Add a debug statement or label to display jobId for verification
                     Response.Write($"Deleting jobId: {jobId}<br/>");
 
-                    string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=DK27QV3\\SQLEXPRESS";
+                    string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
 
                     using (SqlConnection con = new SqlConnection(connectionString))
                     {

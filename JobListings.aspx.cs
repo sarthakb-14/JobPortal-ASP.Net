@@ -14,8 +14,8 @@ namespace JobPortal
 		{
 			try
 			{
-				sname = Request.QueryString["sname"];
-				sid = Request.QueryString["sid"];
+				sname = Session["UserName"]?.ToString();
+				sid = Session["UserID"]?.ToString();
 			}
 			catch (Exception ex)
 			{
@@ -207,6 +207,14 @@ namespace JobPortal
 			JobNumberLabel.Text = $"{jobCount} Jobs Listed";
 			JobCardRepeater.DataSource = jobs;
 			JobCardRepeater.DataBind();
+		}
+
+
+		protected void LogoutBtn_Click(object sender, EventArgs e)
+		{
+			Session.Clear();
+			Session.Abandon();
+			Response.Redirect("~/LandingPage.aspx");
 		}
 
 	}

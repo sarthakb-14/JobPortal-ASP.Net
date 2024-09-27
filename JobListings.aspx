@@ -20,7 +20,7 @@
             <div><a class="navbar-brand" href="LandingPage.aspx">Job Portal</a></div>
             <div class="navbar-collapse navlink" id="navbarNav">
                 <ul class="navbar-nav gap text-center w-100">
-                    <li><a class="nav-link" href="StudentDashboard.aspx?sid=<%=Request.QueryString["sid"] %>&sname=<%=Request.QueryString["sname"] %>">Student Dashboard</a></li>
+                    <li><a class="nav-link" href="StudentDashboard.aspx">Student Dashboard</a></li>
                     <li><a class="nav-link" href="JobListings.aspx">Job Listings</a></li>
                     <li><a class="nav-link" href="Contact.aspx">Contact Us</a></li>
                 </ul>
@@ -28,7 +28,7 @@
             <div>
                  <ul class="navbar-nav justify-content-end">
                     <li class="nav-item" runat="server" id="logoutItem">
-                        <asp:Button runat="server" CssClass="btn" Text="Logout" OnClientClick="window.location.href='LandingPage.aspx'; return false;" />
+                        <asp:Button ID="LogoutBtn" runat="server" CssClass="btn" Text="Logout" OnClick="LogoutBtn_Click"/>
                     </li>
                     <li class="nav-item" runat="server" id="registerItem">
                         <asp:Button runat="server" CssClass="btn" Text="Register" OnClientClick="window.location.href='Registration.aspx'; return false;" />
