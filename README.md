@@ -23,6 +23,41 @@ The **Job Portal Capstone** is a full-stack web application developed using **AS
 
 ## 🔧 **Features**
 
+
+### 📋 **Screenshost**
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/7e1ab7e8-f4bd-4002-a0f1-ed67c547d2c2" alt="Screenshot 1" width="200"></td>
+    <td><img src="https://github.com/user-attachments/assets/21a8581f-9ab2-492d-813e-4530fe08276c" alt="Screenshot 2" width="200"></td>
+    <td><img src="https://github.com/user-attachments/assets/5d6f2efc-32b0-42d8-a845-0672f798ae69" alt="Screenshot 3" width="200"></td>
+    <td><img src="https://github.com/user-attachments/assets/350ce8c0-eb49-4c45-b9b8-1e977c257bd5" alt="Screenshot 4" width="200"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/04bab0d5-2260-414c-8d54-8e5539958a18" alt="Screenshot 5" width="200"></td>
+    <td><img src="https://github.com/user-attachments/assets/d3244149-9a4e-4afb-9167-6b0e7b3be1f6" alt="Screenshot 6" width="200"></td>
+    <td><img src="https://github.com/user-attachments/assets/6c356da5-8c49-48a7-8fc2-e1df45305efb" alt="Screenshot 7" width="200"></td>
+    <td><img src="https://github.com/user-attachments/assets/286ff4fd-9895-4637-87a6-46abf8a20f8d" alt="Screenshot 8" width="200"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/eaf310ee-9c5b-4154-8c2e-7aea29a83975" alt="Screenshot 9" width="200"></td>
+    <td><img src="https://github.com/user-attachments/assets/8e1f0e53-5e29-455e-bf8a-d51e33eb6ac3" alt="Screenshot 10" width="200"></td>
+    <td><img src="https://github.com/user-attachments/assets/089f4665-f138-4b6b-8869-91ff9a14ff42" alt="Screenshot 11" width="200"></td>
+    <td><img src="https://github.com/user-attachments/assets/18d5137f-2e08-4941-9d53-bf8bc43cd601" alt="Screenshot 12" width="200"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/bb7e4629-4728-41a4-9174-5d97c96a9530" alt="Screenshot 13" width="200"></td>
+    <td><img src="https://github.com/user-attachments/assets/4d507890-64c4-4c8d-b183-7588f7d49095" alt="Screenshot 14" width="200"></td>
+    <td><img src="https://github.com/user-attachments/assets/7fae0c66-915b-4f7f-9d14-8297b6931bb9" alt="Screenshot 15" width="200"></td>
+    <td><img src="https://github.com/user-attachments/assets/0682b772-4e88-4550-8945-6608128fe0c9" alt="Screenshot 16" width="200"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/75cd60a7-8252-4e92-92da-19d4bf56c98f" alt="Screenshot 17" width="200"></td>
+    <td><img src="https://github.com/user-attachments/assets/4dc1248e-126f-4a64-9d21-3547754702bc" alt="Screenshot 18" width="200"></td>
+    <td><img src="https://github.com/user-attachments/assets/58ce9366-8189-4f4d-a376-4e99bcac620f" alt="Screenshot 19" width="200"></td>
+    <td><img src="https://github.com/user-attachments/assets/b3feb4e5-3cc8-4f8b-ba2a-cf149906c416" alt="Screenshot 20" width="200"></td>
+  </tr>
+</table>
+
 ### 🛠️ **Admin Portal**
 - **👤 User Management**: Create, update, and delete user accounts (Admins, Companies, Students).
 - **🏢 Company Management**: Approve or reject company registrations.
