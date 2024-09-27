@@ -5,7 +5,7 @@
 <head runat="server">
     <title>Manage Companies</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-     <!-- FontAwesome Icons -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -16,33 +16,33 @@
             color: #ffffff;
         }
         .logout-btn {
-          background-color: transparent;
-          color: #fff;
-          width: 7em;
-          height: 2.5em;
-          border: 0.2em solid #007bff;
-          border-radius: 11px;
-          text-align: center;
-          transition: all 0.6s ease;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          padding: 0 1em;
-          position: relative;
-          font-weight: bold;
-          letter-spacing: 1px;
-          margin-left: 13px;
+            background-color: transparent;
+            color: #fff;
+            width: 7em;
+            height: 2.5em;
+            border: 0.2em solid #007bff;
+            border-radius: 11px;
+            text-align: center;
+            transition: all 0.6s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1em;
+            position: relative;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-left: 13px;
         }
 
         .logout-btn:hover {
-          background-color: #007bff;
-          cursor: pointer;
-          color: #fff;
+            background-color: #007bff;
+            cursor: pointer;
+            color: #fff;
         }
 
         .logout-btn:focus {
-          outline: none;
-          box-shadow: none;
+            outline: none;
+            box-shadow: none;
         }
 
         .profile-container {
@@ -77,27 +77,27 @@
         }
 
         .search-container {
-            display: flex; /* Flexbox for alignment */
-            justify-content: center; /* Center the items */
-            margin-bottom: 20px; /* Space below search container */
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
         }
 
         .search-container input[type="text"] {
             width: 300px;
             padding: 10px;
-            background-color: transparent; /* Keep it transparent */
+            background-color: transparent;
             color: white;
             border-radius: 10px;
             outline: none;
-            margin-right: 10px; /* Space between input and dropdown */
+            margin-right: 10px;
         }
 
         .search-container select {
             width: 200px;
-            background-color: transparent; /* Keep it transparent */
+            background-color: transparent;
             color: white;
             border-radius: 10px;
-            margin-right: 10px; /* Space between dropdown and button */
+            margin-right: 10px;
         }
 
         .button {
@@ -105,7 +105,7 @@
             color: #fff;
             width: 7em;
             height: 2.5em;
-            border: 0.2em solid red; /* Red border for Delete */
+            border: 0.2em solid red;
             border-radius: 11px;
             text-align: center;
             transition: all 0.6s ease;
@@ -113,15 +113,15 @@
             align-items: center;
             justify-content: center;
             padding: 0 1em;
-            position: relative;
             font-weight: bold;
             letter-spacing: 1px;
             cursor: pointer;
         }
 
         .button:hover {
-            background-color: red; /* Red background for Delete */
+            background-color: red;
             color: #fff;
+            text-decoration: none;
         }
 
         .btn-search {
@@ -129,7 +129,7 @@
             color: #fff;
             width: 7em;
             height: 2.5em;
-            border: 0.2em solid blue; /* Blue border for Search */
+            border: 0.2em solid blue;
             border-radius: 11px;
             text-align: center;
             transition: all 0.6s ease;
@@ -143,7 +143,7 @@
         }
 
         .btn-search:hover {
-            background-color: blue; /* Blue background on hover for Search */
+            background-color: blue;
             color: white;
         }
 
@@ -180,23 +180,21 @@
         .grid-view tr:hover {
             background-color: rgba(8, 7, 44, 0.5);
         }
+
         #lblAdminName {
             font-family: 'Poppins', sans-serif;
         }
-                    
     </style>
 </head>
 <body>
-
     <form id="form1" runat="server">
         <div class="grid-container">
             <h2>Manage Companies</h2>
-                <div class="profile-container">
-                    <i class="fas fa-user-circle profile-icon"></i>
-                    <asp:Label ID="lblAdminName" runat="server" Text=""></asp:Label>
-                   <asp:Button ID="Button1" runat="server" Text="Logout" CssClass="logout-btn" OnClick="LogoutButton_Click" />
-                </div>
-            <!-- Search form -->
+            <div class="profile-container">
+                <i class="fas fa-user-circle profile-icon"></i>
+                <asp:Label ID="lblAdminName" runat="server" Text=""></asp:Label>
+                <asp:Button ID="Button1" runat="server" Text="Logout" CssClass="logout-btn" OnClick="LogoutButton_Click" />
+            </div>
             <div class="search-container">
                 <asp:TextBox ID="txtSearch" runat="server" placeholder="Search..." CssClass="form-control" />
                 <asp:DropDownList ID="ddlSearchColumn" runat="server" CssClass="form-control">
@@ -208,30 +206,32 @@
                 </asp:DropDownList>
                 <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn-search" OnClick="btnSearch_Click" />
             </div>
+            <asp:GridView ID="GridView1" runat="server" CssClass="grid-view" AutoGenerateColumns="False" AllowPaging="True" 
+    OnPageIndexChanging="GridView1_PageIndexChanging" OnRowDeleting="GridView1_RowDeleting" DataKeyNames="cid">
+    <Columns>
+        <asp:BoundField DataField="cname" HeaderText="Company Name" />
+        <asp:BoundField DataField="cemail" HeaderText="Email" />
+        <asp:BoundField DataField="cusername" HeaderText="Username" />
+        <asp:BoundField DataField="caddress" HeaderText="Address" />
+        <asp:BoundField DataField="ccity" HeaderText="City" />
+        <asp:TemplateField HeaderText="Website">
+            <ItemTemplate>
+                <a href='<%# Eval("cwebsiteurl", "http://{0}") %>' target="_blank" class="text-white">
+                    <%# Eval("cwebsiteurl") %>
+                </a>
+            </ItemTemplate>
+        </asp:TemplateField>
+        <asp:BoundField DataField="ccontactno" HeaderText="Contact Number" />
+        <asp:TemplateField HeaderText="Action">
+            <ItemTemplate>
+                <asp:LinkButton ID="btnDelete" runat="server" CommandName="Delete" 
+                    CommandArgument='<%# Eval("cid") %>' OnClientClick="return confirm('Are you sure you want to delete this record?');" 
+                    CssClass="button">Delete</asp:LinkButton>
+            </ItemTemplate>
+        </asp:TemplateField>
+    </Columns>
+</asp:GridView>
 
-            <!-- GridView for displaying companies -->
-            <asp:GridView ID="GridView1" runat="server" CssClass="grid-view" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging">
-                <Columns>
-                    <asp:BoundField DataField="cname" HeaderText="Company Name" />
-                    <asp:BoundField DataField="cemail" HeaderText="Email" />
-                    <asp:BoundField DataField="cusername" HeaderText="Username" />
-                    <asp:BoundField DataField="caddress" HeaderText="Address" />
-                    <asp:BoundField DataField="ccity" HeaderText="City" />
-                    <asp:TemplateField HeaderText="Website">
-                        <ItemTemplate>
-                            <a href='<%# Eval("cwebsiteurl", "http://{0}") %>' target="_blank" class="text-white">
-                                <%# Eval("cwebsiteurl") %>
-                            </a>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:BoundField DataField="ccontactno" HeaderText="Contact Number" />
-                    <asp:TemplateField HeaderText="Action">
-                        <ItemTemplate>
-                            <button class="button" onclick="return confirm('Are you sure you want to delete this record?');">Delete</button>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>
         </div>
     </form>
 </body>

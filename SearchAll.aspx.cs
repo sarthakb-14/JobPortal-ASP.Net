@@ -12,21 +12,20 @@ namespace JobPortal
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Check if aid and aname are available in the query string
-            string adminId = Request.QueryString["aid"];
-            string adminName = Request.QueryString["aname"];
+            string adminId = Session["UserID"] as string;
+            string adminName = Session["UserName"] as string;
 
+            // Redirect to JobPortalLogin if session variables are missing
             if (string.IsNullOrEmpty(adminId) || string.IsNullOrEmpty(adminName))
             {
-                // Redirect to JobPortalLogin if query string parameters are missing
                 Response.Redirect(ResolveUrl("~/JobPortalLogin.aspx"));
-
             }
             else
             {
-                // Set the admin name in the label for profile display
+                // Display admin name in the label for profile display
                 lblAdminName.Text = adminName;
             }
+
             if (!IsPostBack)
             {
                 // Initially, clear search columns dropdown
@@ -115,11 +114,12 @@ namespace JobPortal
                 }
                 else if (entity == "applyjob")
                 {
-                    query = @"SELECT s.sname as 'Applicants', c.cname as 'Companies'
-                              FROM applyjob aj
-                              JOIN student s ON aj.sid = s.sid
-                              JOIN company c ON aj.cid = c.cid
-                              WHERE " + searchColumn + " LIKE '%' + @SearchQuery + '%'";
+                    query = @"SELECT s.sname as 'Applicants', c.cname as 'Companies', j.jobtitle as 'Job Title'
+                      FROM applyjob aj
+                      JOIN student s ON aj.sid = s.sid
+                      JOIN joblist j ON aj.jobid = j.jobid -- Joining with joblist to get jobtitle
+                      JOIN company c ON j.cid = c.cid     -- Joining with company to get company details
+                      WHERE " + searchColumn + " LIKE '%' + @SearchQuery + '%'";
                 }
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
@@ -140,9 +140,11 @@ namespace JobPortal
 
         protected void LogoutButton_Click(object sender, EventArgs e)
         {
-            // Clear session and redirect to login page
+            // Clear the session to log the user out
             Session.Clear();
-            Response.Redirect("LandingPage.aspx");
+            Session.Abandon(); // End the session
+            // Redirect to the LandingPage after logout
+            Response.Redirect("~/LandingPage.aspx");
         }
     }
 }

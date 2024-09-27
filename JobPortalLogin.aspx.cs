@@ -6,7 +6,7 @@ namespace JobPortal
     public partial class JobPortalLogin : System.Web.UI.Page
     {
         protected string userRole;
-        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=DK27QV3\\SQLEXPRESS";
+        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=C927QV3\\SQLEXPRESS";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,13 +32,6 @@ namespace JobPortal
             bool isValidUser = ValidateUser(username, password, userRole);
             if (isValidUser)
             {
-                string cid = null;
-                string cname = null;
-                string aid = null;
-                string aname = null;
-                string sid = null;
-                string sname = null;
-
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
                     con.Open();
@@ -55,8 +48,9 @@ namespace JobPortal
                             SqlDataReader dr = cmd.ExecuteReader();
                             if (dr.Read())
                             {
-                                cid = dr["cid"].ToString();
-                                cname = dr["cname"].ToString();
+                                Session["UserID"] = dr["cid"].ToString();
+                                Session["UserName"] = dr["cname"].ToString();
+                                Session["UserRole"] = "Company";
                             }
                         }
                     }
@@ -73,8 +67,9 @@ namespace JobPortal
                             SqlDataReader dr = cmd.ExecuteReader();
                             if (dr.Read())
                             {
-                                aid = dr["aid"].ToString();
-                                aname = dr["aname"].ToString();
+                                Session["UserID"] = dr["aid"].ToString();
+                                Session["UserName"] = dr["aname"].ToString();
+                                Session["UserRole"] = "Admin";
                             }
                         }
                     }
@@ -91,25 +86,26 @@ namespace JobPortal
                             SqlDataReader dr = cmd.ExecuteReader();
                             if (dr.Read())
                             {
-                                sid = dr["sid"].ToString();
-                                sname = dr["sname"].ToString();
+                                Session["UserID"] = dr["sid"].ToString();
+                                Session["UserName"] = dr["sname"].ToString();
+                                Session["UserRole"] = "Student";
                             }
                         }
                     }
                 }
 
-                // Redirect user to respective dashboard or homepage
-                if (userRole == "Student" && sid != null)
+                // Redirect user to the respective dashboard or homepage
+                if (Session["UserRole"].ToString() == "Student")
                 {
-                    Response.Redirect("StudentDashboard.aspx?sid=" + sid + "&sname=" + sname);
+                    Response.Redirect("StudentDashboard.aspx");
                 }
-                else if (userRole == "Company" && cid != null)
+                else if (Session["UserRole"].ToString() == "Company")
                 {
-                    Response.Redirect("CompanyDashboard.aspx?cid=" + cid + "&cname=" + cname);
+                    Response.Redirect("CompanyDashboard.aspx");
                 }
-                else if (userRole == "Admin" && aid != null)
+                else if (Session["UserRole"].ToString() == "Admin")
                 {
-                    Response.Redirect("AdminDashboard/AdminDashboard.aspx?aid=" + aid + "&aname=" + aname);
+                    Response.Redirect("AdminDashboard/AdminDashboard.aspx");
                 }
             }
             else

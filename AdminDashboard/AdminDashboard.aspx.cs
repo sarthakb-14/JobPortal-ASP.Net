@@ -10,13 +10,13 @@ namespace JobPortal
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Check if aid and aname are available in the query string
-            string adminId = Request.QueryString["aid"];
-            string adminName = Request.QueryString["aname"];
+            // Retrieve aid and aname from the session
+            string adminId = Session["UserID"] as string;
+            string adminName = Session["UserName"] as string;
 
             if (string.IsNullOrEmpty(adminId) || string.IsNullOrEmpty(adminName))
             {
-                // Redirect to JobPortalLogin if query string parameters are missing
+                // Redirect to JobPortalLogin if session variables are missing
                 Response.Redirect("../JobPortalLogin.aspx");
             }
             else
@@ -70,9 +70,11 @@ namespace JobPortal
 
         protected void LogoutButton_Click(object sender, EventArgs e)
         {
-            // Clear session and redirect to login page
+            // Clear the session to log the user out
             Session.Clear();
-            Response.Redirect("../LandingPage.aspx");
+            Session.Abandon(); // End the session
+            // Redirect to the LandingPage after logout
+            Response.Redirect("~/LandingPage.aspx");
         }
     }
 }

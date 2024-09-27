@@ -59,14 +59,14 @@ namespace JobPortal
                     }
 
                     // Proceed with inserting new record
-                    string insertQuery = "INSERT INTO student (sname, semail, susername, spassword, sdob, sgender, saddress) " +
-                                         "VALUES ('" + StudentNameTextBox.Text + "', '" +
+                    string insertQuery = "INSERT INTO student (sname, semail, susername, spassword, sdob, sgender, saddress, sskills) VALUES ('" + StudentNameTextBox.Text + "', '" +
                                          EmailTextBox.Text + "', '" +
                                          UsernameTextBox.Text + "', '" +
                                          PasswordTextBox.Text + "', '" +
                                          DOBTextBox.Text + "', '" +
                                          GenderDropDown.SelectedValue + "', '" +
-                                         AddressTextBox.Text + "')";
+                                         AddressTextBox.Text + "', '" +
+                                         SkillTextBox.Text+"')";
 
                     SqlCommand insertCmd = new SqlCommand(insertQuery, con);
                     int rowsAffected = insertCmd.ExecuteNonQuery();

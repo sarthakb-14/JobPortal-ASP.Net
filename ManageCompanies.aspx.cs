@@ -1,7 +1,7 @@
 ﻿using System;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Data.SqlClient;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace JobPortal
@@ -12,77 +12,93 @@ namespace JobPortal
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Check if aid and aname are available in the query string
-            string adminId = Request.QueryString["aid"];
-            string adminName = Request.QueryString["aname"];
+            // Retrieve admin ID and name from the session instead of query string
+            string adminId = Session["UserID"] as string;
+            string adminName = Session["UserName"] as string;
 
+            // Redirect to JobPortalLogin if session variables are missing
             if (string.IsNullOrEmpty(adminId) || string.IsNullOrEmpty(adminName))
             {
-                // Redirect to JobPortalLogin if query string parameters are missing
                 Response.Redirect(ResolveUrl("~/JobPortalLogin.aspx"));
-
             }
             else
             {
-                // Set the admin name in the label for profile display
+                // Display admin name in the label for profile display
                 lblAdminName.Text = adminName;
             }
 
             if (!IsPostBack)
             {
-                LoadCompanies();
+                // Initially, clear search columns dropdown
+                //ddlSearchColumn.Items.Clear();
             }
         }
 
-        private void LoadCompanies(string searchQuery = "", string searchColumn = "")
+        private void BindGridView(string searchQuery = null)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-
-                string query = "SELECT * FROM company";
-                if (!string.IsNullOrEmpty(searchQuery) && !string.IsNullOrEmpty(searchColumn))
+                string query = "SELECT * FROM Company";
+                if (!string.IsNullOrEmpty(searchQuery))
                 {
-                    query += $" WHERE {searchColumn} LIKE '%' + @SearchQuery + '%'";
+                    query += " WHERE cname LIKE @search OR cemail LIKE @search OR cusername LIKE @search OR ccity LIKE @search OR ccontactno LIKE @search";
                 }
-
-                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
-                if (!string.IsNullOrEmpty(searchQuery) && !string.IsNullOrEmpty(searchColumn))
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    adapter.SelectCommand.Parameters.AddWithValue("@SearchQuery", searchQuery);
-                }
+                    if (!string.IsNullOrEmpty(searchQuery))
+                    {
+                        cmd.Parameters.AddWithValue("@search", "%" + searchQuery + "%");
+                    }
 
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                GridView1.DataSource = dt;
-                GridView1.DataBind();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    GridView1.DataSource = dt;
+                    GridView1.DataBind();
+                }
             }
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            // Get the search query and column selected by the user
-            string searchQuery = txtSearch.Text.Trim();
             string searchColumn = ddlSearchColumn.SelectedValue;
+            string searchValue = txtSearch.Text.Trim();
+            string searchQuery = string.Empty;
 
-            // Load the companies with the search query
-            LoadCompanies(searchQuery, searchColumn);
+            switch (searchColumn)
+            {
+                case "cname":
+                    searchQuery = $"cname LIKE '%{searchValue}%'";
+                    break;
+                case "cemail":
+                    searchQuery = $"cemail LIKE '%{searchValue}%'";
+                    break;
+                case "cusername":
+                    searchQuery = $"cusername LIKE '%{searchValue}%'";
+                    break;
+                case "ccity":
+                    searchQuery = $"ccity LIKE '%{searchValue}%'";
+                    break;
+                case "ccontactno":
+                    searchQuery = $"ccontactno LIKE '%{searchValue}%'";
+                    break;
+            }
+
+            BindGridView(searchValue);
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
-            LoadCompanies(); // Reload the grid to reflect the correct page
+            BindGridView();
         }
 
-        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            if (e.CommandName == "Delete")
-            {
-                int companyId = Convert.ToInt32(e.CommandArgument);
-                DeleteCompany(companyId);
-                LoadCompanies(); // Reload the grid
-            }
+            int companyId = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
+            DeleteCompany(companyId);
+            BindGridView();
         }
 
         private void DeleteCompany(int companyId)
@@ -90,18 +106,22 @@ namespace JobPortal
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand($"DELETE FROM company WHERE cid = {companyId}", conn);
-                cmd.ExecuteNonQuery();
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM Company WHERE cid = @cid", conn))
+                {
+                    cmd.Parameters.AddWithValue("@cid", companyId);
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
 
         protected void LogoutButton_Click(object sender, EventArgs e)
         {
-            // Clear session and redirect to login page
+            // Clear the session to log the user out
             Session.Clear();
-            Response.Redirect("LandingPage.aspx");
+            Session.Abandon(); // End the session
+
+            // Redirect to the LandingPage after logout
+            Response.Redirect("~/LandingPage.aspx");
         }
-
-
     }
 }

@@ -214,6 +214,9 @@
                     <div class="form-group">
                         <asp:TextBox ID="EmailTextBox" runat="server" CssClass="form-control" Placeholder="Email" TextMode="Email"></asp:TextBox>
                     </div>
+                    <div class="form-group">
+                        <asp:TextBox ID="SkillTextBox" runat="server" CssClass="form-control" Placeholder="Skill"></asp:TextBox>
+                    </div>
                     <asp:Button ID="StudentRegisterButton" runat="server" CssClass="button" Text="Register" OnClick="StudentRegisterButton_Click" />
                     <br />
                     <asp:Label ID="Label2" runat="server" ForeColor="Red"></asp:Label>

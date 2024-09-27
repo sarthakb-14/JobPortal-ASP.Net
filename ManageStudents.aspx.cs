@@ -14,15 +14,14 @@ namespace JobPortal
         {
             if (!IsPostBack)
             {
-                // Check if aid and aname are available in the query string
-                string adminId = Request.QueryString["aid"];
-                string adminName = Request.QueryString["aname"];
+                // Retrieve adminId and adminName from the session
+                string adminId = Session["UserID"] as string;
+                string adminName = Session["UserName"] as string;
 
+                // Redirect to JobPortalLogin if session variables are missing
                 if (string.IsNullOrEmpty(adminId) || string.IsNullOrEmpty(adminName))
                 {
-                    // Redirect to JobPortalLogin if query string parameters are missing
                     Response.Redirect(ResolveUrl("~/JobPortalLogin.aspx"));
-
                 }
                 else
                 {
@@ -30,10 +29,8 @@ namespace JobPortal
                     lblAdminName.Text = adminName;
                 }
 
-                if (!IsPostBack)
-                {
-                    LoadStudents();
-                }
+                // Load students on initial page load
+                LoadStudents();
             }
         }
 
@@ -55,53 +52,66 @@ namespace JobPortal
                     adapter.SelectCommand.Parameters.AddWithValue("@SearchQuery", searchQuery);
                 }
 
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                GridView1.DataSource = dt;
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+
+                GridView1.DataSource = ds;
                 GridView1.DataBind();
             }
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            string searchQuery = txtSearch.Text.Trim();
             string searchColumn = ddlSearchColumn.SelectedValue;
-
+            string searchQuery = txtSearch.Text.Trim();
             LoadStudents(searchQuery, searchColumn);
-        }
-
-        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            GridView1.PageIndex = e.NewPageIndex;
-            LoadStudents(); // Reload the grid to reflect the correct page
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Delete")
             {
-                int studentId = Convert.ToInt32(e.CommandArgument);
-                DeleteStudent(studentId);
-                LoadStudents(); // Reload the grid
+                int sid = Convert.ToInt32(e.CommandArgument);
+                DeleteStudent(sid);
+                LoadStudents(); // Refresh the GridView after deletion
             }
         }
 
-        private void DeleteStudent(int studentId)
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            int sid = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
+            DeleteStudent(sid); // Call your existing method to delete the student
+            LoadStudents(); // Refresh the GridView after deletion
+        }
+
+        private void DeleteStudent(int sid)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand($"DELETE FROM student WHERE studentId = @StudentId", conn);
-                cmd.Parameters.AddWithValue("@StudentId", studentId);
-                cmd.ExecuteNonQuery();
+                string query = "DELETE FROM student WHERE sid = @Sid";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Sid", sid);
+                    cmd.ExecuteNonQuery();
+                }
             }
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            LoadStudents(); // Rebind the data on page index change
         }
 
         protected void LogoutButton_Click(object sender, EventArgs e)
         {
-            // Clear session and redirect to login page
+            // Clear the session to log the user out
             Session.Clear();
-            Response.Redirect("LandingPage.aspx");
+            Session.Abandon(); // End the session
+
+            // Redirect to the LandingPage after logout
+            Response.Redirect("~/LandingPage.aspx");
         }
     }
 }
