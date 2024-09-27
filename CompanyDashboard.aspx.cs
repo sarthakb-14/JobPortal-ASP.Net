@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Web;
 
 namespace JobPortal
 {
@@ -16,13 +17,25 @@ namespace JobPortal
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            string cname = Session["UserName"].ToString();
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetExpires(DateTime.UtcNow.AddHours(-1)); // Expire immediately
+            Response.Cache.SetNoStore();
+            string cid = Session["UserID"]?.ToString();
+            string cname = Session["UserName"]?.ToString();
+            if (string.IsNullOrEmpty(cid) || string.IsNullOrEmpty(cname))
+            {
+                Response.Redirect(ResolveUrl("~/JobPortalLogin.aspx"));
+            }
+            else
+            {
+                // Display admin name in the label for profile display
+                Label1.Text = cname;
+            }
 
             if (!IsPostBack && !string.IsNullOrEmpty(cname))
             {
                 
-                Label1.Text = cname;
+               
                 LoadCompanyDetails();
             }
         }
@@ -167,6 +180,8 @@ namespace JobPortal
 
         protected void Logout_Click(object sender, EventArgs e)
         {
+            Session.Clear();
+            Session.Abandon();
             Response.Redirect("LandingPage.aspx");
         }
 

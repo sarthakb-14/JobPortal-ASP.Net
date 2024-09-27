@@ -250,9 +250,9 @@
                 <asp:TextBox ID="VacancyTextBox" runat="server" CssClass="form-control" TextMode="Number" Placeholder="Vacancy"></asp:TextBox>
                 <label for="EmploymentStatusDropDown">Employment Status</label>
                 <asp:DropDownList ID="EmploymentStatusDropDown" runat="server" CssClass="form-control">
-                    <asp:ListItem Text="Full-Time" Value="Full-Time"></asp:ListItem>
-                    <asp:ListItem Text="Part-Time" Value="Part-Time"></asp:ListItem>
-                    <asp:ListItem Text="Contract" Value="Contract"></asp:ListItem>
+                    <asp:ListItem Text="Full Time" Value="Full Time"></asp:ListItem>
+                    <asp:ListItem Text="Part Time" Value="Part Time"></asp:ListItem>
+                    <asp:ListItem Text="Freelancer" Value="Freelancer"></asp:ListItem>
                     <asp:ListItem Text="Internship" Value="Internship"></asp:ListItem>
                 </asp:DropDownList>
                 <label for="JobDescriptionTextBox">Job Description</label>
