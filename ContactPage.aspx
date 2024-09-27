@@ -1,201 +1,344 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ContactPage.aspx.cs" Inherits="JobPortal.ContactPage" %>
 
-
- 
 <!DOCTYPE html>
 <html lang="en">
-<head runat="server">
-<title>Contact Us</title>
-<link rel="stylesheet" type="text/css" href="Styles/site.css" />
-<style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Job Portal</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <style>
+        /* Base Styles */
         body {
-            background: #000000; /* Solid black background */
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0; /* Reset margin */
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: rgb(22, 20, 24);
+            color: #eee;
+            user-select: none;
         }
- 
+
+        h1,
+        h2 {
+            font-weight: 700;
+        }
+
         .container {
-            max-width: 1300px;
-            margin: 10px auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            padding-top: 50px;
         }
- 
-        h1, h2 {
-            color: #1e90ff; /* Blue color for headings */
-            margin-bottom: 10px;
-        }
- 
-        .about-us, .team-photos {
-            margin-bottom: 30px;
-        }
- 
-        .team-photos {
-            display: flex;
-            flex-direction: column; /* Stack header and cards */
-            margin-top: 20px;
-        }
- 
-        .team-header {
-            text-align: center; /* Center align the header */
-            margin-bottom: 20px; /* Space below the header */
-        }
- 
-        .team-cards {
-            display: flex;
-            flex-wrap: wrap; /* Allow wrapping for smaller screens */
-            justify-content: space-around; /* Evenly distribute cards */
-        }
- 
-        .team-member {
-            background: rgba(0, 0, 0, 0.5); /* Darker background for team cards */
-            margin: 10px; /* Adjust margin to fit better */
-            text-align: center;
-            width: 260px; /* Decreased width for more cards in a row */
-            padding: 15px; /* Adjust padding for consistent appearance */
-            border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s, background 0.3s; /* Animation on hover */
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
-        }
- 
-        .team-member:hover {
-            transform: translateY(-5px); /* Lift effect on hover */
-            box-shadow: 0 0 20px rgba(30, 144, 255, 0.7); /* Stronger blue shadow on hover */
-            background: rgba(30, 144, 255, 0.1); /* Light blue background on hover */
-        }
- 
-        .team-member img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 2px solid #1e90ff; /* Blue border for images */
-            margin-bottom: 10px;
-        }
- 
-        p {
-            color: #dcdcdc; /* Light gray for paragraphs */
-            margin: 5px 0; /* Consistent spacing */
-        }
- 
-        .social-icons {
-            margin-top: 10px;
-        }
- 
-        .social-icons a {
-            margin: 0 5px;
-            color: #1e90ff;
-            text-decoration: none;
-        }
- 
-        .footer {
+
+        /* Home Button */
+        .home-btn {
+            background-color: #17a2b8;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 50px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
             color: white;
-            padding: 20px;
-            text-align: center;
-            margin-top: 30px;
+            text-transform: uppercase;
+            font-weight: bold;
+            z-index: 1000;
         }
- 
-        .footer-content {
+
+        .tech-container {
+            display: flex;
+            width: 100%;
+        }
+
+        .home-btn:hover {
+            background-color: #138496;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        /* NFT Card Styles */
+        .nft {
+            user-select: none;
+            width: 300px; /* Card width */
+            margin: 1rem auto; /* Added margin for spacing between cards */
+            border: 1px solid #ffffff22;
+            background-color: #282c34;
+            background: linear-gradient(0deg, rgba(40, 44, 52, 1) 0%, rgba(17, 0, 32, .5) 100%);
+            box-shadow: 0 7px 20px 5px #00000088;
+            border-radius: .7rem;
+            backdrop-filter: blur(7px);
+            overflow: hidden;
+            transition: .5s all;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Ensure equal height */
+        }
+
+        .nft:hover {
+            border: 1px solid #ffffff44;
+            box-shadow: 0 7px 50px 10px #000000aa;
+            transform: scale(1.015);
+            filter: brightness(1.3);
+            position: relative;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 1rem;
+        }
+
+        .tokenImage {
+            border-radius: .5rem;
+            max-width: 100%;
+            height: 250px;
+            object-fit: cover;
+            filter: grayscale(100%); /* Set to black and white */
+            transition: filter 0.5s ease; /* Smooth transition for the filter effect */
+        }
+
+        .tokenImage:hover {
+            filter: grayscale(0%); /* Change to color on hover */
+        }
+
+        .description {
+            margin: .5rem 0;
+            color: #a89ec9;
+        }
+
+        .tokenInfo {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            align-items: center;
         }
- 
-        .footer-content div {
-            max-width: 300px;
+
+        /* Technologies Section */
+        .tech-section {
+            padding: 60px 0;
+            background-color: #1a1a1a;
         }
-</style>
-<!-- Include Font Awesome for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+        .tech-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #17a2b8;
+        }
+
+        footer {
+            background-color: #282c34;
+            padding: 20px 0;
+            color: #aaa;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: #17a2b8;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            margin: 10px 0;
+        }
+
+        .social-icons i {
+            font-size: 24px;
+            color: #17a2b8;
+            margin: 0 10px;
+        }
+
+        .social-icons i:hover {
+            color: #138496;
+        }
+
+        .row {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: 51px;
+            width: 91%;
+            flex-wrap: nowrap;
+            justify-content: center;
+        }
+    </style>
 </head>
+
 <body>
-<form id="form1" runat="server">
-<div class="container">
-<h1>Contact Us</h1>
-<div class="about-us">
-<h2>About Us</h2>
-<p>"We are a dedicated team of professionals committed to delivering exceptional services. Our mission is rooted in quality and 
-                    innovation, striving to exceed expectations in everything we do. We believe in fostering collaboration 
-                    and creativity, ensuring that every solution we provide is tailored 
-                    to meet the unique needs of our clients. With a focus on continuous improvement, we are passionate 
-                    about pushing boundaries and setting new standards in our industry.".</p>
-</div>
- 
-            <div class="team-photos">
-<div class="team-header">
-<h2>Meet Our Team</h2>
-</div>
-<div class="team-cards">
-<div class="team-member">
-<img src="Images/Devansh.jpg" alt="Team Member 1" />
-<h3>Devansh Sati</h3>
-<p>Role: Associate Software Engineer</p>
-<p>Email: <a href="mailto:devansh.sati@example.com" style="color: #1e90ff;">devansh.sati@example.com</a></p>
-<p>Phone: +919090909091</p>
-<div class="social-icons">
-<a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-<a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-<a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-</div>
-</div>
-<div class="team-member">
-<img src="Images/roshan1.jpg" alt="Team Member 2" />
-<h3>Roshan Kumar</h3>
-<p>Role: Associate Software Engineer</p>
-<p>Email: <a href="mailto:roshan.kumar@example.com" style="color: #1e90ff;">roshan.kumar@example.com</a></p>
-<p>Phone: +919090909092</p>
-<div class="social-icons">
-<a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-<a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-<a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-</div>
-</div>
-<div class="team-member">
-<img src="Images/sarthak1.jpg" alt="Team Member 3" />
-<h3>Sarthak Bhardwaj</h3>
-<p>Role: Associate Software Engineer</p>
-<p>Email: <a href="mailto:sarthak@example.com" style="color: #1e90ff;">sarthak@example.com</a></p>
-<p>Phone: +919090909093</p>
-<div class="social-icons">
-<a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-<a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-<a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-</div>
-</div>
-<div class="team-member">
-<img src="Images/utkarsh1.png" alt="Team Member 4" />
-<h3>Utkarsh Singh</h3>
-<p>Role: Associate Software Engineer</p>
-<p>Email: <a href="mailto:utkarsh.singh@example.com" style="color: #1e90ff;">utkarsh.singh@example.com</a></p>
-<p>Phone: +919090909094</p>
-<div class="social-icons">
-<a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-<a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-<a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-</div>
-</div>
-</div>
-</div>
-</div>
-</form>
- 
-    <!-- Footer Section -->
-<footer class="footer">
-<div class="footer-content container">
-<div>
-<h5>About Us</h5>
-<p>Job Portal is a leading platform connecting employers with top talent. We help individuals find their dream jobs while enabling companies to hire the best candidates.</p>
-</div>
-<div>
-<h5>Contact Info</h5>
-<p>Email: <a href="mailto:info@jobportal.com" style="color: #1e90ff;">info@jobportal.com</a></p>
-<p>Phone: +919090909090</p>
-<p>Address: 15th, Finthrive Global, Unitech CyberPark, Gurugram</p>
-</div>
-</div>
-<p>&copy; 2024 Job Portal. All Rights Reserved.</p>
-</footer>
+
+    <!-- Home Button -->
+    <button class="home-btn">
+        <i class="fas fa-home"></i> Job Portal
+    </button>
+
+    <!-- Header Section -->
+    <header class="text-center" style="background-color: #1a1a1a; padding: 50px;">
+        <h1>About Us</h1>
+        <p>Meet the team and technologies behind our job portal</p>
+    </header>
+
+    <!-- Team Section -->
+<section class="team-section container">
+    <div class="row">
+        <!-- Team Member 1 -->
+        <div class="col-md-4">
+            <div class="nft">
+                <div class="main">
+                    <img class="tokenImage" src="images/roshan1.jpg" alt="Roshan Kumar">
+                    <h2>Roshan Kumar</h2>
+                    <p class="description">Associate Software Engineer</p>
+                    <div class="tokenInfo">
+                        <div class="price">
+                            <a href="mailto:Roshan.Kumar@finthrive.com" style="color: #17a2b8; text-decoration: none;">Roshan.Kumar@finthrive.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="col-md-4">
+            <div class="nft">
+                <div class="main">
+                    <img class="tokenImage" src="images/utkarsh1.png" alt="Utkarsh Singh">
+                    <h2>Utkarsh Singh</h2>
+                    <p class="description">Associate Software Enginee</p>
+                    <div class="tokenInfo">
+                        <div class="price">
+                            <a href="mailto:Utkarsh.Singh@finthrive.com" style="color: #17a2b8; text-decoration: none;">Utkarsh.Singh@finthrive.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="col-md-4">
+            <div class="nft">
+                <div class="main">
+                    <img class="tokenImage" src="images/sarthak1.jpg" alt="Sarthak Bhardwaj">
+                    <h2>Sarthak Bhardwaj</h2>
+                    <p class="description">Associate Software Enginee</p>
+                    <div class="tokenInfo">
+                        <div class="price">
+                            <a href="mailto:Sarthak.Bhardwaj@finthrive.com" style="color: #17a2b8; text-decoration: none;">Sarthak.Bhardwaj@finthrive.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Member 4 -->
+        <div class="col-md-4">
+            <div class="nft">
+                <div class="main">
+                    <img class="tokenImage" src="images/Devansh.jpg" alt="Devansh Sati">
+                    <h2>Devansh Sati</h2>
+                    <p class="description">Associate Software Enginee</p>
+                    <div class="tokenInfo">
+                        <div class="price">
+                            <a href="mailto:Devansh.Sati@finthrive.com" style="color: #17a2b8; text-decoration: none;">Devansh.Sati@finthrive.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Technologies Section -->
+    <section class="tech-section">
+        <h2 class="tech-title">Technologies We Use</h2>
+        <div class="tech-container">
+            <!-- ASP.NET -->
+            <div class="nft">
+                <div class="main">
+                    <i class="fab fa-microsoft" style="font-size: 100px; color: #17a2b8;"></i>
+                    <h2>ASP.NET</h2>
+                    <p class="description">Web Framework</p>
+                    <div class="tokenInfo">
+                        <div class="price">Used For: Backend Development</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- C# -->
+            <div class="nft">
+                <div class="main">
+                    <i class="fab fa-microsoft" style="font-size: 100px; color: #17a2b8;"></i>
+                    <h2>C#</h2>
+                    <p class="description">Programming Language</p>
+                    <div class="tokenInfo">
+                        <div class="price">Used For: Application Development</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SQL -->
+            <div class="nft">
+                <div class="main">
+                    <i class="fas fa-database" style="font-size: 100px; color: #17a2b8;"></i>
+                    <h2>SQL</h2>
+                    <p class="description">Database Language</p>
+                    <div class="tokenInfo">
+                        <div class="price">Used For: Data Management</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GitHub -->
+            <div class="nft">
+                <div class="main">
+                    <i class="fab fa-github" style="font-size: 100px; color: #17a2b8;"></i>
+                    <h2>GitHub</h2>
+                    <p class="description">Version Control</p>
+                    <div class="tokenInfo">
+                        <div class="price">Used For: Code Collaboration</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+        </div>
+        <div class="social-icons">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-linkedin"></i>
+        </div>
+        <p>&copy; 2024 Job Portal. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
