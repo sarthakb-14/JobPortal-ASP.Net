@@ -53,13 +53,13 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
             </div>
              <section id="applied-job">
                <h2>Your Recent Jobs Applied</h2>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-bordered" GridLines="None">
-                <Columns>
-                    <asp:BoundField DataField="CompanyName" HeaderText="Company Name" />
-                    <asp:BoundField DataField="JobTitle" HeaderText="Job Title" />
-                </Columns>
-            </asp:GridView>
-        </section>
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-bordered" GridLines="None">
+                    <Columns>
+                        <asp:BoundField DataField="CompanyName" HeaderText="Company Name" />
+                        <asp:BoundField DataField="JobTitle" HeaderText="Job Title" />
+                    </Columns>
+                </asp:GridView>
+            </section>
             <section id="manage-profile" style="display:none;">
                 <h2>Edit Profile</h2>
                 <div class="profile-container w-50 mx-auto">
@@ -110,14 +110,14 @@ https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     <script>
         function loadManageProfile() {
             document.getElementById("manage-profile").style.display = "block";
-            document.getElementById("job-search").style.display = "none";
         }
 
         function redirectToJobList() {
-            window.location.href = "JobListings.aspx?sid=<%=Request.QueryString["sid"] %>";
+            window.location.href = "JobListings.aspx";
         }
 
         
     </script>
+
 </body>
 </html>

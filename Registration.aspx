@@ -181,52 +181,72 @@
                         <asp:TextBox ID="StudentNameTextBox" runat="server" CssClass="form-control" Placeholder="Student Name"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="StudentNameRequired" runat="server" ControlToValidate="StudentNameTextBox" ErrorMessage="Student Name is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
+    
                     <div class="form-group">
-                        <asp:TextBox ID="EnrollNoTextBox" runat="server" CssClass="form-control" Placeholder="Enrollment Number"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="EnrollNoRequired" runat="server" ControlToValidate="EnrollNoTextBox" ErrorMessage="Enrollment Number is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                        <asp:TextBox ID="EmailTextBox" runat="server" CssClass="form-control" Placeholder="Email" TextMode="Email"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="EmailTextBox" ErrorMessage="Email is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
+    
                     <div class="form-group">
                         <asp:TextBox ID="PasswordTextBox" runat="server" CssClass="form-control" Placeholder="Password" TextMode="Password"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="PasswordTextBox" ErrorMessage="Password is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
+    
                     <div class="form-group">
                         <asp:TextBox ID="ConfirmPasswordTextBox" runat="server" CssClass="form-control" Placeholder="Confirm Password" TextMode="Password"></asp:TextBox>
                         <asp:CompareValidator ID="PasswordMismatch" runat="server" ControlToCompare="PasswordTextBox" ControlToValidate="ConfirmPasswordTextBox" ErrorMessage="Passwords do not match." CssClass="text-danger" style="visibility:hidden; display: none"></asp:CompareValidator>
+                        <asp:RequiredFieldValidator ID="ConfirmPasswordRequired" runat="server" ControlToValidate="ConfirmPasswordTextBox" ErrorMessage="Confirm Password is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
+    
                     <div class="form-group">
                         <asp:TextBox ID="UsernameTextBox" runat="server" CssClass="form-control" Placeholder="Username"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="UsernameTextBoxRequired" runat="server" ControlToValidate="UsernameTextBox" ErrorMessage="Username is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="UsernameRequired" runat="server" ControlToValidate="UsernameTextBox" ErrorMessage="Username is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
+    
                     <div class="form-group">
                         <asp:TextBox ID="DOBTextBox" runat="server" CssClass="form-control" Placeholder="Date of Birth" TextMode="Date"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="DOBRequired" runat="server" ControlToValidate="DOBTextBox" ErrorMessage="Date of Birth is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
+    
                     <div class="form-group custom-dropdown">
                         <asp:DropDownList ID="GenderDropDown" runat="server" CssClass="form-control">
+                            <asp:ListItem Value="">Select Gender</asp:ListItem>
                             <asp:ListItem Value="Male">Male</asp:ListItem>
                             <asp:ListItem Value="Female">Female</asp:ListItem>
                             <asp:ListItem Value="Others">Others</asp:ListItem>
                         </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="GenderRequired" runat="server" ControlToValidate="GenderDropDown" InitialValue="" ErrorMessage="Gender is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
+    
                     <div class="form-group">
                         <asp:TextBox ID="AddressTextBox" runat="server" CssClass="form-control" Placeholder="Address"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="AddressRequired" runat="server" ControlToValidate="AddressTextBox" ErrorMessage="Address is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
-                    <div class="form-group">
-                        <asp:TextBox ID="EmailTextBox" runat="server" CssClass="form-control" Placeholder="Email" TextMode="Email"></asp:TextBox>
-                    </div>
+    
                     <div class="form-group">
                         <asp:TextBox ID="SkillTextBox" runat="server" CssClass="form-control" Placeholder="Skill"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="SkillRequired" runat="server" ControlToValidate="SkillTextBox" ErrorMessage="Skill is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
+    
                     <asp:Button ID="StudentRegisterButton" runat="server" CssClass="button" Text="Register" OnClick="StudentRegisterButton_Click" />
                     <br />
                     <asp:Label ID="Label2" runat="server" ForeColor="Red"></asp:Label>
                 </asp:Panel>
+
 
                 <!-- Company Registration Form -->
                 <asp:Panel ID="CompanyPanel" runat="server" Visible="false">
                     <div class="form-group">
                         <asp:TextBox ID="CompanyNameTextBox" runat="server" CssClass="form-control" Placeholder="Company Name"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="CompanyNameRequired" runat="server" ControlToValidate="CompanyNameTextBox" ErrorMessage="Company Name is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                    </div>
+                    <div class="form-group">
+                        <asp:TextBox ID="CompanyEmailTextBox" runat="server" CssClass="form-control" Placeholder="Email" TextMode="Email"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="CompanyEmailRequired" runat="server" ControlToValidate="CompanyEmailTextBox" ErrorMessage="Email is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                    </div>
+                    <div class="form-group">
+                        <asp:TextBox ID="CompanyUsernameTextBox" runat="server" CssClass="form-control" Placeholder="Username"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="CompanyUsernameRequired" runat="server" ControlToValidate="CompanyUsernameTextBox" ErrorMessage="Username is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
                     <div class="form-group">
                         <asp:TextBox ID="CompanyPasswordTextBox" runat="server" CssClass="form-control" Placeholder="Password" TextMode="Password"></asp:TextBox>
@@ -241,16 +261,16 @@
                         <asp:RequiredFieldValidator ID="CityRequired" runat="server" ControlToValidate="CityTextBox" ErrorMessage="City is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
                     <div class="form-group">
-                        <asp:TextBox ID="CompanyEmailTextBox" runat="server" CssClass="form-control" Placeholder="Email" TextMode="Email"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="CompanyEmailRequired" runat="server" ControlToValidate="CompanyEmailTextBox" ErrorMessage="Email is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
-                    </div>
-                    <div class="form-group">
-                        <asp:TextBox ID="CompanyUsernameTextBox" runat="server" CssClass="form-control" Placeholder="Username"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="CompanyUsernameRequired" runat="server" ControlToValidate="CompanyUsernameTextBox" ErrorMessage="Username is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
-                    </div>
-                    <div class="form-group">
                         <asp:TextBox ID="WebsiteTextBox" runat="server" CssClass="form-control" Placeholder="Website"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="WebsiteRequired" runat="server" ControlToValidate="WebsiteTextBox" ErrorMessage="Website is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                         <asp:RegularExpressionValidator 
+                            ID="WebsiteRegexValidator" 
+                            runat="server" 
+                            ControlToValidate="WebsiteTextBox" 
+                            ErrorMessage="Please enter a valid website URL." 
+                            CssClass="text-danger" 
+                            Display="Dynamic" 
+                            ValidationExpression="^(http://|https://|www\.|)([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}(/.*)?$"></asp:RegularExpressionValidator>
                     </div>
                     <div class="form-group">
                         <asp:TextBox ID="ContactNumberTextBox" runat="server" CssClass="form-control" Placeholder="Contact Number" TextMode="Phone"></asp:TextBox>

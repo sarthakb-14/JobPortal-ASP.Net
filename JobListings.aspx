@@ -22,7 +22,7 @@
                 <ul class="navbar-nav gap text-center w-100">
                     <li><a class="nav-link" href="StudentDashboard.aspx">Student Dashboard</a></li>
                     <li><a class="nav-link" href="JobListings.aspx">Job Listings</a></li>
-                    <li><a class="nav-link" href="Contact.aspx">Contact Us</a></li>
+                    <li><a class="nav-link" href="ContactPage.aspx">Contact Us</a></li>
                 </ul>
             </div>
             <div>
@@ -135,25 +135,24 @@
                 <div class="row align-items-center">
                     <div class="col-12 text-center mt-4 mb-5">
                         <div class="row justify-content-center">
-                            <div class="col-md-7">
+                            <div class="col-md-10">
                                 <h2 class="section-title mb-2">Our Candidates Work In Company</h2>
-                                <p class="lead">Porro error reiciendis commodi beatae omnis similique voluptate rerum ipsam fugit
-                                    mollitia ipsum facilis expedita tempora suscipit iste
+                                <p class="lead">Our candidate is an outstanding professional with a strong record of achievement. Their ability to collaborate effectively and tackle challenges head-on sets them apart. They bring a proactive mindset and a commitment to excellence that would make them a valuable addition to any team.
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-6 col-lg-3 col-md-6 text-center">
-                        <img src="../images/logo_mailchimp.svg" alt="Image" class="img-fluid logo-1"/>
+                        <img src="../images/logo_mailchimp.jpg" alt="Image" class="img-fluid logo-1"/>
                     </div>
                     <div class="col-6 col-lg-3 col-md-6 text-center">
-                        <img src="../images/logo_paypal.svg" alt="Image" class="img-fluid logo-2"/>
+                        <img src="../images/logo_paypal.jpg" alt="Image" class="img-fluid logo-2"/>
                     </div>
                     <div class="col-6 col-lg-3 col-md-6 text-center">
-                        <img src="../images/logo_stripe.svg" alt="Image" class="img-fluid logo-3"/>
+                        <img src="../images/logo_stripe.jpg" alt="Image" class="img-fluid logo-3"/>
                     </div>
                     <div class="col-6 col-lg-3 col-md-6 text-center">
-                        <img src="../images/logo_visa.svg" alt="Image" class="img-fluid logo-4"/>
+                        <img src="../images/logo_visa.jpg" alt="Image" class="img-fluid logo-4"/>
                     </div>
                 </div>
             </div>
@@ -166,8 +165,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-10">
                         <h2 class="text-white">Looking For A Job?</h2>
-                        <p class="mb-0 text-white lead">Lorem ipsum dolor sit amet consectetur adipisicing elit tempora adipisci
-                            impedit.
+                        <p class="mb-0 text-white lead">Our candidate has a proven track record of success in their current role, demonstrating strong skills in teamwork, problem-solving, and adaptability. They consistently contribute to projects and drive results, making them a valuable asset to any organization. Ready to take the next step in their career, they are eager to bring their expertise to new challenges.
                         </p>
                     </div>
                     <div class="col-md-2">

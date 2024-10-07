@@ -10,7 +10,7 @@ namespace JobPortal
     {
         
 
-        private readonly string conStr = "uid=sa; password=manager@123; database = JobPortal; server = DK27QV3\\SQLEXPRESS";
+        private readonly string conStr = "uid=sa; password=manager@123; database = JobPortal; server = 7Y27QV3\\SQLEXPRESS";
 
         
 

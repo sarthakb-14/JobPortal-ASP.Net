@@ -323,15 +323,6 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-        </div>
-        <div class="social-icons">
-            <i class="fab fa-facebook"></i>
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-linkedin"></i>
-        </div>
         <p>&copy; 2024 Job Portal. All rights reserved.</p>
     </footer>
 

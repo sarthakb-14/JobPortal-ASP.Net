@@ -128,6 +128,7 @@ INSERT INTO applyjob (sid, jobid) VALUES
 
 
 
+
 ---- Insert records into the admin table
 --INSERT INTO admin (aname, aemail, ausername, apassword) VALUES
 --('Ravi Sharma', 'ravi.sharma@example.com', 'ravi123', 'password123'),
