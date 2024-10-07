@@ -160,9 +160,29 @@
         .custom-dropdown select option {
             color: black;
         }
+
+        /* Home Button */
+        .home-btn {
+            background-color: #17a2b8;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 50px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+            z-index: 1000;
+        }
     </style>
 </head>
 <body>
+    <!-- Home Button -->
+    <button class="home-btn" onclick="window.location.href='LandingPage.aspx'">
+        <i class="fas fa-home"></i> Job Portal
+    </button>
     <form id="form1" runat="server">
         <div class="form-container">
             <div class="registration-card">
@@ -208,6 +228,12 @@
                         <asp:RequiredFieldValidator ID="DOBRequired" runat="server" ControlToValidate="DOBTextBox" ErrorMessage="Date of Birth is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
     
+                    <div class="form-group">
+                        <asp:TextBox ID="ContactTextBox" runat="server" CssClass="form-control" Placeholder="Contact Number" />
+                        <asp:RequiredFieldValidator ID="ContactRequired" runat="server" ControlToValidate="ContactTextBox" ErrorMessage="Contact number is required." CssClass="text-danger" Display="Dynamic" />
+                        <asp:RegularExpressionValidator ID="ContactRegexValidator" runat="server" ControlToValidate="ContactTextBox" ErrorMessage="Contact number must contain only digits." CssClass="text-danger" Display="Dynamic" ValidationExpression="^\d*$" />
+                    </div>
+
                     <div class="form-group custom-dropdown">
                         <asp:DropDownList ID="GenderDropDown" runat="server" CssClass="form-control">
                             <asp:ListItem Value="">Select Gender</asp:ListItem>

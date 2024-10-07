@@ -163,6 +163,22 @@
           outline: none;
           box-shadow: none;
         }
+
+        /* Home Button */
+        .home-btn {
+            background-color: #17a2b8;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 50px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+            z-index: 1000;
+        }
     </style>
 
     <script>
@@ -194,6 +210,10 @@
     </script>
 </head>
 <body>
+    <!-- Home Button -->
+    <button class="home-btn" onclick="window.location.href='LandingPage.aspx'">
+        <i class="fas fa-home"></i> Job Portal
+    </button>
     <form id="form1" runat="server">
         <div class="card-container">
             <!-- Student Card -->

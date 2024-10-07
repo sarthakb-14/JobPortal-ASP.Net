@@ -42,7 +42,7 @@ namespace JobPortal
 		{
 			if (Page.IsValid)
 			{
-				string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
+				string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=C927QV3\\SQLEXPRESS";
 				using (SqlConnection con = new SqlConnection(connectionString))
 				{
 					con.Open();
@@ -74,15 +74,16 @@ namespace JobPortal
 					}
 
 					// Proceed with inserting new record
-					string insertQuery = "INSERT INTO student (sname, semail, susername, spassword, sdob, sgender, saddress, sskills) " +
-										 "VALUES (@Name, @Email, @Username, @Password, @DOB, @Gender, @Address, @Skills)";
+					string insertQuery = "INSERT INTO student (sname, semail, susername, spassword, sdob, scontactno, sgender, saddress, sskills) " +
+										 "VALUES (@Name, @Email, @Username, @Password, @DOB, @Contact, @Gender, @Address, @Skills)";
 					SqlCommand insertCmd = new SqlCommand(insertQuery, con);
 					insertCmd.Parameters.AddWithValue("@Name", StudentNameTextBox.Text);
 					insertCmd.Parameters.AddWithValue("@Email", EmailTextBox.Text);
 					insertCmd.Parameters.AddWithValue("@Username", UsernameTextBox.Text);
 					insertCmd.Parameters.AddWithValue("@Password", PasswordTextBox.Text);
 					insertCmd.Parameters.AddWithValue("@DOB", DOBTextBox.Text);
-					insertCmd.Parameters.AddWithValue("@Gender", GenderDropDown.SelectedValue);
+                    insertCmd.Parameters.AddWithValue("@Contact", ContactTextBox.Text);
+                    insertCmd.Parameters.AddWithValue("@Gender", GenderDropDown.SelectedValue);
 					insertCmd.Parameters.AddWithValue("@Address", AddressTextBox.Text);
 					insertCmd.Parameters.AddWithValue("@Skills", SkillTextBox.Text);
 
@@ -98,7 +99,7 @@ namespace JobPortal
 		{
 			if (Page.IsValid)
 			{
-				string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
+				string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=C927QV3\\SQLEXPRESS";
 				using (SqlConnection con = new SqlConnection(connectionString))
 				{
 					con.Open();
