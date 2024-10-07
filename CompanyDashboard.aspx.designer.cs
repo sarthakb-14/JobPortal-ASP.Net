@@ -51,6 +51,15 @@ namespace JobPortal
         protected global::System.Web.UI.WebControls.TextBox JobTitleTextBox;
 
         /// <summary>
+        /// rfvJobTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvJobTitle;
+
+        /// <summary>
         /// ExperienceTextBox control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace JobPortal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ExperienceTextBox;
+
+        /// <summary>
+        /// rfvExperience control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvExperience;
 
         /// <summary>
         /// SalaryTextBox control.
@@ -69,6 +87,15 @@ namespace JobPortal
         protected global::System.Web.UI.WebControls.TextBox SalaryTextBox;
 
         /// <summary>
+        /// rfvSalary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSalary;
+
+        /// <summary>
         /// DeadlineTextBox control.
         /// </summary>
         /// <remarks>
@@ -76,6 +103,15 @@ namespace JobPortal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox DeadlineTextBox;
+
+        /// <summary>
+        /// rfvDeadline control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDeadline;
 
         /// <summary>
         /// PublishDateTextBox control.
@@ -87,6 +123,15 @@ namespace JobPortal
         protected global::System.Web.UI.WebControls.TextBox PublishDateTextBox;
 
         /// <summary>
+        /// rfvPublishDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPublishDate;
+
+        /// <summary>
         /// VacancyTextBox control.
         /// </summary>
         /// <remarks>
@@ -96,22 +141,13 @@ namespace JobPortal
         protected global::System.Web.UI.WebControls.TextBox VacancyTextBox;
 
         /// <summary>
-        /// EmploymentStatusDropDown control.
+        /// rfvVacancy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList EmploymentStatusDropDown;
-
-        /// <summary>
-        /// JobDescriptionTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox JobDescriptionTextBox;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvVacancy;
 
         /// <summary>
         /// PostJobButton control.
@@ -132,67 +168,31 @@ namespace JobPortal
         protected global::System.Web.UI.WebControls.LinkButton ViewJobLinkButton;
 
         /// <summary>
-        /// UpdateJobLink control.
+        /// UpdateJobLinkButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton UpdateJobLink;
+        protected global::System.Web.UI.WebControls.LinkButton UpdateJobLinkButton;
 
         /// <summary>
-        /// DeleteJobButton control.
+        /// DeleteJobLinkButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton DeleteJobButton;
+        protected global::System.Web.UI.WebControls.LinkButton DeleteJobLinkButton;
 
         /// <summary>
-        /// btnRedirectToAppliedJobReport control.
+        /// ViewAppliedJobReportButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnRedirectToAppliedJobReport;
-
-        /// <summary>
-        /// CompanyNameTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CompanyNameTextBox;
-
-        /// <summary>
-        /// CompanyEmailTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CompanyEmailTextBox;
-
-        /// <summary>
-        /// CompanyAddressTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CompanyAddressTextBox;
-
-        /// <summary>
-        /// CompanyCityTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CompanyCityTextBox;
+        protected global::System.Web.UI.WebControls.Button ViewAppliedJobReportButton;
 
         /// <summary>
         /// UpdateProfileButton control.
@@ -202,41 +202,5 @@ namespace JobPortal
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button UpdateProfileButton;
-
-        /// <summary>
-        /// OldPasswordTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox OldPasswordTextBox;
-
-        /// <summary>
-        /// NewPasswordTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox NewPasswordTextBox;
-
-        /// <summary>
-        /// ConfirmPasswordTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ConfirmPasswordTextBox;
-
-        /// <summary>
-        /// ChangePasswordButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ChangePasswordButton;
     }
 }
