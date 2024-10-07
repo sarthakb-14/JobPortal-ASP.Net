@@ -38,81 +38,116 @@ namespace JobPortal
             }
         }
 
-        protected void StudentRegisterButton_Click(object sender, EventArgs e)
-        {
-            if (Page.IsValid)
-            {
-                string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=GF27QV3\\SQLEXPRESS";
-                using (SqlConnection con = new SqlConnection(connectionString))
-                {
-                    con.Open();
+		protected void StudentRegisterButton_Click(object sender, EventArgs e)
+		{
+			if (Page.IsValid)
+			{
+				string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
+				using (SqlConnection con = new SqlConnection(connectionString))
+				{
+					con.Open();
 
-                    // Check if the email already exists
-                    string checkEmailQuery = "SELECT COUNT(*) FROM student WHERE semail = '" + EmailTextBox.Text + "'";
-                    SqlCommand checkEmailCmd = new SqlCommand(checkEmailQuery, con);
-                    int emailCount = (int)checkEmailCmd.ExecuteScalar();
+					// Check if the email already exists
+					string checkEmailQuery = "SELECT COUNT(*) FROM student WHERE semail = @Email";
+					SqlCommand checkEmailCmd = new SqlCommand(checkEmailQuery, con);
+					checkEmailCmd.Parameters.AddWithValue("@Email", EmailTextBox.Text);
+					int emailCount = (int)checkEmailCmd.ExecuteScalar();
 
-                    if (emailCount > 0)
-                    {
-                        Label2.Text = "Email address is already in use.";
-                        return;
-                    }
+					if (emailCount > 0)
+					{
+						Label2.Text = "Email address is already in use.";
+						Label2.ForeColor = System.Drawing.Color.Red; // Set label color to red
+						return;
+					}
 
-                    // Proceed with inserting new record
-                    string insertQuery = "INSERT INTO student (sname, semail, susername, spassword, sdob, sgender, saddress, sskills) VALUES ('" + StudentNameTextBox.Text + "', '" +
-                                         EmailTextBox.Text + "', '" +
-                                         UsernameTextBox.Text + "', '" +
-                                         PasswordTextBox.Text + "', '" +
-                                         DOBTextBox.Text + "', '" +
-                                         GenderDropDown.SelectedValue + "', '" +
-                                         AddressTextBox.Text + "', '" +
-                                         SkillTextBox.Text+"')";
+					// Check if the username already exists
+					string checkUserQuery = "SELECT COUNT(*) FROM student WHERE susername = @Username";
+					SqlCommand checkUserCmd = new SqlCommand(checkUserQuery, con);
+					checkUserCmd.Parameters.AddWithValue("@Username", UsernameTextBox.Text);
+					int userCount = (int)checkUserCmd.ExecuteScalar();
 
-                    SqlCommand insertCmd = new SqlCommand(insertQuery, con);
-                    int rowsAffected = insertCmd.ExecuteNonQuery();
-                    Label2.Text = "New student account created!";
-                    Response.Redirect("JobPortalLogin.aspx");
-                }
-            }
-        }
+					if (userCount > 0)
+					{
+						Label2.Text = "Username is already in use.";
+						Label2.ForeColor = System.Drawing.Color.Red; // Set label color to red
+						return;
+					}
 
-        protected void CompanyRegisterButton_Click(object sender, EventArgs e)
-        {
-            if (Page.IsValid)
-            {
-                string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=GF27QV3\\SQLEXPRESS";
-                using (SqlConnection con = new SqlConnection(connectionString))
-                {
-                    con.Open();
+					// Proceed with inserting new record
+					string insertQuery = "INSERT INTO student (sname, semail, susername, spassword, sdob, sgender, saddress, sskills) " +
+										 "VALUES (@Name, @Email, @Username, @Password, @DOB, @Gender, @Address, @Skills)";
+					SqlCommand insertCmd = new SqlCommand(insertQuery, con);
+					insertCmd.Parameters.AddWithValue("@Name", StudentNameTextBox.Text);
+					insertCmd.Parameters.AddWithValue("@Email", EmailTextBox.Text);
+					insertCmd.Parameters.AddWithValue("@Username", UsernameTextBox.Text);
+					insertCmd.Parameters.AddWithValue("@Password", PasswordTextBox.Text);
+					insertCmd.Parameters.AddWithValue("@DOB", DOBTextBox.Text);
+					insertCmd.Parameters.AddWithValue("@Gender", GenderDropDown.SelectedValue);
+					insertCmd.Parameters.AddWithValue("@Address", AddressTextBox.Text);
+					insertCmd.Parameters.AddWithValue("@Skills", SkillTextBox.Text);
 
-                    // Check if the email already exists
-                    string checkEmailQuery = "SELECT COUNT(*) FROM company WHERE cemail = '" + CompanyEmailTextBox.Text + "'";
-                    SqlCommand checkEmailCmd = new SqlCommand(checkEmailQuery, con);
-                    int emailCount = (int)checkEmailCmd.ExecuteScalar();
+					int rowsAffected = insertCmd.ExecuteNonQuery();
+					Label2.Text = "New student account created!";
+					Label2.ForeColor = System.Drawing.Color.Green; // Set label color to green for success
+					Response.Redirect("JobPortalLogin.aspx");
+				}
+			}
+		}
 
-                    if (emailCount > 0)
-                    {
-                        Label1.Text = "Email address is already in use.";
-                        return;
-                    }
+		protected void CompanyRegisterButton_Click(object sender, EventArgs e)
+		{
+			if (Page.IsValid)
+			{
+				string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
+				using (SqlConnection con = new SqlConnection(connectionString))
+				{
+					con.Open();
 
-                    // Proceed with inserting new record
-                    string insertQuery = "INSERT INTO company (cname, cemail, cusername, cpassword, caddress, ccity, cwebsiteurl, ccontactno) " +
-                                         "VALUES ('" + CompanyNameTextBox.Text + "', '" +
-                                         CompanyEmailTextBox.Text + "', '" +
-                                         CompanyUsernameTextBox.Text + "', '" +
-                                         CompanyPasswordTextBox.Text + "', '" +
-                                         CompanyAddressTextBox.Text + "', '" +
-                                         CityTextBox.Text + "', '" +
-                                         WebsiteTextBox.Text + "', '" +
-                                         ContactNumberTextBox.Text + "')";
+					// Check if the email already exists
+					string checkEmailQuery = "SELECT COUNT(*) FROM company WHERE cemail = @Email";
+					SqlCommand checkEmailCmd = new SqlCommand(checkEmailQuery, con);
+					checkEmailCmd.Parameters.AddWithValue("@Email", CompanyEmailTextBox.Text);
+					int emailCount = (int)checkEmailCmd.ExecuteScalar();
 
-                    SqlCommand insertCmd = new SqlCommand(insertQuery, con);
-                    int rowsAffected = insertCmd.ExecuteNonQuery();
-                    Label1.Text = "New company account created!";
-                    Response.Redirect("JobPortalLogin.aspx");
-                }
-            }
-        }
-    }
+					if (emailCount > 0)
+					{
+						Label1.Text = "Email address is already in use.";
+						Label1.ForeColor = System.Drawing.Color.Red; // Set label color to red
+						return;
+					}
+
+					// Check if the username already exists
+					string checkUserQuery = "SELECT COUNT(*) FROM company WHERE cusername = @Username";
+					SqlCommand checkUserCmd = new SqlCommand(checkUserQuery, con);
+					checkUserCmd.Parameters.AddWithValue("@Username", CompanyUsernameTextBox.Text);
+					int userCount = (int)checkUserCmd.ExecuteScalar();
+
+					if (userCount > 0)
+					{
+						Label1.Text = "Username is already in use.";
+						Label1.ForeColor = System.Drawing.Color.Red; // Set label color to red
+						return;
+					}
+
+					// Proceed with inserting new record
+					string insertQuery = "INSERT INTO company (cname, cemail, cusername, cpassword, caddress, ccity, cwebsiteurl, ccontactno) " +
+										 "VALUES (@Name, @Email, @Username, @Password, @Address, @City, @Website, @Contact)";
+					SqlCommand insertCmd = new SqlCommand(insertQuery, con);
+					insertCmd.Parameters.AddWithValue("@Name", CompanyNameTextBox.Text);
+					insertCmd.Parameters.AddWithValue("@Email", CompanyEmailTextBox.Text);
+					insertCmd.Parameters.AddWithValue("@Username", CompanyUsernameTextBox.Text);
+					insertCmd.Parameters.AddWithValue("@Password", CompanyPasswordTextBox.Text);
+					insertCmd.Parameters.AddWithValue("@Address", CompanyAddressTextBox.Text);
+					insertCmd.Parameters.AddWithValue("@City", CityTextBox.Text);
+					insertCmd.Parameters.AddWithValue("@Website", WebsiteTextBox.Text);
+					insertCmd.Parameters.AddWithValue("@Contact", ContactNumberTextBox.Text);
+
+					int rowsAffected = insertCmd.ExecuteNonQuery();
+					Label1.Text = "New company account created!";
+					Label1.ForeColor = System.Drawing.Color.Green; // Set label color to green for success
+					Response.Redirect("JobPortalLogin.aspx");
+				}
+			}
+		}
+	}
 }

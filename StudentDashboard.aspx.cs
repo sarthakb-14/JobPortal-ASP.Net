@@ -7,7 +7,7 @@ namespace JobPortal
 {
 	public partial class StudentDashboard : System.Web.UI.Page
     {
-        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=GF27QV3\\SQLEXPRESS";
+        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
 
 
 
@@ -78,36 +78,75 @@ namespace JobPortal
                     DOBTextBox.Text = Convert.ToDateTime(reader["sdob"]).ToString("yyyy-MM-dd");
                     GenderDropDown.SelectedValue = reader["sgender"].ToString();
                     AddressTextBox.Text = reader["saddress"].ToString();
-                    PhoneTextBox.Text = reader["scontactno"].ToString();
-                }
+					PhoneTextBox.Text = reader["scontactno"].ToString();
+				}
             }
         }
 
 
 
-        protected void SaveProfileButton_Click(object sender, EventArgs e)
-        {
+		protected void SaveProfileButton_Click(object sender, EventArgs e)
+		{
 			string sid = Session["UserID"].ToString();
 			using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                string query = "UPDATE student SET sname = @sname, semail = @semail, sdob = @sdob, sgender = @sgender, saddress = @saddress, scontactno = @scontactno WHERE sId = @studentId";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@sname", NameTextBox.Text);
-                cmd.Parameters.AddWithValue("@semail", EmailTextBox.Text);
-                cmd.Parameters.AddWithValue("@sdob", DateTime.Parse(DOBTextBox.Text));
-                cmd.Parameters.AddWithValue("@sgender", GenderDropDown.SelectedValue);
-                cmd.Parameters.AddWithValue("@saddress", AddressTextBox.Text);
-                cmd.Parameters.AddWithValue("@scontactno", PhoneTextBox.Text);
-                cmd.Parameters.AddWithValue("@studentId", sid);
+			{
+				// Retrieve the current profile data from the database
+				string selectQuery = "SELECT sname, semail, sdob, sgender, saddress, scontactno FROM student WHERE sId = @studentId";
+				SqlCommand selectCmd = new SqlCommand(selectQuery, conn);
+				selectCmd.Parameters.AddWithValue("@studentId", sid);
 
-                conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-        }
+				conn.Open();
+				SqlDataReader reader = selectCmd.ExecuteReader();
+
+				// Read the current values
+				string currentName = "", currentEmail = "", currentDOB = "", currentGender = "", currentAddress = "", currentContactNo = "";
+				if (reader.Read())
+				{
+					currentName = reader["sname"].ToString();
+					currentEmail = reader["semail"].ToString();
+					currentDOB = Convert.ToDateTime(reader["sdob"]).ToString("yyyy-MM-dd");
+					currentGender = reader["sgender"].ToString();
+					currentAddress = reader["saddress"].ToString();
+					currentContactNo = reader["scontactno"].ToString();
+				}
+				reader.Close();
+
+				// Check if any changes have been made
+				bool hasChanges = currentName != NameTextBox.Text ||
+								  currentEmail != EmailTextBox.Text ||
+								  currentDOB != DOBTextBox.Text ||
+								  currentGender != GenderDropDown.SelectedValue ||
+								  currentAddress != AddressTextBox.Text ||
+								  currentContactNo != PhoneTextBox.Text;
+
+				if (hasChanges)
+				{
+					// Proceed with the update
+					string updateQuery = "UPDATE student SET sname = @sname, semail = @semail, sdob = @sdob, sgender = @sgender, saddress = @saddress, scontactno = @scontactno WHERE sId = @studentId";
+					SqlCommand updateCmd = new SqlCommand(updateQuery, conn);
+					updateCmd.Parameters.AddWithValue("@sname", NameTextBox.Text);
+					updateCmd.Parameters.AddWithValue("@semail", EmailTextBox.Text);
+					updateCmd.Parameters.AddWithValue("@sdob", DateTime.Parse(DOBTextBox.Text));
+					updateCmd.Parameters.AddWithValue("@sgender", GenderDropDown.SelectedValue);
+					updateCmd.Parameters.AddWithValue("@saddress", AddressTextBox.Text);
+					updateCmd.Parameters.AddWithValue("@scontactno", PhoneTextBox.Text);
+					updateCmd.Parameters.AddWithValue("@studentId", sid);
+
+					updateCmd.ExecuteNonQuery();
+					ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Profile updated successfully.');", true);
+				}
+				else
+				{
+					// Inform the user that no changes were made
+					ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('No changes were made to your profile.');", true);
+				}
+			}
+		}
 
 
 
-        protected void ChangePasswordButton_Click(object sender, EventArgs e)
+
+		protected void ChangePasswordButton_Click(object sender, EventArgs e)
         {
             string sid = Session["UserID"].ToString();
             using (SqlConnection conn = new SqlConnection(connectionString))

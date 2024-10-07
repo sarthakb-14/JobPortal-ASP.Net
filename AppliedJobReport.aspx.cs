@@ -24,7 +24,7 @@ namespace JobPortal
             if (string.IsNullOrEmpty(cid))
                 return;
 
-            string connString = "uid=sa; password=manager@123; database=JobPortal; server=GF27QV3\\SQLEXPRESS";
+            string connString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 string query = @"
@@ -58,7 +58,7 @@ namespace JobPortal
             if (string.IsNullOrEmpty(cid))
                 return;
 
-            string connString = "uid=sa; password=manager@123; database=JobPortal; server=GF27QV3\\SQLEXPRESS";
+            string connString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 string query = @"
@@ -91,7 +91,7 @@ namespace JobPortal
             Button btn = (Button)sender;
             int applyId = int.Parse(btn.CommandArgument);
 
-            string connString = "uid=sa; password=manager@123; database=JobPortal; server=GF27QV3\\SQLEXPRESS";
+            string connString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 conn.Open();
@@ -136,7 +136,7 @@ namespace JobPortal
             Button btn = (Button)sender;
             int applyId = int.Parse(btn.CommandArgument);
 
-            string connString = "uid=sa; password=manager@123; database=JobPortal; server=GF27QV3\\SQLEXPRESS";
+            string connString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 conn.Open();
