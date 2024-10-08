@@ -87,7 +87,7 @@
                             <!-- Job Info Column -->
                             <div class="job-card mb-4 p-4 position-relative">
                                 <div class="row align-items-center">
-                                    <div class="col-md-4 d-flex">
+                                    <div class="col-md-3 d-flex">
                                         <div class="job-info">
                                             <div class="badge <%# GetBadgeClass(Eval("JobType").ToString()) %> text-white mb-2">
                                                 <%# Eval("JobType") %>
@@ -104,12 +104,15 @@
                                         <p class="job-location mb-0"><strong>Location</strong><br /> <%# Eval("JobLocation") %></p>
                                     </div>
                                     <div class="col-md-2">
+                                        <p class="job-experience mb-0"><strong>Experience</strong><br /> <%# Eval("JobExperience") %></p>
+                                    </div>
+                                    <div class="col-md-2">
                                         <p class="job-vacancy mb-0"><strong>Vacancies</strong><br /> <%# Eval("VacancyCount") %></p>
                                     </div>
                                     <div class="col-md-2">
                                         <p class="job-salary mb-0"><strong>Salary</strong><br /> <%# Eval("SalaryRange") %></p>
                                     </div>
-                                    <div class="col-md-2 text-end">
+                                    <div class="col-md-1 text-end">
                                         <asp:Button runat="server" CssClass="btn btn-warning px-4" Text="Apply" CommandArgument='<%# Eval("JobId") %>' OnClick="ApplyJob_Click" />
                                     </div>
                                 </div>
