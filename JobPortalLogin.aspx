@@ -24,7 +24,7 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 0; /* Remove default padding */
+            padding: 0;
         }
 
         /* Dark Overlay for background */
@@ -35,7 +35,7 @@
             left: 0;
             width: 100%;
             height: 136%;
-            background-color: rgb(0 25 65 / 20%);
+            background-color: rgba(0, 25, 65, 0.2);
             z-index: 0;
         }
 
@@ -80,10 +80,6 @@
             margin-bottom: 10px;
             font-size: 1.5rem;
             font-weight: 600;
-        }
-
-        .role-card p {
-            color: white;
         }
 
         .dynamic-content {
@@ -184,27 +180,30 @@
     <script>
         function loadLoginForm(role) {
             document.querySelector('.dynamic-content').style.display = 'block';
-
-            // Set hidden field value based on role
             document.getElementById('roleHiddenField').value = role;
 
             // Change the form heading and link based on role
             var formHeading = document.querySelector('.login-card h2');
             var registerLink = document.querySelector('.small-link');
-            if (role === 'Student') {
-                formHeading.innerText = 'Student Login';
-                registerLink.href = 'Registration.aspx';
-                registerLink.innerHTML = "Don't have an account? <strong>Register</strong>";
-                registerLink.style.display = 'block';  // Show the link
-            } else if (role === 'Company') {
-                formHeading.innerText = 'Company Login';
-                registerLink.href = 'Registration.aspx';
-                registerLink.innerHTML = "Don't have an account? <strong>Register as Company</strong>";
-                registerLink.style.display = 'block';  // Show the link
-            } else if (role === 'Admin') {
-                formHeading.innerText = 'Admin Login';
-                registerLink.href = '#';  // Admin may not need a register link
-                registerLink.style.display = 'none';  // Hide register link for admin
+
+            switch (role) {
+                case 'Student':
+                    formHeading.innerText = 'Student Login';
+                    registerLink.href = 'Registration.aspx';
+                    registerLink.innerHTML = "Don't have an account? <strong>Register</strong>";
+                    registerLink.style.display = 'block';  // Show the link
+                    break;
+                case 'Company':
+                    formHeading.innerText = 'Company Login';
+                    registerLink.href = 'Registration.aspx';
+                    registerLink.innerHTML = "Don't have an account? <strong>Register as Company</strong>";
+                    registerLink.style.display = 'block';  // Show the link
+                    break;
+                case 'Admin':
+                    formHeading.innerText = 'Admin Login';
+                    registerLink.href = '#';  // Admin may not need a register link
+                    registerLink.style.display = 'none';  // Hide register link for admin
+                    break;
             }
         }
     </script>
@@ -258,11 +257,12 @@
             </div>
         </div>
     </form>
-</body>
+
     <script type="text/javascript">
-		window.history.forward();
-		function noBack() {
-			window.history.forward();
-		}
-	</script>
+        window.history.forward();
+        function noBack() {
+            window.history.forward();
+        }
+    </script>
+</body>
 </html>

@@ -38,10 +38,11 @@
 
         
         .navbar {
-            margin-bottom: 20px;
-            background-color: #0F2A48; 
-            border-radius: 10px;
-            animation: fadeIn 1s ease-in-out; 
+             margin-bottom: 20px;
+            backdrop-filter: blur(25px);
+            box-shadow: 0 4px 8px rgb(0 0 0 / 50%);
+            animation: fadeIn 1s ease-in-out;
+
         }
 
         h1 {
@@ -57,7 +58,6 @@
 
         
         .dashboard-card {
-            background-color: #1D3557; 
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); 
@@ -72,7 +72,7 @@
         }
 
         .dashboard-card:hover {
-            background-color: #457B9D;
+            
             transform: scale(1.05);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
@@ -203,12 +203,58 @@
             margin-top: 5px;
         }
 
+        .bg {
+          animation: slide 3s ease-in-out infinite alternate;
+          background-image: linear-gradient(-60deg, #003300 50%, #006600 50%);
+          bottom: 0;
+          left: -50%;
+          opacity: .5;
+          position: fixed;
+          right: -50%;
+          top: 0;
+          z-index: -1;
+        }
+
+        .bg2 {
+          animation-direction: alternate-reverse;
+          animation-duration: 4s;
+        }
+
+        .bg3 {
+          animation-duration: 5s;
+        }
+
+        .content {
+          background-color: rgba(255, 255, 255, .8);
+          border-radius: .25em;
+          box-shadow: 0 0 .25em rgba(0, 0, 0, .25);
+          box-sizing: border-box;
+          left: 50%;
+          padding: 10vmin;
+          position: fixed;
+          text-align: center;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+
+
+        @keyframes slide {
+          0% {
+            transform: translateX(-25%);
+          }
+          100% {
+            transform: translateX(25%);
+          }
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-       
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="bg"></div>
+        <div class="bg bg2"></div>
+        <div class="bg bg3"></div>
+        <nav class="navbar navbar-expand-lg navbar-dark">
             <a class="nav-link">
                 <i class="fas fa-user-circle fa-2x"></i>
                 <asp:Label runat="server" ID="Label1">Company</asp:Label>
