@@ -8,7 +8,7 @@ namespace JobPortal
 {
     public partial class ManageStudents : System.Web.UI.Page
     {
-        private string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=C927QV3\\SQLEXPRESS";
+        private string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=DK27QV3\\SQLEXPRESS";
 
         protected void Page_Load(object sender, EventArgs e)
         {

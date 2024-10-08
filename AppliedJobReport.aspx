@@ -11,20 +11,46 @@
             background-color: #212529;
             color: white;
         }
+
         .card {
             background-color: #343a40;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s, box-shadow 0.3s;
         }
+
         .card:hover {
             transform: translateY(-10px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
+
         h1 {
             font-size: 2.5rem;
             color: #ffc107;
         }
+
+        /* Back button styling */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-button a {
+            color: white;
+            font-size: 1.25rem;
+            text-decoration: none;
+            background-color: #007bff; /* Bootstrap primary button color */
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .back-button a:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            text-decoration: none;
+        }
+
         .bg {
           animation: slide 3s ease-in-out infinite alternate;
           background-image: linear-gradient(-60deg, #003300 50%, #006600 50%);
@@ -59,8 +85,6 @@
           transform: translate(-50%, -50%);
         }
 
-
-
         @keyframes slide {
           0% {
             transform: translateX(-25%);
@@ -76,6 +100,14 @@
         <div class="bg"></div>
         <div class="bg bg2"></div>
         <div class="bg bg3"></div>
+
+        <!-- Back button -->
+        <div class="back-button">
+            <a href="CompanyDashboard.aspx">
+                <i class="fas fa-arrow-left"></i> Back
+            </a>
+        </div>
+
         <div class="container mt-4">
             <div class="row">
                 <!-- Applied Jobs Section -->
@@ -125,5 +157,6 @@
     </form>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- For Font Awesome Icons -->
 </body>
 </html>
