@@ -7,169 +7,211 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-<style>
-    body {
-        background: url('images/bg_dashboard.jpg') no-repeat center center fixed;
-        background-size: cover;
-        color: #ffffff;
-    }
+    <style>
+        html {
+            height: 100%;
+        }
 
-    h2 {
-        padding-bottom: 20px;
-        padding-top: 20px;
-    }
+        body {
+            margin: 0;
+            color: #ffffff;
+            position: relative; /* To position the content properly */
+            z-index: 1; /* Ensure content is above the background */
+        }
 
-    .grid-container {
-        margin: 20px auto;
-        max-width: 1250px;
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(15px);
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        text-align: center;
-    }
+        .bg {
+            animation: slide 3s ease-in-out infinite alternate;
+            background-image: linear-gradient(-60deg, #0a0e1e 50%, #121d45 50%);
+            bottom: 0;
+            left: -50%;
+            opacity: .8;
+            position: fixed;
+            right: -50%;
+            top: 0;
+            z-index: -1;
+        }
 
-    .search-container {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
+        .bg2 {
+            animation-direction: alternate-reverse;
+            animation-duration: 4s;
+            background-image: linear-gradient(-60deg, #091228 50%, #0f2557 50%);
+        }
 
-    .search-container input[type="text"] {
-        width: 300px;
-        padding: 10px;
-        background-color: transparent;
-        color: white;
-        border-radius: 10px;
-        outline: none;
-        margin-right: 10px;
-    }
+        .bg3 {
+            animation-duration: 5s;
+            background-image: linear-gradient(-60deg, #0f2557 50%, #0a1b40 50%);
+        }
 
-    .search-container select {
-        width: 200px;
-        background-color: transparent;
-        color: white;
-        border-radius: 10px;
-        margin-right: 10px;
-    }
+        .grid-container {
+            margin: 20px auto;
+            max-width: 1250px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
 
-    .button, .btn-search {
-        border-radius: 11px;
-        padding: 0 1em;
-        font-weight: bold;
-        cursor: pointer;
-        height: 37px; /* Set a fixed height */
-        display: inline-flex; /* Ensure they can be vertically centered */
-        align-items: center; /* Center content vertically */
-    }
+        h2 {
+            padding-bottom: 20px;
+            padding-top: 20px;
+        }
 
-    .button {
-        background-color: transparent;
-        color: #fff;
-        border: 0.2em solid red;
-        transition: all 0.6s ease;
-    }
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
 
-    .button:hover {
-        background-color: red;
-        color: #fff;
-        text-decoration: none;
-    }
+        .search-container input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            background-color: transparent;
+            color: white;
+            border-radius: 10px;
+            outline: none;
+            margin-right: 10px;
+        }
 
-    .btn-search {
-        background-color: transparent;
-        color: #fff;
-        border: 0.2em solid blue;
-        transition: all 0.6s ease;
-    }
+        .search-container select {
+            width: 200px;
+            background-color: transparent;
+            color: white;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
 
-    .btn-search:hover {
-        background-color: blue;
-        color: white;
-    }
+        .button, .btn-search {
+            border-radius: 11px;
+            padding: 0 1em;
+            font-weight: bold;
+            cursor: pointer;
+            height: 37px; /* Set a fixed height */
+            display: inline-flex; /* Ensure they can be vertically centered */
+            align-items: center; /* Center content vertically */
+        }
 
-    .grid-view {
-        width: 100%;
-        margin: 0 auto;
-        border-collapse: collapse;
-        background-color: transparent;
-        border: none;
-    }
+        .button {
+            background-color: transparent;
+            color: #fff;
+            border: 0.2em solid red;
+            transition: all 0.6s ease;
+        }
 
-    .grid-view th, .grid-view td {
-        text-align: center;
-        padding: 15px;
-        border: none;
-    }
+        .button:hover {
+            background-color: red;
+            color: #fff;
+            text-decoration: none;
+        }
 
-    .grid-view th {
-        background-color: rgba(8, 7, 44, 0.5);
-        color: white;
-        border-bottom: 1px solid darkblue;
-    }
+        .btn-search {
+            background-color: transparent;
+            color: #fff;
+            border: 0.2em solid blue;
+            transition: all 0.6s ease;
+        }
 
-    .grid-view tr {
-        border-bottom: 1px solid darkblue;
-    }
+        .btn-search:hover {
+            background-color: blue;
+            color: white;
+        }
 
-    .grid-view tr:hover {
-        background-color: rgba(8, 7, 44, 0.5);
-    }
+        .grid-view {
+            width: 100%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: transparent;
+            border: none;
+        }
 
-    .logout-btn {
-        background-color: transparent;
-        color: #fff;
-        width: 7em;
-        height: 2.5em;
-        border: 0.2em solid #007bff;
-        border-radius: 11px;
-        text-align: center;
-        transition: all 0.6s ease;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 1em;
-        position: relative;
-        font-weight: bold;
-        letter-spacing: 1px;
-        margin-left: 13px;
-    }
+        .grid-view th, .grid-view td {
+            text-align: center;
+            padding: 15px;
+            border: none;
+        }
 
-    .logout-btn:hover {
-        background-color: #007bff;
-        cursor: pointer;
-        color: #fff;
-    }
+        .grid-view th {
+            background-color: rgba(8, 7, 44, 0.5);
+            color: white;
+            border-bottom: 1px solid darkblue;
+        }
 
-    .logout-btn:focus {
-        outline: none;
-        box-shadow: none;
-    }
+        .grid-view tr {
+            border-bottom: 1px solid darkblue;
+        }
 
-    .profile-container {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        z-index: 1;
-        display: flex;
-        align-items: center;
-        color: white;
-    }
+        .grid-view tr:hover {
+            background-color: rgba(8, 7, 44, 0.5);
+        }
+        .form-control {
+            border: 2.5px solid #ffffff;
+        }
+        .logout-btn {
+            background-color: transparent;
+            color: #fff;
+            width: 7em;
+            height: 2.5em;
+            border: 0.2em solid #007bff;
+            border-radius: 11px;
+            text-align: center;
+            transition: all 0.6s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1em;
+            position: relative;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-left: 13px;
+        }
 
-    .profile-icon {
-        font-size: 2rem;
-        margin-right: 10px;
-    }
+        .logout-btn:hover {
+            background-color: #007bff;
+            cursor: pointer;
+            color: #fff;
+        }
 
-    #lblAdminName {
-        font-family: 'Poppins', sans-serif;
-    }
-</style>
+        .logout-btn:focus {
+            outline: none;
+            box-shadow: none;
+        }
 
+        .profile-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .profile-icon {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+
+        #lblAdminName {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-25%);
+            }
+            100% {
+                transform: translateX(25%);
+            }
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
+        <div class="bg"></div>
+        <div class="bg bg2"></div>
+        <div class="bg bg3"></div>
+
         <div class="grid-container">
             <h2>Manage Students</h2>
             <div class="profile-container">

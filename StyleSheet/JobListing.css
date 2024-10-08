@@ -130,7 +130,7 @@ select.form-control.sizeing,
     font-size: 14px;
 }
 
-.job-location, .job-vacancy, .job-salary {
+.job-location, .job-vacancy, .job-salary, .job-experience {
     font-size: 16px;
     margin-bottom: 5px;
 }

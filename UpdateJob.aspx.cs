@@ -27,7 +27,7 @@ namespace JobPortal
 
         private void LoadJobs(string cid)
         {
-            string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
+            string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=C927QV3\\SQLEXPRESS";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -61,7 +61,7 @@ namespace JobPortal
                     string jobStatus = (item.FindControl("ddlJobStatus") as DropDownList).SelectedValue;
                     string jobExperience = (item.FindControl("txtJobExperience") as TextBox).Text;
 
-                    string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
+                    string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=C927QV3\\SQLEXPRESS";
 
                     using (SqlConnection con = new SqlConnection(connectionString))
                     {

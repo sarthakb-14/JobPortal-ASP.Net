@@ -16,66 +16,85 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
     <style>
+        /* Darker Blue Gradient Animation */
+        html {
+            height: 100%;
+        }
+
         body {
-            font-family: 'Poppins', sans-serif;
-            background: url('../images/bg_dashboard.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #ffffff;
             margin: 0;
+            font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             min-height: 100vh;
+            color: #ffffff;
             padding: 0;
         }
 
-        body::before {
-            content: '';
-            position: absolute;
+        .bg {
+            animation: slide 3s ease-in-out infinite alternate;
+            background-image: linear-gradient(-60deg, #0a0e1e 50%, #121d45 50%);
+            bottom: 0;
+            left: -50%;
+            opacity: .8;
+            position: fixed;
+            right: -50%;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 25, 65, 0.3);
-            z-index: 0;
+            z-index: -1;
+        }
+        
+        .bg2 {
+            animation-direction: alternate-reverse;
+            animation-duration: 4s;
+            background-image: linear-gradient(-60deg, #091228 50%, #0f2557 50%);
+        }
+        
+        .bg3 {
+            animation-duration: 5s;
+            background-image: linear-gradient(-60deg, #0f2557 50%, #0a1b40 50%);
         }
 
+        @keyframes slide {
+            0% {
+                transform: translateX(-25%);
+            }
+            100% {
+                transform: translateX(25%);
+            }
+        }
+
+        /* Additional styles for the dashboard */
         .Heading {
             margin-top: 5px;
         }
 
-        
         .logout-btn {
-          background-color: transparent;
-          color: #fff;
-          width: 7em;
-          height: 2.5em;
-          border: 0.2em solid #007bff;
-          border-radius: 11px;
-          text-align: center;
-          transition: all 0.6s ease;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          padding: 0 1em;
-          position: relative;
-          font-weight: bold;
-          letter-spacing: 1px;
-          margin-left: 13px;
+            background-color: transparent;
+            color: #fff;
+            width: 7em;
+            height: 2.5em;
+            border: 0.2em solid #007bff;
+            border-radius: 11px;
+            text-align: center;
+            transition: all 0.6s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1em;
+            position: relative;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-left: 13px;
         }
 
         .logout-btn:hover {
-          background-color: #007bff;
-          cursor: pointer;
-          color: #fff;
+            background-color: #007bff;
+            cursor: pointer;
+            color: #fff;
         }
 
-        .logout-btn:focus {
-          outline: none;
-          box-shadow: none;
-        }
-       
         .dashboard-container {
             display: flex;
             justify-content: center;
@@ -105,6 +124,7 @@
         .dashboard-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            border: 2px solid lightskyblue;
         }
 
         .dashboard-card i {
@@ -150,8 +170,8 @@
         }
 
         .stats-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+           
+            box-shadow: 0 6px 12px #091228;
         }
 
         .stats-card h4 {
@@ -194,14 +214,18 @@
     </style>
 </head>
 <body>
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+
     <div class="Heading"><h2></h2></div>
-    
+
     <div class="profile-container">
         <i class="fas fa-user-circle profile-icon"></i>
         <asp:Label ID="lblAdminName" runat="server" Text=""></asp:Label>
         <button class="logout-btn" onclick="logout()">Logout</button>
     </div>
-    
+
     <form id="form1" runat="server">
         <div class="dashboard-container">
             <div class="dashboard-card" onclick="window.location.href='../SearchAll.aspx?aid=<%= Request.QueryString["aid"] %>&aname=<%= Request.QueryString["aname"] %>';">

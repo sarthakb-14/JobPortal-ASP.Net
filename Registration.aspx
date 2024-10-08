@@ -228,11 +228,13 @@
                         <asp:RequiredFieldValidator ID="DOBRequired" runat="server" ControlToValidate="DOBTextBox" ErrorMessage="Date of Birth is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                     </div>
     
-                    <div class="form-group">
+                        <div class="form-group">
                         <asp:TextBox ID="ContactTextBox" runat="server" CssClass="form-control" Placeholder="Contact Number" />
                         <asp:RequiredFieldValidator ID="ContactRequired" runat="server" ControlToValidate="ContactTextBox" ErrorMessage="Contact number is required." CssClass="text-danger" Display="Dynamic" />
-                        <asp:RegularExpressionValidator ID="ContactRegexValidator" runat="server" ControlToValidate="ContactTextBox" ErrorMessage="Contact number must contain only digits." CssClass="text-danger" Display="Dynamic" ValidationExpression="^\d*$" />
+                        <asp:RegularExpressionValidator ID="ContactRegexValidator" runat="server" ControlToValidate="ContactTextBox" ErrorMessage="Contact number must be digits only and up to 10 digits." CssClass="text-danger" Display="Dynamic" ValidationExpression="^\d{0,10}$" />
                     </div>
+
+
 
                     <div class="form-group custom-dropdown">
                         <asp:DropDownList ID="GenderDropDown" runat="server" CssClass="form-control">
@@ -301,6 +303,7 @@
                     <div class="form-group">
                         <asp:TextBox ID="ContactNumberTextBox" runat="server" CssClass="form-control" Placeholder="Contact Number" TextMode="Phone"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="ContactNumberRequired" runat="server" ControlToValidate="ContactNumberTextBox" ErrorMessage="Contact Number is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="ContactNumberRegexValidator" runat="server" ControlToValidate="ContactNumberTextBox" ErrorMessage="Contact Number must be digits only and up to 10 digits." CssClass="text-danger" Display="Dynamic" ValidationExpression="^\d{0,10}$"></asp:RegularExpressionValidator>
                     </div>
                     <asp:Button ID="CompanyRegisterButton" runat="server" CssClass="button" Text="Register" OnClick="CompanyRegisterButton_Click" />
                     <br />

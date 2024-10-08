@@ -90,8 +90,8 @@ namespace JobPortal
 					int rowsAffected = insertCmd.ExecuteNonQuery();
 					Label2.Text = "New student account created!";
 					Label2.ForeColor = System.Drawing.Color.Green; // Set label color to green for success
-					Response.Redirect("JobPortalLogin.aspx");
-				}
+                    ClientScript.RegisterStartupScript(this.GetType(), "redirect", "setTimeout(function(){ if(confirm('Account created successfully! Do you want to log in now?')) { window.location.href='JobPortalLogin.aspx'; } }, 1000);", true);
+                }
 			}
 		}
 
@@ -146,8 +146,8 @@ namespace JobPortal
 					int rowsAffected = insertCmd.ExecuteNonQuery();
 					Label1.Text = "New company account created!";
 					Label1.ForeColor = System.Drawing.Color.Green; // Set label color to green for success
-					Response.Redirect("JobPortalLogin.aspx");
-				}
+                    ClientScript.RegisterStartupScript(this.GetType(), "redirect", "setTimeout(function(){ if(confirm('Account created successfully! Do you want to log in now?')) { window.location.href='JobPortalLogin.aspx'; } }, 1000);", true);
+                }
 			}
 		}
 	}

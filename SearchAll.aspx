@@ -7,42 +7,89 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-     <!-- Google Fonts -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <style>
+        html {
+            height: 100%;
+        }
+
         body {
-            background: url('images/bg_dashboard.jpg') no-repeat center center fixed;
-            background-size: cover;
+            margin: 0;
             color: #ffffff;
         }
-        .logout-btn {
-          background-color: transparent;
-          color: #fff;
-          width: 7em;
-          height: 2.5em;
-          border: 0.2em solid #007bff;
-          border-radius: 11px;
-          text-align: center;
-          transition: all 0.6s ease;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          padding: 0 1em;
-          position: relative;
-          font-weight: bold;
-          letter-spacing: 1px;
-          margin-left: 13px;
+
+        .bg {
+            animation: slide 3s ease-in-out infinite alternate;
+            background-image: linear-gradient(-60deg, #0a0e1e 50%, #121d45 50%);
+            bottom: 0;
+            left: -50%;
+            opacity: .8;
+            position: fixed;
+            right: -50%;
+            top: 0;
+            z-index: -1;
+        }
+
+        .bg2 {
+            animation-direction: alternate-reverse;
+            animation-duration: 4s;
+            background-image: linear-gradient(-60deg, #091228 50%, #0f2557 50%);
+        }
+
+        .bg3 {
+            animation-duration: 5s;
+            background-image: linear-gradient(-60deg, #0f2557 50%, #0a1b40 50%);
+        }
+        .form-control {
+            border: 2.5px solid #ffffff;
+        }
+        .content {
+            background-color: rgba(255, 255, 255, .8);
+            border-radius: .25em;
+            box-shadow: 0 0 .25em rgba(0, 0, 0, .25);
+            box-sizing: border-box;
+            left: 50%;
+            padding: 10vmin;
+            position: fixed;
+            text-align: center;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        h2 {
+            padding-bottom: 20px;
+            padding-top: 20px;
+        }
+
+        .logout-btn, .admin-dashboard-btn {
+            background-color: transparent;
+            color: #fff;
+            width: 7em;
+            height: 2.5em;
+            border: 0.2em solid #007bff;
+            border-radius: 11px;
+            text-align: center;
+            transition: all 0.6s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1em;
+            position: relative;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-left: 13px;
         }
 
         .logout-btn:hover {
-          background-color: #007bff;
-          cursor: pointer;
-          color: #fff;
+            background-color: #007bff;
+            cursor: pointer;
+            color: #fff;
         }
 
         .logout-btn:focus {
-          outline: none;
-          box-shadow: none;
+            outline: none;
+            box-shadow: none;
         }
 
         .profile-container {
@@ -59,10 +106,6 @@
             font-size: 2rem;
             margin-right: 10px;
         } 
-        h2 {
-            padding-bottom: 20px;
-            padding-top: 20px;
-        }
 
         .grid-container {
             margin: 20px auto;
@@ -145,19 +188,32 @@
         .grid-view tr:hover {
             background-color: rgba(8, 7, 44, 0.5);
         }
+
         #lblAdminName {
             font-family: 'Poppins', sans-serif;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-25%);
+            }
+            100% {
+                transform: translateX(25%);
+            }
         }
     </style>
 </head>
 <body>
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
     <form id="form1" runat="server">
         <div class="grid-container">
             <h2>Search Across All</h2>
             <div class="profile-container">
                 <i class="fas fa-user-circle profile-icon"></i>
                 <asp:Label ID="lblAdminName" runat="server" Text=""></asp:Label>
-               <asp:Button ID="Button1" runat="server" Text="Logout" CssClass="logout-btn" OnClick="LogoutButton_Click" />
+                <asp:Button ID="Button1" runat="server" Text="Logout" CssClass="logout-btn" OnClick="LogoutButton_Click" />
             </div>
             <!-- Search form -->
             <div class="search-container">
