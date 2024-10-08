@@ -7,7 +7,7 @@ namespace JobPortal
 {
 	public partial class StudentDashboard : System.Web.UI.Page
     {
-        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
+        string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=C927QV3\\SQLEXPRESS";
 
 
 
@@ -173,6 +173,13 @@ namespace JobPortal
                     ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('The current password is incorrect.');", true);
                 }
             }
+        }
+
+        protected void LogoutBtn_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("~/LandingPage.aspx");
         }
     }
 }

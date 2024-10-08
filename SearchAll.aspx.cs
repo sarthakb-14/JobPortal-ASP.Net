@@ -8,7 +8,7 @@ namespace JobPortal
 {
     public partial class SearchAll : System.Web.UI.Page
     {
-        private string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=7Y27QV3\\SQLEXPRESS";
+        private string connectionString = "uid=sa; password=manager@123; database=JobPortal; server=C927QV3\\SQLEXPRESS";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -145,6 +145,11 @@ namespace JobPortal
             Session.Abandon(); // End the session
             // Redirect to the LandingPage after logout
             Response.Redirect("~/LandingPage.aspx");
+        }
+
+        protected void btnAdminDashboard_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../AdminDashboard.aspx");
         }
     }
 }
