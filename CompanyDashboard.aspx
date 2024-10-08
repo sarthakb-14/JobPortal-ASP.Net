@@ -418,10 +418,9 @@
             form.classList.toggle('show');
         }
 
-        //function toggleManageJob() {
-        //    const manageJobOptions = document.getElementById('manage-job-options');
-        //    manageJobOptions.classList.toggle('show');
-        //}
+
+
+        
     </script>
 </body>
 </html>
